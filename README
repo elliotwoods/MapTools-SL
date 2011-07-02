@@ -1,0 +1,12 @@
+MapTools-SL
+Copyright Kimchi and Chips, Korea 2011
+
+ABSTRACT
+Structured light scanning software for use in detecting the 3D position of projector pixels when scattered by a non-planar object. This project was originally developed for Kimchi and Chips' Lit Tree (http://www.kimchiandchips.com/littree.php), and will be evolved into a more general purpose tool as part of the MapTools initiative for open source projection mapping tools.
+
+LICENSE
+This project is released under the LGPL license (http://www.gnu.org/licenses/lgpl.html)
+i.e. you can use it freely for whatever you want (commercial, personal, educational, whatever), and (unlike GPL), you don't have to make your own project open source.
+However if you make changes to the code in this app, then you have to make them available publicly for others to use.
+
+If you want to discuss licensing, then get in touch via http://www.kimchiandchips.com/contact.php

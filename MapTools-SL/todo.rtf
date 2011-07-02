@@ -1,0 +1,136 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf350
+{\fonttbl\f0\fnil\fcharset0 Monaco;}
+{\colortbl;\red255\green255\blue255;}
+\viewkind0
+\deftab720
+\pard\pardeftab720\ql\qnatural
+
+\f0\fs20 \cf0 ///////////////////////////////////////////////////////////////\
+>CURRENT\
+\
+Image output on ScanSet\
+doesn't match bmp's produced in CorrelateMain\
+\
+///////////////////////////////////////////////////////////////\
+>BACKGROUND THOUGHTS\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\ql\qnatural
+\cf0 cleaning the scan\
+	cal per interleave? change mask per interleave\
+	weight on threshold difference? \
+	histogram the sdev?\
+\
+\
+strange effect with interleavewidth=2,height=1\
+	check the calibration pattern. seems to be missing a frame (though nFrames is correct)\
+	maybe causing problems elsewhere?\
+	not a priority, ignoring interleaves for the time being\
+	\
+Scrolling / Viewport for widgets screen \
+Rename PCApp to StereoScan\
+\
+Calibrate per interleave!!!!!!\
+\
+Better progress indicators, e.g.\
+	*	Radial progress bar on projector output at\
+		the end of each interleave\
+	*	Beep when finished\
+	*	Come out of fullscreen when finished\
+\
+\
+\
+bug with scanning? what is it?\
+	occurs on both videoGrabber and ofxCLeye\
+	seems to occur at different latencies\
+	can we see the error in the current framedata preview?\
+	are we missing a bit?\
+	does it happen 100% of the time?\
+	doesn't happen on last interleave!\
+\pard\pardeftab720\ql\qnatural
+\cf0 \
+///////////////////////////////////////////////////////////////\
+>PRESUMPTIONS\
+SubScans have equal number of pixels\
+projWidth and projHeight are divisible by interleaveWidth and interleaveHeight respectively\
+\
+\
+///////////////////////////////////////////////////////////////\
+>LOGGED (NEWEST LAST)\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\ql\qnatural
+\cf0 gui tweaks\
+	grouped screens (replace current histogram model, double texture screens)\
+	group types\
+		swap\
+		grid (replace current grid system with this group type)\
+		tabs\
+	drag/drop screens :)...\
+\pard\pardeftab720\ql\qnatural
+\cf0 	then can move _scrSend to encoder (so we dont have multiple versions of it!)\
+\
+\
+Subscan has methods:\
+* clearCalibration\
+* clearData\
+* addCalibrationFrame(bool High)\
+* addScanFrame(int idx)\
+* calcThreshold()\
+* calcFrameData() // also transforms returns into full scan space\
+* histogram action\
+\
+\
+How is a subscan defined?\
+:\
+* full projector mask (*)\
+* kernel mask (wouldn't support dualhead subscans)\
+* functional mask\
+and \
+* lookup subscan space in projector space\
+and\
+* subscan width/height\
+\
+\
+Subscan has data:\
+* threshold\
+* framedata\
+\
+Subscan has properties:\
+* Index\
+\
+\
+NOTE!!!!\
+I changed _calibrateThresholdRange from flat to unsigned char\
+maybe this breaks things \
+\
+\
+!!!There's each subscan per decoder (for individual data)\
+\
+We've initialised the lookup, now we should\
+a) use the lookup\
+b) setup the screens (both add them to the interface and make them)\
+\
+Somehow we need some visual / compilable results so can start coding.\
+\
+\
+SubScanSet or other?\
+\
+Histogram + actions\
+\
+Subscan typess:\
+* SubScanInterleave\
+* SubScanFull\
+\
+Subscan set has properties:\
+* nSubScans\
+* Dictionary of properties\
+Are these stored in Payload or SubScanSet?\
+\
+\
+Subscan has interface (from PCDecode):\
+* scrFrameData\
+\
+Subscan encoding is defined by a full projector lookup table (+inverse?)\
+--> subscan set should be accesible from both PCEncode and PCDecode\
+\
+Fix ScanSet saving/loading\
+Somehow "shouldbethesame" doesn't match "3DScan"}
