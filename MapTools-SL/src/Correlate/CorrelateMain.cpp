@@ -299,7 +299,7 @@ void CorrelateMain::loadData()
 	copyToInputScreen();
 	
 	//clear test set window
-	//**HACK**scrTestCorrelate.setWith(dataSet.getOutput(), dataSet.getOutput(), 0);
+	scrTestCorrelate.setWith(dataSet.getOutput(), 0);
 	
 	bangCorrelate->enabled=true;
 	bangSaveFit->enabled=false;
@@ -316,8 +316,8 @@ void CorrelateMain::copyToInputScreen()
 	if (nPoints>MAXPOINTS)
 		ofLog(OF_LOG_WARNING, "CorrelateMain: nPoints > MAXPOINTS. only drawing first MAXPOINTS");
 
-	//**HACK**if (dataSet.size() > 0)
-		//**HACK**scrInputPoints.setWith(dataSet.begin().getOutput(), dataSet.begin().getOutput(), MIN(dataSet.size(), MAXPOINTS));	
+	if (dataSet.size() > 0)
+		scrInputPoints.setWith(dataSet.begin().getOutput(), MIN(dataSet.size(), MAXPOINTS));	
 
 }
 
@@ -339,7 +339,7 @@ void CorrelateMain::evaluate()
 	memcpy(evaluateSet.getInput(), dataSet.getInput(), dataSet.size() * 4 * sizeof(DataType));
 	fit.evaluate(evaluateSet);
 	
-	//**HACK**scrTestCorrelate.setWith(evaluateSet.getOutput(), evaluateSet.getOutput(), nPoints);
+	scrTestCorrelate.setWith(evaluateSet.getOutput(), nPoints);
 	
 	//we'll enable the save xyz, if we're in new format
 	bangSave3DScan->enabled = newFormat;
