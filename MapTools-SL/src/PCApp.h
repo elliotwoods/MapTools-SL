@@ -13,6 +13,8 @@
 #include "RANSACFilter.h"
 #include "AssembleScans.h"
 
+//#define SCAN_ONLY
+
 class PCApp : public ofBaseApp {
 
 	public:
@@ -37,10 +39,7 @@ class PCApp : public ofBaseApp {
 	private:
 		string				getDateString();
 		
-		PCManager			_scanner;
-
-	
-		ofxCVgui		*_screens;
+		ofxCVgui			screens;
 		scrGroupTabbed		*_scrTabMain;
 
 		string				_strStatus;
@@ -50,6 +49,7 @@ class PCApp : public ofBaseApp {
 
 protected:
 
+		PCManager			_scanner;
 #ifndef SCAN_ONLY
 	//correlator
 	CorrelateMain			_Correlator;

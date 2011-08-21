@@ -92,6 +92,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <OpenMPSupport>true</OpenMPSupport>
     </ClCompile>
     <Link>
       <AdditionalDependencies>openframeworksLibDebug.lib;cairo-static.lib;pixman-1.lib;msimg32.lib;OpenGL32.lib;GLu32.lib;kernel32.lib;setupapi.lib;Vfw32.lib;comctl32.lib;glut32.lib;rtAudioD.lib;videoInput.lib;libfreetype.lib;FreeImage.lib;qtmlClient.lib;dsound.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;glew32s.lib;fmodex_vc.lib;glu32.lib;PocoFoundationmdd.lib;PocoNetmdd.lib;PocoUtilmdd.lib;PocoXMLmdd.lib;Ws2_32.lib;tess2.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -105,6 +106,7 @@
       <DataExecutionPrevention>
       </DataExecutionPrevention>
       <TargetMachine>MachineX86</TargetMachine>
+      <Profile>true</Profile>
     </Link>
     <PostBuildEvent>
       <Message>adding DLLs and creating data folder</Message>
@@ -136,6 +138,7 @@ if not exist "$(ProjectDir)bin\data" mkdir  "$(ProjectDir)bin\data"
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <DataExecutionPrevention>
       </DataExecutionPrevention>
+      <Profile>true</Profile>
     </Link>
     <PostBuildEvent>
       <Message>adding DLLs and creating data folder</Message>
@@ -249,7 +252,7 @@ if not exist "$(ProjectDir)\bin\data" mkdir  "$(ProjectDir)\bin\data"
     <ClCompile Include="..\..\..\addons\ofxPolyfit\src\Data\pfitBasis.cpp" />
     <ClCompile Include="..\..\..\addons\ofxPolyfit\src\Data\pfitDataSet.cpp" />
     <ClCompile Include="..\..\..\addons\ofxPolyfit\src\ofxPolyFit.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxPolyfit\src\polyNfit\basisTransformIndicies.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPolyfit\src\polyNfit\basisTransformIndices.cpp" />
     <ClCompile Include="..\..\..\addons\ofxPolyfit\src\polyNfit\FitBase.cpp" />
     <ClCompile Include="..\..\..\addons\ofxPolyfit\src\polyNfit\matrix.cpp" />
     <ClCompile Include="..\..\..\addons\ofxPolyfit\src\polyNfit\polyNfit.cpp" />
@@ -316,7 +319,7 @@ if not exist "$(ProjectDir)\bin\data" mkdir  "$(ProjectDir)\bin\data"
     <ClInclude Include="..\..\..\addons\ofxPolyfit\src\Data\pfitBasis.h" />
     <ClInclude Include="..\..\..\addons\ofxPolyfit\src\Data\pfitDataSet.h" />
     <ClInclude Include="..\..\..\addons\ofxPolyfit\src\ofxPolyFit.h" />
-    <ClInclude Include="..\..\..\addons\ofxPolyfit\src\polyNfit\basisTransformIndicies.h" />
+    <ClInclude Include="..\..\..\addons\ofxPolyfit\src\polyNfit\basisTransformIndices.h" />
     <ClInclude Include="..\..\..\addons\ofxPolyfit\src\polyNfit\FitBase.h" />
     <ClInclude Include="..\..\..\addons\ofxPolyfit\src\polyNfit\matrix.h" />
     <ClInclude Include="..\..\..\addons\ofxPolyfit\src\polyNfit\polyNfit.h" />
@@ -352,6 +355,7 @@ if not exist "$(ProjectDir)\bin\data" mkdir  "$(ProjectDir)\bin\data"
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\addons\ofxXmlSettings\install.xml" />
+    <None Include="bin\data\settings.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -19,6 +19,8 @@
 
 #define MAXPOINTS 10000000
 
+typedef double DataType;
+
 class CorrelateMain
 {
 public:
@@ -52,9 +54,9 @@ protected:
 	wdgButton		*bangSave3DScan, *bangAddToImage, *bangSaveImage, *bangClearImage;
 	bool			newFormat;
 
-	int				nCameras;
-	int				nDatasets;
-	int				nPoints;
+	unsigned int	nCameras;
+	unsigned int	nDatasets;
+	unsigned int	nPoints;
 	float			screenWidth, screenHeight;
 	bool			swapCameras;
     string          lastFilename;
@@ -68,15 +70,15 @@ protected:
 	unsigned int	dataset_iPY[MAXPOINTS];
 	
 	// fit data
-	ofxPolyFit		fit;
-	float			polyOrder; //it's a float because of slider
-	pfitDataSetf	dataSet;
-	pfitDataSetf	evaluateSet;
+	ofxPolyFit_<DataType>	fit;
+	float					polyOrder; //it's a float because of slider
+	pfitDataSet<DataType>	dataSet;
+	pfitDataSet<DataType>	evaluateSet;
 
     
     // image output
     unsigned char * longImage;
-    int             longImageCount;
+    unsigned int	longImageCount;
 
 	
 };

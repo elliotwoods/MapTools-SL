@@ -14,10 +14,10 @@ class scrSelectBounds : public scrPointCloud
 public:
 	scrSelectBounds(string caption);
     
-    ofPoint     lbf, rtb;
+    ofVec3f			lbf, rtb;
 
 protected:
 	virtual void	drawContent();
     
-    ofShader       shader;
+    ofShader		shader;
 };

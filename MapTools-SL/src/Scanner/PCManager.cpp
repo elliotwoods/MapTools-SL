@@ -20,7 +20,6 @@ _scrControls("Controls"),
 _wdgDistance("Screen distance", screenDistance, 0, 1, 0.01,"meters"),
 _wdgIFrame("iFrame",iFrame,0),
 _wdgScanForever("Scan forever", scanForever)
-
 {
 	isInitialised=false;
 	hasData=false;	
@@ -34,17 +33,15 @@ _wdgScanForever("Scan forever", scanForever)
 	_texProjectorMask.allocate(projWidth, projHeight, GL_LUMINANCE);
 	_texProjectorMask.setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
 	
+	screenDistance = 0.5;
+	scanForever = false;
+
 	//interface
 	_scrControls.push(&_wdgStartScan);
 	_scrControls.push(&_wdgClear);
 	_scrControls.push(&_wdgDistance);
 	_scrControls.push(&_wdgIFrame);
 	_scrControls.push(&_wdgScanForever);
-	
-	screenDistance = 0.5;
-
-	scanForever = false;
-	
 }
 
 PCManager::~PCManager()
@@ -100,6 +97,7 @@ void PCManager::setup()
 
 void PCManager::update()
 {
+
 	//////////////////////////
 	// CHECK INPUTS
 	//////////////////////////
@@ -161,7 +159,6 @@ void PCManager::update()
 	//////////////////////////
 	
 	_firstFrame=false;
-	
 }
 
 void PCManager::close()

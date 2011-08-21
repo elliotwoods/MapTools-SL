@@ -4,13 +4,11 @@
 
 PCApp::PCApp()
 {
-	_screens = new ofxCVgui();
-
+	
 }
 
 PCApp::~PCApp()
 {
-	delete _screens;
 }
 
 //--------------------------------------------------------------
@@ -19,9 +17,12 @@ void PCApp::setup(){
 	ofSetVerticalSync(true);
 	ofSetLogLevel(OF_LOG_VERBOSE);
 	
-	_screens->init();
+	screens.init();
 	//setup scanner
 	_scanner.setup();
+
+	_scrTabMain = new scrGroupTabbed("Overview group", 32);
+	screens.mainScreen = _scrTabMain;
 	
 	/////////////////////////////////////////////////////////
 	// SCAN GROUP
@@ -34,8 +35,8 @@ void PCApp::setup(){
 	scrMessageGroup->push(&_scanner._scrProjectorMask);
 	gridScan->push(scrMessageGroup);
 	
+
 	gridScan->push(&_scanner._scrControls);
-	
 	for (int iCam=0; iCam<PCConfig().nCameras; iCam++)
 	{
 		//add projection space preview to the send group
@@ -60,7 +61,6 @@ void PCApp::setup(){
 	/////////////////////////////////////////////////////////
 	// MAIN TAB GROUP
 	/////////////////////////////////////////////////////////
-	_scrTabMain = new scrGroupTabbed("Overview group", 32);
 	
 	_scrTabMain->push(gridScan);
 
@@ -70,7 +70,7 @@ void PCApp::setup(){
     _scrTabMain->push(&_Assembler.scrGridMain);
 #endif	
 
-	_screens->mainScreen = _scrTabMain;
+	screens.mainScreen = _scrTabMain;
 	/////////////////////////////////////////////////////////
 	
 //	tabMain->setBounds(0, 0, ofGetWidth(), ofGetHeight());
@@ -81,7 +81,6 @@ void PCApp::setup(){
 //--------------------------------------------------------------
 
 void PCApp::update(){
-	
 	switch (_scrTabMain->iSelection) {
 		case 0:
 			//we're looking at scan
@@ -108,26 +107,19 @@ void PCApp::update(){
 			break;
 	}
 	
-	_screens->showInterface(_scanner.state==0 || _scrTabMain->iSelection>0);
+	screens.showInterface(_scanner.state==0 || _scrTabMain->iSelection>0);
 }
 
 //--------------------------------------------------------------
 
 void PCApp::draw(){
-
 	if (_scanner.state==PC_STATE_SCANNING)
 		ofLog(OF_LOG_VERBOSE, "PCApp: drawing interleave frame " + ofToString(Payload::Pointer->iScanInterleaveFrame(_scanner.iFrame)));
 
 	if (_scanner.state==PC_STATE_CALIBRATING)
 		ofLog(OF_LOG_VERBOSE, "PCApp: drawing calibration frame " + ofToString(_scanner.iFrame, 0));
-	
-	_screens->draw();
-	
-	
 }
 void PCApp::keyPressed(int key){
-	
-	_screens->interfaceNudge();
 	
 	switch (key)
 	{

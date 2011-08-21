@@ -52,14 +52,18 @@ _scrCamera(_texCamera, "Camera image")
 	ofLog(OF_LOG_VERBOSE, "PCDecode: Initialising " + ofToString(projPixelCount) +
 		" projector pixels, each at " + ofToString((int)sizeof(PCPixelMeans)) + 
 		" bytes , total = " + ofToString((float)sizeof(PCPixelMeans)*projPixelCount/(1024.0f*1024.0f),2) + "MB");
+	
+	projPixels.resize(projPixelCount);
 	for (int iPixel=0; iPixel<projPixelCount; iPixel++)
-		projPixels.push_back(new PCPixelMeans());
+		projPixels[iPixel] =new PCPixelMeans();
 	
 	ofLog(OF_LOG_VERBOSE, "PCDecode: Initialising " + ofToString(camPixelCount) + 
 		" camera pixels, each at " + ofToString((int)sizeof(PCPixelMeans)) + 
 		" bytes , total = " + ofToString((float)sizeof(PCPixelMeans)*camPixelCount/(1024.0f*1024.0f),2) + "MB");
+	
+	camPixels.resize(camPixelCount);
 	for (int iPixel=0; iPixel<camPixelCount; iPixel++)
-		camPixels.push_back(new PCPixelMeans());
+		camPixels[iPixel] = new PCPixelMeans();
 	///////////////////////////////////////
 	
 	

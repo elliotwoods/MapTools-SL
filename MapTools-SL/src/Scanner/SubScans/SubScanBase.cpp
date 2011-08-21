@@ -247,7 +247,7 @@ void SubScanBase::calc(vector<PCPixel*> &camPixels, vector<PCPixel*> &projPixels
 				xCamX = float(iCamPixelX)/float(camWidth-1);
 				xCamY = float(iCamPixelY)/float(camHeight-1);			
 				
-				//use payload to decode reading into position indicies
+				//use payload to decode reading into position Indices
                 //returns false if value outside ranges
 				isValid = Payload::Pointer->decode(_subFrameData[iCamPixel], iProjectorSubScanPixelX, iProjectorSubScanPixelY, SubScanWidth, SubScanHeight);
                 

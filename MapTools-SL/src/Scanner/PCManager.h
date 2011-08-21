@@ -73,7 +73,7 @@ public:
 	bool	hasData;
 	bool	scanForever;
 	int		state;
-	int		iFrame;
+	unsigned int		iFrame;
 
 	PCEncode			*_encoder;
 	vector<PCDecode*>	_decoder;
@@ -87,7 +87,7 @@ public:
 	//interface
 	scrTexture				_scrProjectorMask;
 	scrWidgets				_scrControls;
-	
+
 	//cal vars
 	float				screenDistance;
 
@@ -98,16 +98,17 @@ protected:
 
 	bool	_firstFrame;
 	
+	void					updateProjectorMask();
+	void					clearProjectorMask();
+
 	//interface
 	wdgButton			_wdgStartScan;
 	wdgButton			_wdgClear;
 	wdgSlider			_wdgDistance;
 	wdgCounter			_wdgIFrame;
 	wdgButton			_wdgScanForever;
-		
+
 	//mask
-	void					updateProjectorMask();
-	void					clearProjectorMask();
 	ofTexture				_texProjectorMask;
 	bool *					_boolProjectorMask;
 	unsigned char *			_charProjectorMask;

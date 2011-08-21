@@ -22,10 +22,21 @@ scrGridData("Data pointclouds"),
 longImageCount(0)
 {
 	////////////////////////////
-	// INITIALISE VARIABLES
+	// Initialise some values
 	////////////////////////////
+	//
 	nCameras = 0;
+	// from the samsung monitor in the studio
+	screenWidth = 0.598;
+	screenHeight = 0.336;
+	//
+	polyOrder = 4;
+	nDatasets = 0;
+	//
+	newFormat = true;
+	//
 	////////////////////////////
+
 	
 	////////////////////////////
 	// BUILD INTERFACE
@@ -51,14 +62,14 @@ longImageCount(0)
 											1, 10,
 											1);
     
-    wdgXYZ *wdgLBF = new wdgXYZ("Bounds Left, Bottom, Front",
-                                &scrTestCorrelate.lbf.x,
+	wdgSlider *wdgLBF = new wdgSlider("Bounds Left, Bottom, Front",
+                                scrTestCorrelate.lbf,
                                 -10, 10,
                                 0.05,
                                 "m");
     
-    wdgXYZ *wdgRTB = new wdgXYZ("Bounds Right, Top, Back",
-                                &scrTestCorrelate.rtb.x,
+    wdgSlider *wdgRTB = new wdgSlider("Bounds Right, Top, Back",
+                                scrTestCorrelate.rtb,
                                 -10, 10,
                                 0.05,
                                 "m");
@@ -110,20 +121,6 @@ longImageCount(0)
 	scrGridMain.push(&scrGridData);
 	scrGridMain.setGridWidth(3);
 	////////////////////////////
-
-	
-	////////////////////////////
-	// Initialise some values
-	////////////////////////////
-	// from the samsung monitor in the studio
-	screenWidth = 0.598;
-	screenHeight = 0.336;
-	//
-	polyOrder = 4;
-	nDatasets = 0;
-	//
-	newFormat = true;
-	////////////////////////////
 	
 }
 
@@ -170,7 +167,7 @@ void CorrelateMain::loadData()
 {
 	dataSet.clear();
 
-	pfitDataPointf dataRow = pfitDataPointf(1,1);
+	pfitDataPoint<DataType> dataRow = pfitDataPoint<DataType>(1,1);
 	nDatasets = 0;
 	nPoints = 0;
 	
@@ -178,6 +175,7 @@ void CorrelateMain::loadData()
 	int		thisFileSize;
 	string	thisFilename;
 	int		thisNPoints;
+	float	thisDepth;
 	
 	int		thisStart, thisEnd;
 	float	thisvalx, thisvaly; //for reading from file
@@ -188,7 +186,7 @@ void CorrelateMain::loadData()
 			///////////////////////////////
 			// Open file
 			///////////////////////////////
-			thisFilename = scrFileSelection.getPath(iFile);
+			thisFilename = ofToDataPath(scrFileSelection.getPath(iFile));
             lastFilename = thisFilename;
 			ifstream inFile(thisFilename.c_str(),
 							ios::in | ios::binary);
@@ -238,50 +236,56 @@ void CorrelateMain::loadData()
 			// Read data points
 			///////////////////////////////
 			thisNPoints = (thisFileSize-1) / ((newFormat ? 4 : 0)+8+8*nCameras);
-			//
-			pfitIndex oldSize = dataSet.size();
-			dataSet.resize(dataSet.size() + thisNPoints);
-			dataRow = dataSet[oldSize];
-			//
-			for (int iPoint=0; iPoint<thisNPoints; iPoint++)
+			thisDepth = getDepthFromFilename(scrFileSelection.getName(iFile));
+			if (thisNPoints > 0)
 			{
-				if (newFormat)
+				//
+				pfitIndex oldSize = dataSet.size();
+				pfitIndex newSize = dataSet.size() + thisNPoints;
+				dataSet.resize(newSize);
+				dataRow = dataSet[oldSize];
+				//
+				for (int iPoint=0; iPoint<thisNPoints; iPoint++)
 				{
-					//read indicies
-					inFile.read((char*) &dataset_iPX[iPoint], 2);
-					inFile.read((char*) &dataset_iPY[iPoint], 2);
-				}
+					if (newFormat)
+					{
+						//read Indices
+						inFile.read((char*) &dataset_iPX[iPoint], 2);
+						inFile.read((char*) &dataset_iPY[iPoint], 2);
+					}
 
-				//read positions
-				inFile.read((char*) &thisvalx, 4);
-				inFile.read((char*) &thisvaly, 4);
-				
-				dataRow.getOutput()[0] = screenWidth * (thisvalx - 0.5);
-				dataRow.getOutput()[1] = screenHeight * (thisvaly - 0.5);
-				dataRow.getOutput()[2] = getDepthFromFilename(scrFileSelection.getName(iFile));
-				
-				for (int iCam=0; iCam<nCameras; iCam++)
-				{					
 					//read positions
 					inFile.read((char*) &thisvalx, 4);
 					inFile.read((char*) &thisvaly, 4);
-					
-					if (!swapCameras)
-					{
-						dataRow.getInput()[0 + iCam*2] = thisvalx;
-						dataRow.getInput()[1 + iCam*2] = thisvaly;
-					} else {
-						dataRow.getInput()[0 + (nCameras-iCam-1)*2] = thisvalx;
-						dataRow.getInput()[1 + (nCameras-iCam-1)*2] = thisvaly;
-					}
-
-				}
 				
-				++nPoints;
-				++dataRow;
+					dataRow.getOutput()[0] = screenWidth * (thisvalx - 0.5);
+					dataRow.getOutput()[1] = screenHeight * (thisvaly - 0.5);
+					dataRow.getOutput()[2] = thisDepth;
+				
+					for (int iCam=0; iCam<nCameras; iCam++)
+					{					
+						//read positions
+						inFile.read((char*) &thisvalx, 4);
+						inFile.read((char*) &thisvaly, 4);
+					
+						if (!swapCameras)
+						{
+							dataRow.getInput()[0 + iCam*2] = thisvalx;
+							dataRow.getInput()[1 + iCam*2] = thisvaly;
+						} else {
+							dataRow.getInput()[0 + (nCameras-iCam-1)*2] = thisvalx;
+							dataRow.getInput()[1 + (nCameras-iCam-1)*2] = thisvaly;
+						}
+
+					}
+				
+					++nPoints;
+					++dataRow;
+				}
+				///////////////////////////////
+			} else {
+				ofLogWarning() << "No datapoints in file at depth " << thisDepth;
 			}
-			///////////////////////////////
-			
 			
 			///////////////////////////////
 			// Close up the shop
@@ -295,7 +299,7 @@ void CorrelateMain::loadData()
 	copyToInputScreen();
 	
 	//clear test set window
-	scrTestCorrelate.setWith(dataSet.getInput(), dataSet.getInput(), 0);
+	//**HACK**scrTestCorrelate.setWith(dataSet.getOutput(), dataSet.getOutput(), 0);
 	
 	bangCorrelate->enabled=true;
 	bangSaveFit->enabled=false;
@@ -311,8 +315,9 @@ void CorrelateMain::copyToInputScreen()
 	
 	if (nPoints>MAXPOINTS)
 		ofLog(OF_LOG_WARNING, "CorrelateMain: nPoints > MAXPOINTS. only drawing first MAXPOINTS");
-	
-	scrInputPoints.setWith(dataSet.begin().getInput(), dataSet.begin().getOutput(), MIN(dataSet.size(), MAXPOINTS));	
+
+	//**HACK**if (dataSet.size() > 0)
+		//**HACK**scrInputPoints.setWith(dataSet.begin().getOutput(), dataSet.begin().getOutput(), MIN(dataSet.size(), MAXPOINTS));	
 
 }
 
@@ -320,6 +325,7 @@ void CorrelateMain::runPolyfit()
 {
 	fit.init(polyOrder, 2*nCameras, 3, BASIS_SHAPE_TRIANGLE);
 	fit.correlate(dataSet);
+	ofLogNotice() << "fit residual = " << fit.residualRMS(dataSet);
 	
 	bangEvaluate->enabled=true;
 	bangSaveFit->enabled=true;
@@ -330,10 +336,10 @@ void CorrelateMain::evaluate()
     //HARDCODED FOR 2 CAMERAS
     
 	evaluateSet.init(4, 3, dataSet.size());
-	memcpy(evaluateSet.getInput(), dataSet.getInput(), dataSet.size() * 4 * sizeof(float));
+	memcpy(evaluateSet.getInput(), dataSet.getInput(), dataSet.size() * 4 * sizeof(DataType));
 	fit.evaluate(evaluateSet);
 	
-	scrTestCorrelate.setWith(evaluateSet.getOutput(), evaluateSet.getOutput(), nPoints);
+	//**HACK**scrTestCorrelate.setWith(evaluateSet.getOutput(), evaluateSet.getOutput(), nPoints);
 	
 	//we'll enable the save xyz, if we're in new format
 	bangSave3DScan->enabled = newFormat;
@@ -357,8 +363,8 @@ void CorrelateMain::save3DScan()
     
 	int iPP, iPoint;
 	unsigned char col[3];
-    pfitDataPointf dataPoint;
-	float* xyz;
+    pfitDataPoint<DataType> dataPoint;
+	DataType* xyz;
 	
 	for (dataPoint = dataSet.begin(); dataPoint != dataSet.end(); ++dataPoint)
 	{
@@ -459,8 +465,8 @@ void CorrelateMain::addToImage()
 	unsigned char col[3];
     float* point;
 	
-	float* xyz;
-	pfitDataPointf dataPoint;
+	DataType* xyz;
+	pfitDataPoint<DataType> dataPoint;
 	int iPoint = 0;
 
 	for (dataPoint = dataSet.begin(); dataPoint != dataSet.end(); ++dataPoint)
