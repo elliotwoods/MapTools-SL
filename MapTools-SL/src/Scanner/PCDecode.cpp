@@ -13,7 +13,7 @@
 PCDecode::PCDecode(CameraBase *camera, bool *boolProjectorMask) :
 _histThresholdRange("Threshold range threshold (subscans)", 256),
 _histNFinds("Camera pixels found per projector pixel.", projPixelCount),
-_scrCamera(cursor_none, false, _texCamera, "Camera image")
+_scrCamera(_texCamera, "Camera image")
 {		
 	_camera = camera;
 	
@@ -78,14 +78,14 @@ _scrCamera(cursor_none, false, _texCamera, "Camera image")
 	///////////////////////////////////////
 	// SCREENS
 	///////////////////////////////////////
-	_scrProjectorSpace = new scrTexture(cursor_xy, false, _texCameraSpacePreview, "Projector space preview");
+	_scrProjectorSpace = new scrTexture(_texCameraSpacePreview, "Projector space preview");
 	ofAddListener(_scrProjectorSpace->evtCursorMove, this, &PCDecode::moveSendCursor);
-	_scrCameraSpace = new scrTexture(cursor_none, true, _texProjectorSpacePreview, "Camera space preview");
+	_scrCameraSpace = new scrTexture(_texProjectorSpacePreview, "Camera space preview");
 	
-    _scrCameraNFinds = new scrTexture(cursor_none, false, _texCameraSpaceNFinds, "NFinds");
-	_scrProjectorNFinds = new scrTexture(cursor_none, false, _texProjectorSpaceNFinds, "NFinds");
+    _scrCameraNFinds = new scrTexture(_texCameraSpaceNFinds, "NFinds");
+	_scrProjectorNFinds = new scrTexture(_texProjectorSpaceNFinds, "NFinds");
     
-    _scrHistograms = new scrHistograms(cursor_none, false, "Histograms");
+    _scrHistograms = new scrHistograms("Histograms");
     _scrHistograms->addHistogram(_histThresholdRange);
     _scrHistograms->addHistogram(_histNFinds);
     

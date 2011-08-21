@@ -4,7 +4,7 @@
 
 #include "ofMain.h"
 
-#include "ofxKCScreensGUI.h"
+#include "ofxCVgui.h"
 
 #include "PCconstants.h"
 #include "PCManager.h"
@@ -40,7 +40,7 @@ class PCApp : public ofBaseApp {
 		PCManager			_scanner;
 
 	
-		ofxKCScreensGUI		*_screens;
+		ofxCVgui		*_screens;
 		scrGroupTabbed		*_scrTabMain;
 
 		string				_strStatus;
@@ -50,7 +50,7 @@ class PCApp : public ofBaseApp {
 
 protected:
 
-#ifndef TARGET_WIN32
+#ifndef SCAN_ONLY
 	//correlator
 	CorrelateMain			_Correlator;
     

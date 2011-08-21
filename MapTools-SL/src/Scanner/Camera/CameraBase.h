@@ -9,9 +9,8 @@
  */
 
 #include "PCConfig.h"
-#include "ofxThread.h"
 
-class CameraBase : public PCConfig, public ofxThread
+class CameraBase : public PCConfig, public ofThread
 {
 public:
 	CameraBase();

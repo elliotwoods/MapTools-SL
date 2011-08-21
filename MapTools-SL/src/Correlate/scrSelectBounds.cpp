@@ -13,8 +13,7 @@ scrPointCloud(caption),
 lbf(-0.8,-0.6,0.9),
 rtb(0.4,0.5,3.0)
 {
-    
-    shader.setup("selectBounds");
+    shader.load("selectBounds");
     shader.printActiveUniforms();
 }
 

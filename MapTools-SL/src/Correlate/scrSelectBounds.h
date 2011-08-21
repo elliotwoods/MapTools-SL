@@ -7,7 +7,6 @@
 //
 
 #include "scrPointCloud.h"
-#include "ofxShader.h"
 
 class scrSelectBounds : public scrPointCloud
 {
@@ -20,5 +19,5 @@ public:
 protected:
 	virtual void	drawContent();
     
-    ofxShader       shader;
+    ofShader       shader;
 };

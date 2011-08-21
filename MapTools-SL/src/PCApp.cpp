@@ -4,7 +4,7 @@
 
 PCApp::PCApp()
 {
-	_screens = new ofxKCScreensGUI(0,0,ofGetWidth(),ofGetHeight());
+	_screens = new ofxCVgui();
 
 }
 
@@ -19,6 +19,7 @@ void PCApp::setup(){
 	ofSetVerticalSync(true);
 	ofSetLogLevel(OF_LOG_VERBOSE);
 	
+	_screens->init();
 	//setup scanner
 	_scanner.setup();
 	
@@ -63,7 +64,7 @@ void PCApp::setup(){
 	
 	_scrTabMain->push(gridScan);
 
-#ifndef TARGET_WIN32
+#ifndef SCAN_ONLY
 	_scrTabMain->push(&_Correlator.scrGridMain);
     _scrTabMain->push(&_Processor.scrGridMain);
     _scrTabMain->push(&_Assembler.scrGridMain);
@@ -87,7 +88,7 @@ void PCApp::update(){
 			_scanner.update();
 			break;
             
-#ifndef TARGET_WIN32
+#ifndef SCAN_ONLY
 		case 1:
 			//we're looking at correlate
 			_Correlator.update();
@@ -130,9 +131,9 @@ void PCApp::keyPressed(int key){
 	
 	switch (key)
 	{
-		case 'f': // f = fullscreen
-			ofSetFullscreen(_screens->doFullscreen());
-			break;
+		//case 'f': // f = fullscreen
+		//	ofSetFullscreen(_screens->doFullscreen());
+		//	break;
 
 		case 32: // SPACE = run system
 			if (_scanner.state==0)
@@ -171,61 +172,36 @@ void PCApp::keyPressed(int key){
 //--------------------------------------------------------------
 void PCApp::keyReleased(int key){
 	
-	_screens->interfaceNudge();
-	
 }
 
 //--------------------------------------------------------------
 void PCApp::mouseMoved(int x, int y ){
 	
-	_screens->interfaceNudge();
-	
-	_screens->mouseMoved(x, y);
 
 }
 
 //--------------------------------------------------------------
 void PCApp::mouseDragged(int x, int y, int button){
-	_screens->mouseDragged(x, y, button);
+
 }
 
 //--------------------------------------------------------------
 void PCApp::mousePressed(int x, int y, int button){
 	
-	_screens->interfaceNudge();
-	
-	if (button==0)
-	{
-		int ScreenX, ScreenY;
-		
-//		_MouseStartX = x;
-//		_MouseStartY = y;
-//		
-//		_MouseStartScreenPixX = x % PC_SCREEN_RESOLUTION_X;
-//		_MouseStartScreenPixY = y % PC_SCREEN_RESOLUTION_Y;
-//		
-//		_MouseStartScreenFloatX = float(_MouseStartScreenPixX)/ float(PC_SCREEN_RESOLUTION_X);
-//		_MouseStartScreenFloatY = float(_MouseStartScreenPixY)/ float(PC_SCREEN_RESOLUTION_Y);
-		
-		mouseDown(x,y);
-	}
 
 }
 
 //--------------------------------------------------------------
 void PCApp::mouseReleased(int x, int y, int button){
-	
-	_screens->mouseReleased(x, y);
 }
 
 void PCApp::mouseDown(int x, int y)
 {
-	_screens->mouseDown(x, y);
 }
 
 //--------------------------------------------------------------
 void PCApp::windowResized(int w, int h){
-	_screens->resize(w, h);
+
 }
 
 

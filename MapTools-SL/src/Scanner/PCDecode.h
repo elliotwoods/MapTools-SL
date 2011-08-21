@@ -16,7 +16,7 @@
 #include "ofMain.h"
 
 #include "PCEncode.h"
-#include "ofxKCScreensGUI.h"
+#include "ofxCVgui.h"
 
 #include "PCPixel.h"
 

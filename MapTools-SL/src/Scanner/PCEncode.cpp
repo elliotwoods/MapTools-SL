@@ -10,7 +10,7 @@
 #include "PCEncode.h"
 
 PCEncode::PCEncode(bool* boolProjectorMask) : 
-scrSend(cursor_none, false, _texOutput, "Message")
+scrSend(_texOutput, "Message")
 {	
 	_texCharOutput = new unsigned char[projPixelCount];
 	_texOutput.allocate(projWidth,projHeight,GL_LUMINANCE);

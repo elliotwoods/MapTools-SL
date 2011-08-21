@@ -1,0 +1,359 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7FD42DF7-442E-479A-BA76-D0022F99702A}</ProjectGuid>
+    <RootNamespace>emptyExample</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectName>MapTools-SL</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">bin\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">obj\$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">obj\$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateManifest>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">bin\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">obj\$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">obj\$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectName)_debug</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectName)_debug</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectName)</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectName)</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.\src\Scanner\ScanSet;.\src\Scanner\SubScans;..\..\..\addons\ofxPolyfit\src\polyNfit;..\..\..\addons\ofxPolyfit\src\Data;..\..\..\addons\ofxPolyfit\src;..\..\..\addons\ofxCVgui\src\screens\Groups;..\..\..\addons\ofxCVgui\src\widgets;..\..\..\addons\ofxCVgui\src\screens;..\..\..\addons\ofxCVgui\src\include;..\..\..\addons\ofxCVgui\src\histograms;..\..\..\libs\cairo\include\cairo\;..\..\..\addons\ofxCVgui\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\libs\cairo\include\cairo;..\..\..\addons\ofxXmlSettings\src;C:\openFrameworks\007\apps\MapTools-SL\MapTools-SL\src\SubScans;C:\openFrameworks\007\apps\MapTools-SL\MapTools-SL\src\Scanner\Payloads;C:\openFrameworks\007\apps\MapTools-SL\MapTools-SL\src\Scanner\Camera;C:\openFrameworks\007\apps\MapTools-SL\MapTools-SL\src\Scanner;C:\openFrameworks\007\apps\MapTools-SL\MapTools-SL\src\Correlate;C:\openFrameworks\007\apps\MapTools-SL\MapTools-SL\src\Analyse;..\..\..\libs\openFrameworks;..\..\..\libs\openFrameworks\graphics;..\..\..\libs\openFrameworks\app;..\..\..\libs\openFrameworks\sound;..\..\..\libs\openFrameworks\utils;..\..\..\libs\openFrameworks\communication;..\..\..\libs\openFrameworks\video;..\..\..\libs\openFrameworks\math;..\..\..\libs\openFrameworks\types;..\..\..\libs\openFrameworks\events;..\..\..\libs\glut\include;..\..\..\libs\rtAudio\include;..\..\..\libs\quicktime\include;..\..\..\libs\freetype\include;..\..\..\libs\freetype\include\freetype2;..\..\..\libs\freeImage\include;..\..\..\libs\fmodex\include;..\..\..\libs\videoInput\include;..\..\..\libs\glew\include\;..\..\..\libs\glu\include;..\..\..\libs\poco\include;..\..\..\addons;..\..\..\libs\openFrameworks\gl;..\..\..\libs\openFrameworks\3d;..\..\..\libs\tess2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;POCO_STATIC;CAIRO_WIN32_STATIC_BUILD;DISABLE_SOME_FLOATING_POINT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>openframeworksLibDebug.lib;cairo-static.lib;pixman-1.lib;msimg32.lib;OpenGL32.lib;GLu32.lib;kernel32.lib;setupapi.lib;Vfw32.lib;comctl32.lib;glut32.lib;rtAudioD.lib;videoInput.lib;libfreetype.lib;FreeImage.lib;qtmlClient.lib;dsound.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;glew32s.lib;fmodex_vc.lib;glu32.lib;PocoFoundationmdd.lib;PocoNetmdd.lib;PocoUtilmdd.lib;PocoXMLmdd.lib;Ws2_32.lib;tess2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>..\..\..\libs\glut\lib\vs2010;..\..\..\libs\rtAudio\lib\vs2010;..\..\..\libs\FreeImage\lib\vs2010;..\..\..\libs\freetype\lib\vs2010;..\..\..\libs\quicktime\lib\vs2010;..\..\..\libs\fmodex\lib\vs2010;..\..\..\libs\videoInput\lib\vs2010;..\..\..\libs\cairo\lib\vs2010;..\..\..\libs\cairo\lib\vs2010;..\..\..\libs\glew\lib\vs2010;..\..\..\libs\glu\lib\vs2010;..\..\..\libs\Poco\lib\vs2010;..\..\..\libs\openFrameworksCompiled\lib\vs2010;..\..\..\libs\tess2\lib\vs2010;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>atlthunk.lib; LIBC.lib; LIBCMT;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(TargetDir)$(TargetName)_debugInfo.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Message>adding DLLs and creating data folder</Message>
+      <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs2010\*.dll" "$(ProjectDir)bin"
+if not exist "$(ProjectDir)bin\data" mkdir  "$(ProjectDir)bin\data"
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.\src\Scanner\ScanSet;.\src\Scanner\SubScans;..\..\..\addons\ofxPolyfit\src\polyNfit;..\..\..\addons\ofxPolyfit\src\Data;..\..\..\addons\ofxPolyfit\src;..\..\..\addons\ofxCVgui\src\screens\Groups;..\..\..\addons\ofxCVgui\src\widgets;..\..\..\addons\ofxCVgui\src\screens;..\..\..\addons\ofxCVgui\src\include;..\..\..\addons\ofxCVgui\src\histograms;..\..\..\libs\cairo\include\cairo\;..\..\..\addons\ofxCVgui\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\libs\cairo\include\cairo;..\..\..\addons\ofxXmlSettings\src;C:\openFrameworks\007\apps\MapTools-SL\MapTools-SL\src\SubScans;C:\openFrameworks\007\apps\MapTools-SL\MapTools-SL\src\Scanner\Payloads;C:\openFrameworks\007\apps\MapTools-SL\MapTools-SL\src\Scanner\Camera;C:\openFrameworks\007\apps\MapTools-SL\MapTools-SL\src\Scanner;C:\openFrameworks\007\apps\MapTools-SL\MapTools-SL\src\Correlate;C:\openFrameworks\007\apps\MapTools-SL\MapTools-SL\src\Analyse;..\..\..\libs\openFrameworks;..\..\..\libs\openFrameworks\graphics;..\..\..\libs\openFrameworks\app;..\..\..\libs\openFrameworks\sound;..\..\..\libs\openFrameworks\utils;..\..\..\libs\openFrameworks\communication;..\..\..\libs\openFrameworks\video;..\..\..\libs\openFrameworks\math;..\..\..\libs\openFrameworks\types;..\..\..\libs\openFrameworks\events;..\..\..\libs\glut\include;..\..\..\libs\rtAudio\include;..\..\..\libs\quicktime\include;..\..\..\libs\freetype\include;..\..\..\libs\freetype\include\freetype2;..\..\..\libs\freeImage\include;..\..\..\libs\fmodex\include;..\..\..\libs\videoInput\include;..\..\..\libs\glew\include\;..\..\..\libs\glu\include;..\..\..\libs\poco\include;..\..\..\addons;..\..\..\libs\openFrameworks\gl;..\..\..\libs\openFrameworks\3d;..\..\..\libs\tess2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;POCO_STATIC;CAIRO_WIN32_STATIC_BUILD;DISABLE_SOME_FLOATING_POINT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>openframeworksLibDebug.lib;cairo-static.lib;pixman-1.lib;msimg32.lib;OpenGL32.lib;GLu32.lib;kernel32.lib;setupapi.lib;Vfw32.lib;comctl32.lib;glut32.lib;rtAudioD.lib;videoInput.lib;libfreetype.lib;FreeImage.lib;qtmlClient.lib;dsound.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;glew32s.lib;fmodex_vc.lib;glu32.lib;PocoFoundationmdd.lib;PocoNetmdd.lib;PocoUtilmdd.lib;PocoXMLmdd.lib;Ws2_32.lib;tess2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>..\..\..\libs\glut\lib\vs2010;..\..\..\libs\rtAudio\lib\vs2010;..\..\..\libs\FreeImage\lib\vs2010;..\..\..\libs\freetype\lib\vs2010;..\..\..\libs\quicktime\lib\vs2010;..\..\..\libs\fmodex\lib\vs2010;..\..\..\libs\videoInput\lib\vs2010;..\..\..\libs\cairo\lib\vs2010;..\..\..\libs\cairo\lib\vs2010;..\..\..\libs\glew\lib\vs2010;..\..\..\libs\glu\lib\vs2010;..\..\..\libs\Poco\lib\vs2010;..\..\..\libs\openFrameworksCompiled\lib\vs2010;..\..\..\libs\tess2\lib\vs2010;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>atlthunk.lib; LIBC.lib; LIBCMT;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(TargetDir)$(TargetName)_debugInfo.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+    </Link>
+    <PostBuildEvent>
+      <Message>adding DLLs and creating data folder</Message>
+      <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs2010\*.dll" "$(ProjectDir)bin"
+if not exist "$(ProjectDir)bin\data" mkdir  "$(ProjectDir)bin\data"
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>..\..\..\libs\openFrameworks;..\..\..\libs\openFrameworks\graphics;..\..\..\libs\openFrameworks\app;..\..\..\libs\openFrameworks\sound;..\..\..\libs\openFrameworks\utils;..\..\..\libs\openFrameworks\communication;..\..\..\libs\openFrameworks\video;..\..\..\libs\openFrameworks\math;..\..\..\libs\openFrameworks\types;..\..\..\libs\openFrameworks\events;..\..\..\libs\glut\include;..\..\..\libs\rtAudio\include;..\..\..\libs\quicktime\include;..\..\..\libs\freetype\include;..\..\..\libs\freetype\include\freetype2;..\..\..\libs\freeImage\include;..\..\..\libs\fmodex\include;..\..\..\libs\videoInput\include;..\..\..\libs\glew\include\;..\..\..\libs\glu\include;..\..\..\libs\poco\include;..\..\..\addons;..\..\..\libs\openFrameworks\gl;..\..\..\libs\openFrameworks\3d;..\..\..\libs\tess2\include;..\..\..\libs\cairo\include\cairo%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;POCO_STATIC;CAIRO_WIN32_STATIC_BUILD;DISABLE_SOME_FLOATING_POINT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>openframeworksLib.lib;cairo-static.lib;pixman-1.lib;msimg32.lib;OpenGL32.lib;GLu32.lib;kernel32.lib;setupapi.lib;glut32.lib;rtAudio.lib;videoInput.lib;libfreetype.lib;FreeImage.lib;qtmlClient.lib;dsound.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;glew32s.lib;fmodex_vc.lib;glu32.lib;PocoFoundationmd.lib;PocoNetmd.lib;PocoUtilmd.lib;PocoXMLmd.lib;tess2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\libs\glut\lib\vs2010;..\..\..\libs\rtAudio\lib\vs2010;..\..\..\libs\FreeImage\lib\vs2010;..\..\..\libs\freetype\lib\vs2010;..\..\..\libs\quicktime\lib\vs2010;..\..\..\libs\fmodex\lib\vs2010;..\..\..\libs\videoInput\lib\vs2010;..\..\..\libs\cairo\lib\vs2010;..\..\..\libs\cairo\lib\vs2010;..\..\..\libs\glew\lib\vs2010;..\..\..\libs\glu\lib\vs2010;..\..\..\libs\Poco\lib\vs2010;..\..\..\libs\openFrameworksCompiled\lib\vs2010;..\..\..\libs\tess2\lib\vs2010;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>atlthunk.lib; LIBC.lib; LIBCMT;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+      <LinkTimeCodeGeneration>Default</LinkTimeCodeGeneration>
+    </Link>
+    <PostBuildEvent>
+      <Message>adding DLLs and creating data folder</Message>
+      <Command>xcopy /e /i /y "$(ProjectDir)\..\..\..\export\vs2010\*.dll" "$(ProjectDir)\bin"
+if not exist "$(ProjectDir)\bin\data" mkdir  "$(ProjectDir)\bin\data"
+
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>..\..\..\libs\openFrameworks;..\..\..\libs\openFrameworks\graphics;..\..\..\libs\openFrameworks\app;..\..\..\libs\openFrameworks\sound;..\..\..\libs\openFrameworks\utils;..\..\..\libs\openFrameworks\communication;..\..\..\libs\openFrameworks\video;..\..\..\libs\openFrameworks\math;..\..\..\libs\openFrameworks\types;..\..\..\libs\openFrameworks\events;..\..\..\libs\glut\include;..\..\..\libs\rtAudio\include;..\..\..\libs\quicktime\include;..\..\..\libs\freetype\include;..\..\..\libs\freetype\include\freetype2;..\..\..\libs\freeImage\include;..\..\..\libs\fmodex\include;..\..\..\libs\videoInput\include;..\..\..\libs\glew\include\;..\..\..\libs\glu\include;..\..\..\libs\poco\include;..\..\..\addons;..\..\..\libs\openFrameworks\gl;..\..\..\libs\openFrameworks\3d;..\..\..\libs\tess2\include;..\..\..\libs\cairo\include\cairo%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;POCO_STATIC;CAIRO_WIN32_STATIC_BUILD;DISABLE_SOME_FLOATING_POINT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>openframeworksLib.lib;cairo-static.lib;pixman-1.lib;msimg32.lib;OpenGL32.lib;GLu32.lib;kernel32.lib;setupapi.lib;glut32.lib;rtAudio.lib;videoInput.lib;libfreetype.lib;FreeImage.lib;qtmlClient.lib;dsound.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;glew32s.lib;fmodex_vc.lib;glu32.lib;PocoFoundationmd.lib;PocoNetmd.lib;PocoUtilmd.lib;PocoXMLmd.lib;tess2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\libs\glut\lib\vs2010;..\..\..\libs\rtAudio\lib\vs2010;..\..\..\libs\FreeImage\lib\vs2010;..\..\..\libs\freetype\lib\vs2010;..\..\..\libs\quicktime\lib\vs2010;..\..\..\libs\fmodex\lib\vs2010;..\..\..\libs\videoInput\lib\vs2010;..\..\..\libs\cairo\lib\vs2010;..\..\..\libs\cairo\lib\vs2010;..\..\..\libs\glew\lib\vs2010;..\..\..\libs\glu\lib\vs2010;..\..\..\libs\Poco\lib\vs2010;..\..\..\libs\openFrameworksCompiled\lib\vs2010;..\..\..\libs\tess2\lib\vs2010;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>atlthunk.lib; LIBC.lib; LIBCMT;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <LinkTimeCodeGeneration>Default</LinkTimeCodeGeneration>
+    </Link>
+    <PostBuildEvent>
+      <Message>adding DLLs and creating data folder</Message>
+      <Command>xcopy /e /i /y "$(ProjectDir)\..\..\..\export\vs2010\*.dll" "$(ProjectDir)\bin"
+if not exist "$(ProjectDir)\bin\data" mkdir  "$(ProjectDir)\bin\data"
+
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\libs\openFrameworksCompiled\project\vs2010\openframeworksLib.vcxproj">
+      <Project>{5837595d-aca9-485c-8e76-729040ce4b0b}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\histograms\Histogram.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\include\btnBase.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\include\GUIAssets.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\include\GUIGlobal.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\ofxCVgui.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\Groups\scrGroupBase.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\Groups\scrGroupGrid.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\Groups\scrGroupTabbed.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\scr3D.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\scrBase.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\scrDrawEvent.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\scrFileSelect.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\scrHistograms.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\scrPointCloud.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\scrTexture.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\scrVbo.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\scrWidgets.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\widgets\wdgBase.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\widgets\wdgButton.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\widgets\wdgColour.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\widgets\wdgCounter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\widgets\wdgFPS.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\widgets\wdgHistogram.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\widgets\wdgSlider.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\widgets\wdgTransform.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\widgets\wdgXYZ.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPolyfit\src\Data\pfitBasis.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPolyfit\src\Data\pfitDataSet.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPolyfit\src\ofxPolyFit.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPolyfit\src\polyNfit\basisTransformIndicies.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPolyfit\src\polyNfit\FitBase.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPolyfit\src\polyNfit\matrix.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPolyfit\src\polyNfit\polyNfit.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPolyfit\src\polyNfit\powerBases.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlerror.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlparser.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.cpp" />
+    <ClCompile Include="src\Analyse\AssembleScans.cpp" />
+    <ClCompile Include="src\Analyse\LongImage.cpp" />
+    <ClCompile Include="src\Analyse\RANSACFilter.cpp" />
+    <ClCompile Include="src\Correlate\CorrelateMain.cpp" />
+    <ClCompile Include="src\Correlate\scrSelectBounds.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\PCApp.cpp" />
+    <ClCompile Include="src\Scanner\Camera\CameraBase.cpp" />
+    <ClCompile Include="src\Scanner\Camera\CameraDefault.cpp" />
+    <ClCompile Include="src\Scanner\Camera\CameraTheosVideoInput.cpp" />
+    <ClCompile Include="src\Scanner\Payloads\PayloadBase.cpp" />
+    <ClCompile Include="src\Scanner\Payloads\PayloadBinary.cpp" />
+    <ClCompile Include="src\Scanner\Payloads\PayloadGraycode.cpp" />
+    <ClCompile Include="src\Scanner\PCConfig.cpp" />
+    <ClCompile Include="src\Scanner\PCDecode.cpp" />
+    <ClCompile Include="src\Scanner\PCEncode.cpp" />
+    <ClCompile Include="src\Scanner\PCLogger.cpp" />
+    <ClCompile Include="src\Scanner\PCManager.cpp" />
+    <ClCompile Include="src\Scanner\PCPixel.cpp" />
+    <ClCompile Include="src\Scanner\ScanSet\ScanSet.cpp" />
+    <ClCompile Include="src\Scanner\ScanSet\scrScanSet.cpp" />
+    <ClCompile Include="src\Scanner\SubScans\SubScanBase.cpp" />
+    <ClCompile Include="src\Scanner\SubScans\SubScanBasic.cpp" />
+    <ClCompile Include="src\Scanner\SubScans\SubScanInterleave.cpp" />
+    <ClCompile Include="src\Scanner\SubScans\SubScanSet.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\histograms\Histogram.h" />
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\include\btnBase.h" />
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\include\GUIAssets.h" />
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\include\GUIConstants.h" />
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\include\GUIGlobal.h" />
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\ofxCVgui.h" />
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\Groups\scrGroupBase.h" />
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\Groups\scrGroupGrid.h" />
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\Groups\scrGroupSwap.h" />
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\Groups\scrGroupTabbed.h" />
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\scr3D.h" />
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\scrBase.h" />
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\scrDrawEvent.h" />
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\scrFileSelect.h" />
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\scrHistograms.h" />
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\scrPointCloud.h" />
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\scrTexture.h" />
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\scrVbo.h" />
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\scrWidgets.h" />
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\widgets\wdgBase.h" />
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\widgets\wdgButton.h" />
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\widgets\wdgColour.h" />
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\widgets\wdgCounter.h" />
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\widgets\wdgFPS.h" />
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\widgets\wdgHistogram.h" />
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\widgets\wdgSlider.h" />
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\widgets\wdgTransform.h" />
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\widgets\wdgXYZ.h" />
+    <ClInclude Include="..\..\..\addons\ofxPolyfit\src\Data\pfitBasis.h" />
+    <ClInclude Include="..\..\..\addons\ofxPolyfit\src\Data\pfitDataSet.h" />
+    <ClInclude Include="..\..\..\addons\ofxPolyfit\src\ofxPolyFit.h" />
+    <ClInclude Include="..\..\..\addons\ofxPolyfit\src\polyNfit\basisTransformIndicies.h" />
+    <ClInclude Include="..\..\..\addons\ofxPolyfit\src\polyNfit\FitBase.h" />
+    <ClInclude Include="..\..\..\addons\ofxPolyfit\src\polyNfit\matrix.h" />
+    <ClInclude Include="..\..\..\addons\ofxPolyfit\src\polyNfit\polyNfit.h" />
+    <ClInclude Include="..\..\..\addons\ofxPolyfit\src\polyNfit\powerBases.h" />
+    <ClInclude Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.h" />
+    <ClInclude Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.h" />
+    <ClInclude Include="src\Analyse\AssembleScans.h" />
+    <ClInclude Include="src\Analyse\LongImage.h" />
+    <ClInclude Include="src\Analyse\RANSACFilter.h" />
+    <ClInclude Include="src\Correlate\CorrelateMain.h" />
+    <ClInclude Include="src\Correlate\scrSelectBounds.h" />
+    <ClInclude Include="src\PCApp.h" />
+    <ClInclude Include="src\Scanner\Camera\CameraBase.h" />
+    <ClInclude Include="src\Scanner\Camera\CameraDefault.h" />
+    <ClInclude Include="src\Scanner\Camera\CameraTheosVideoInput.h" />
+    <ClInclude Include="src\Scanner\Payloads\PayloadBase.h" />
+    <ClInclude Include="src\Scanner\Payloads\PayloadBinary.h" />
+    <ClInclude Include="src\Scanner\Payloads\PayloadGraycode.h" />
+    <ClInclude Include="src\Scanner\PCConfig.h" />
+    <ClInclude Include="src\Scanner\PCconstants.h" />
+    <ClInclude Include="src\Scanner\PCDecode.h" />
+    <ClInclude Include="src\Scanner\PCEncode.h" />
+    <ClInclude Include="src\Scanner\PCincludes.h" />
+    <ClInclude Include="src\Scanner\PCLogger.h" />
+    <ClInclude Include="src\Scanner\PCManager.h" />
+    <ClInclude Include="src\Scanner\PCPixel.h" />
+    <ClInclude Include="src\Scanner\ScanSet\ScanSet.h" />
+    <ClInclude Include="src\Scanner\ScanSet\scrScanSet.h" />
+    <ClInclude Include="src\Scanner\SubScans\SubScanBase.h" />
+    <ClInclude Include="src\Scanner\SubScans\SubScanBasic.h" />
+    <ClInclude Include="src\Scanner\SubScans\SubScanInterleave.h" />
+    <ClInclude Include="src\Scanner\SubScans\SubScanSet.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\addons\ofxXmlSettings\install.xml" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -9,7 +9,7 @@
 
 #include "ofMain.h"
 
-#include "ofxKCScreensGUI.h"
+#include "ofxCVgui.h"
 #include "ofxPolyfit.h"
 
 #include "scrSelectBounds.h"
@@ -59,12 +59,7 @@ protected:
 	bool			swapCameras;
     string          lastFilename;
 	
-	// input point cloud
-	float			input_pos[MAXPOINTS][3];
-	float			input_col[MAXPOINTS][3];
 
-	// output point cloud
-	float			test_pos[MAXPOINTS][3];
 	//use same colour as input
 	
 	// projector index data
@@ -75,8 +70,9 @@ protected:
 	// fit data
 	ofxPolyFit		fit;
 	float			polyOrder; //it's a float because of slider
-	vector<vector<double> >	polyInput;
-	vector<vector<double> >	polyOutput;
+	pfitDataSetf	dataSet;
+	pfitDataSetf	evaluateSet;
+
     
     // image output
     unsigned char * longImage;

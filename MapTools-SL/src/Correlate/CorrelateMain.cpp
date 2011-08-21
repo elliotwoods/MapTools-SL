@@ -168,14 +168,11 @@ void CorrelateMain::update()
 
 void CorrelateMain::loadData()
 {
-	polyInput.clear();
-	polyOutput.clear();
+	dataSet.clear();
 
+	pfitDataPointf dataRow = pfitDataPointf(1,1);
 	nDatasets = 0;
 	nPoints = 0;
-	
-	vector<double> inputRow;
-	vector<double> outputRow;
 	
 	char	thisNCameras;
 	int		thisFileSize;
@@ -230,8 +227,7 @@ void CorrelateMain::loadData()
 			{
 				//first file, so initalise rows
 				nCameras = thisNCameras;
-				inputRow.resize(2*nCameras);
-				outputRow.resize(3);
+				dataSet.init(2*nCameras, 3, 0);
 			} else
 				if (nCameras != thisNCameras)
 					ofLog(OF_LOG_ERROR, "CorrelateMain: mismatched number of cameras between files");
@@ -242,6 +238,10 @@ void CorrelateMain::loadData()
 			// Read data points
 			///////////////////////////////
 			thisNPoints = (thisFileSize-1) / ((newFormat ? 4 : 0)+8+8*nCameras);
+			//
+			pfitIndex oldSize = dataSet.size();
+			dataSet.resize(dataSet.size() + thisNPoints);
+			dataRow = dataSet[oldSize];
 			//
 			for (int iPoint=0; iPoint<thisNPoints; iPoint++)
 			{
@@ -256,9 +256,9 @@ void CorrelateMain::loadData()
 				inFile.read((char*) &thisvalx, 4);
 				inFile.read((char*) &thisvaly, 4);
 				
-				outputRow[0] = screenWidth * (thisvalx - 0.5);
-				outputRow[1] = screenHeight * (thisvaly - 0.5);
-				outputRow[2] = getDepthFromFilename(scrFileSelection.getName(iFile));
+				dataRow.getOutput()[0] = screenWidth * (thisvalx - 0.5);
+				dataRow.getOutput()[1] = screenHeight * (thisvaly - 0.5);
+				dataRow.getOutput()[2] = getDepthFromFilename(scrFileSelection.getName(iFile));
 				
 				for (int iCam=0; iCam<nCameras; iCam++)
 				{					
@@ -268,19 +268,17 @@ void CorrelateMain::loadData()
 					
 					if (!swapCameras)
 					{
-						inputRow[0 + iCam*2] = thisvalx;
-						inputRow[1 + iCam*2] = thisvaly;
+						dataRow.getInput()[0 + iCam*2] = thisvalx;
+						dataRow.getInput()[1 + iCam*2] = thisvaly;
 					} else {
-						inputRow[0 + (nCameras-iCam-1)*2] = thisvalx;
-						inputRow[1 + (nCameras-iCam-1)*2] = thisvaly;
+						dataRow.getInput()[0 + (nCameras-iCam-1)*2] = thisvalx;
+						dataRow.getInput()[1 + (nCameras-iCam-1)*2] = thisvaly;
 					}
 
 				}
 				
-				nPoints++;
-				
-				polyInput.push_back(inputRow);
-				polyOutput.push_back(outputRow);
+				++nPoints;
+				++dataRow;
 			}
 			///////////////////////////////
 			
@@ -297,7 +295,7 @@ void CorrelateMain::loadData()
 	copyToInputScreen();
 	
 	//clear test set window
-	scrTestCorrelate.setWith(*test_pos, *input_col, 0);
+	scrTestCorrelate.setWith(dataSet.getInput(), dataSet.getInput(), 0);
 	
 	bangCorrelate->enabled=true;
 	bangSaveFit->enabled=false;
@@ -314,25 +312,14 @@ void CorrelateMain::copyToInputScreen()
 	if (nPoints>MAXPOINTS)
 		ofLog(OF_LOG_WARNING, "CorrelateMain: nPoints > MAXPOINTS. only drawing first MAXPOINTS");
 	
-	for (int iPoint = 0; iPoint<min(nPoints,MAXPOINTS); iPoint++)
-	{
-		input_pos[iPoint][0] = polyOutput[iPoint][0];
-		input_pos[iPoint][1] = polyOutput[iPoint][1];
-		input_pos[iPoint][2] = polyOutput[iPoint][2];
-		
-		input_col[iPoint][0] = polyOutput[iPoint][0] / screenWidth + 0.5;
-		input_col[iPoint][1] = polyOutput[iPoint][1] / screenHeight + 0.5;
-		input_col[iPoint][2] = 0;//float(iPoint) / float(nDatasets-1);
-	}
-	
-	scrInputPoints.setWith(&input_pos[0][0], &input_col[0][0], nPoints);	
+	scrInputPoints.setWith(dataSet.begin().getInput(), dataSet.begin().getOutput(), MIN(dataSet.size(), MAXPOINTS));	
 
 }
 
 void CorrelateMain::runPolyfit()
 {
 	fit.init(polyOrder, 2*nCameras, 3, BASIS_SHAPE_TRIANGLE);
-	fit.correlate(polyInput, polyOutput);
+	fit.correlate(dataSet);
 	
 	bangEvaluate->enabled=true;
 	bangSaveFit->enabled=true;
@@ -342,20 +329,11 @@ void CorrelateMain::evaluate()
 {
     //HARDCODED FOR 2 CAMERAS
     
-	float input[4];
+	evaluateSet.init(4, 3, dataSet.size());
+	memcpy(evaluateSet.getInput(), dataSet.getInput(), dataSet.size() * 4 * sizeof(float));
+	fit.evaluate(evaluateSet);
 	
-    #pragma omp parallel for private(input)
-	for (int iPoint = 0; iPoint<min(nPoints,MAXPOINTS); iPoint++)
-    {
-        input[0] = polyInput[iPoint][0];
-        input[1] = polyInput[iPoint][1];
-        input[2] = polyInput[iPoint][2];
-        input[3] = polyInput[iPoint][3];
-        
-        fit.evaluate(input, test_pos[iPoint]);
-	}
-	
-	scrTestCorrelate.setWith(*test_pos, *input_col, nPoints);
+	scrTestCorrelate.setWith(evaluateSet.getOutput(), evaluateSet.getOutput(), nPoints);
 	
 	//we'll enable the save xyz, if we're in new format
 	bangSave3DScan->enabled = newFormat;
@@ -377,27 +355,29 @@ void CorrelateMain::save3DScan()
     ofPoint& lbf(scrTestCorrelate.lbf);
     ofPoint& rtb(scrTestCorrelate.rtb);
     
-	int iPP;
+	int iPP, iPoint;
 	unsigned char col[3];
-    float* point;
+    pfitDataPointf dataPoint;
+	float* xyz;
 	
-	for (int iPoint=0; iPoint<nPoints; iPoint++)
+	for (dataPoint = dataSet.begin(); dataPoint != dataSet.end(); ++dataPoint)
 	{
-        point = test_pos[iPoint];
-        
+		xyz = dataPoint.getOutput();
         //check if not within selected bounds
-        if (point[0] < lbf.x || point[1] < lbf.y || point[2] < lbf.z || point[0] > rtb.x || point[1] > rtb.y || point[2] > rtb.z)
+        if (xyz[0] < lbf.x || xyz[1] < lbf.y || xyz[2] < lbf.z || xyz[0] > rtb.x || xyz[1] > rtb.y || xyz[2] > rtb.z)
             continue;
         
 		//convert position to colour values
-		col[0] = ofMap(point[0],lbf.x,rtb.x,0,255,true);
-		col[1] = ofMap(point[1],lbf.y,rtb.y,0,255,true);
-		col[2] = ofMap(point[2],lbf.z,rtb.z,0,255,true);
+		col[0] = ofMap(xyz[0],lbf.x,rtb.x,0,255,true);
+		col[1] = ofMap(xyz[1],lbf.y,rtb.y,0,255,true);
+		col[2] = ofMap(xyz[2],lbf.z,rtb.z,0,255,true);
 		
 		iPP = dataset_iPX[iPoint] + projWidth * dataset_iPY[iPoint];
         
 		if (iPP<int(projWidth*projHeight) && iPP>=0)
 			memcpy(imgSave.getPixels()+3*iPP, col, 3);
+
+		++iPoint;
 	}
 	
 	imgSave.saveImage(lastFilename + ".bmp");
@@ -425,20 +405,21 @@ void CorrelateMain::save3DScan()
     outFile.write((char*) &scrTestCorrelate.lbf.x, 4 * 3);
     outFile.write((char*) &scrTestCorrelate.rtb.x, 4 * 3);
 
-    
-    for (int i=0; i<nPoints; i++)
-    {
-        point = test_pos[i];
+    iPoint = 0;
+	for (dataPoint = dataSet.begin(); dataPoint != dataSet.end(); ++dataPoint)
+	{
+		xyz = dataPoint.getOutput();
         
         //check if not within selected bounds
-        if (point[0] < lbf.x || point[1] < lbf.y || point[2] < lbf.z || point[0] > rtb.x || point[1] > rtb.y || point[2] > rtb.z)
+        if (xyz[0] < lbf.x || xyz[1] < lbf.y || xyz[2] < lbf.z || xyz[0] > rtb.x || xyz[1] > rtb.y || xyz[2] > rtb.z)
             continue;
         
-        outFile.write((char*) &dataset_iPX[i], 4);
-        outFile.write((char*) &dataset_iPY[i], 4);
-        outFile.write((char*) &test_pos[i], 4 * 3);
+        outFile.write((char*) &dataset_iPX[iPoint], 4);
+        outFile.write((char*) &dataset_iPY[iPoint], 4);
+        outFile.write((char*) &xyz, 4 * 3);
         
         nPointsSelected++;
+		++iPoint;
     }
     
     outFile.seekp(2);
@@ -478,18 +459,22 @@ void CorrelateMain::addToImage()
 	unsigned char col[3];
     float* point;
 	
-	for (int iPoint=0; iPoint<nPoints; iPoint++)
+	float* xyz;
+	pfitDataPointf dataPoint;
+	int iPoint = 0;
+
+	for (dataPoint = dataSet.begin(); dataPoint != dataSet.end(); ++dataPoint)
 	{
-        point = test_pos[iPoint];
+		xyz = dataPoint.getOutput();
         
         //check if not within selected bounds
         if (point[0] < lbf.x || point[1] < lbf.y || point[2] < lbf.z || point[0] > rtb.x || point[1] > rtb.y || point[2] > rtb.z)
             continue;
         
 		//convert position to colour values
-		col[0] = ofMap(test_pos[iPoint][0],lbf.x,rtb.x,0,255,true);
-		col[1] = ofMap(test_pos[iPoint][1],lbf.y,rtb.y,0,255,true);
-		col[2] = ofMap(test_pos[iPoint][2],lbf.z,rtb.z,0,255,true);
+		col[0] = ofMap(xyz[0],lbf.x,rtb.x,0,255,true);
+		col[1] = ofMap(xyz[1],lbf.y,rtb.y,0,255,true);
+		col[2] = ofMap(xyz[2],lbf.z,rtb.z,0,255,true);
 		
 		iPP = dataset_iPX[iPoint] + projWidth * dataset_iPY[iPoint];
         
@@ -500,6 +485,8 @@ void CorrelateMain::addToImage()
             
 			memcpy(newImage + 3*iLIP, col, 3);
         }
+
+		++iPoint;
 	}
     //
     //////////////////////////

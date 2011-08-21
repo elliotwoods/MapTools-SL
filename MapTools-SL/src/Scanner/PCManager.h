@@ -22,7 +22,7 @@
 #include "PayloadGraycode.h"
 #include "PayloadBinary.h"
 
-#include "ofxKCScreensGUI.h"
+#include "ofxCVgui.h"
 
 #define STATE_STANDBY				0
 #define STATE_CALIBRATING			1
