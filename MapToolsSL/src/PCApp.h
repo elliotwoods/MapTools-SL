@@ -47,7 +47,7 @@ class PCApp : public ofBaseApp {
 
 protected:
 
-		PCManager			_scanner;
+		PCManager			*_scanner;
 #ifndef SCAN_ONLY
 	//correlator
 	CorrelateMain			_Correlator;

@@ -24,6 +24,7 @@ longImageCount(0)
 	// Initialise some values
 	////////////////////////////
 	//
+	stereoIntersectThreshold = 0.1;
 	//
 	////////////////////////////
 
