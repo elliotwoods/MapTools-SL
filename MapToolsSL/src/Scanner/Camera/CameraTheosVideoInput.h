@@ -17,15 +17,18 @@
 class CameraTheosVideoInput : public CameraBase
 {
 	public:
-		bool	setup(int ID);
 		void	videoSettings();
 		void	close();
 
-		unsigned char *rgbPixels;
-
 	protected:
+		bool	init(int ID, int width, int height);
 		void	grab();
+		void	grabPreview();
+
 		videoInput		_grabber;
+		ofTexture		_preview;
+
+		unsigned char * rgbPixels;
 };
 
 #endif

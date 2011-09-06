@@ -23,7 +23,7 @@ public:
 	//virtuals
 	virtual void videoSettings() {ofLog(OF_LOG_WARNING, "videoSettings not implemented for this camera type");};
 	virtual void close() = 0;
-	virtual bool isFrameNew() {return hasWaited(); };
+	virtual bool isFrameNew() {grab(); return hasWaited(); };
 	//ofBaseHasPixels
 	unsigned char* getPixels();
 	ofPixels&	getPixelsRef();

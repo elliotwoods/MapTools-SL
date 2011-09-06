@@ -14,7 +14,7 @@ waitingForFrame(false) {
 }
 
 void CameraEdsdk::close() {
-	cam.close();
+	//cam.close();
 }
 
 bool CameraEdsdk::isFrameNew() {

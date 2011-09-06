@@ -11,7 +11,7 @@
 
 CorrelateMain::CorrelateMain() :
 scrControl("Correlate control"),
-scrFileSelection("Select data", "./Logs/", "bin"),
+scrFileSelection("Select data", ".", "bin"),
 
 scrWorldSpace("World XYZ"),
 

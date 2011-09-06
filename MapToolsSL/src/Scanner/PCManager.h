@@ -101,6 +101,7 @@ protected:
 	void	advanceFrame();
 
 	bool	_firstFrame;
+	vector<bool>	_waitingForFrame;
 	
 	void					updateProjectorMask();
 	void					clearProjectorMask();
