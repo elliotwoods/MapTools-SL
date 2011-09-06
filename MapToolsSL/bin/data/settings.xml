@@ -1,0 +1,34 @@
+<settings>
+	
+	<encoding>
+			<!--
+				<projector width="480" height="360" />
+				<projector width="1440" height="900" />
+				<projector width="32" height="16" />
+			-->
+			<projector width="8" height="8" />
+			<interleave width="1" height="1" />
+			<errorcheck nFrames="0" />
+	</encoding>
+    
+	<decoding>
+		<!--cameras width="2592" height="1944">
+			gain="40" exposure="128" delay="40" /-->
+		<!--cameras width="5184" height="3456"
+			gain="40" exposure="128" delay="200"-->
+		 <!--550D 8MP cameras width="3456" height="2304"
+		 gain="40" exposure="128" delay="200"-->
+		<cameras width="640" height="480"
+		 gain="40" exposure="128" delay="400">
+		<camera id="0" />
+			<!--camera id="1" /-->
+		</cameras>
+
+        <data sdev="0" />
+		<threshold percentile="0.7" />
+        <PCPixel maxPixelMoveSquared="100" />
+	</decoding>
+	
+	<logging on="1" />
+	
+</settings>
