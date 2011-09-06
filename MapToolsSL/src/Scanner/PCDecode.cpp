@@ -236,8 +236,7 @@ void PCDecode::moveSendCursor(ofPoint &ptCursorPosition)
 	*/
 }
 
-void PCDecode::initCalibration()
-{
+void PCDecode::initCalibration() {
     _subScanSet.initCalibration();
 }
 

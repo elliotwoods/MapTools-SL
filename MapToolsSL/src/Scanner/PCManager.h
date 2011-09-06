@@ -33,7 +33,7 @@
 /////////////////////////////////////
 //
 #ifdef TARGET_OSX
-	#define PCENCODE_CAM_EDSDK
+	#define PCENCODE_CAM_DEFAULT
 #else
 	#define PCENCODE_CAM_VIDEO_INPUT
 #endif
