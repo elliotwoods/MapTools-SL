@@ -107,6 +107,17 @@ void CorrelateMain::update()
     
     if (bangClearImage->getBang())
         clearImage();
+	
+	ofPoint& lbf(scrWorldSpace.lbf);
+    ofPoint& rtb(scrWorldSpace.rtb);
+	
+	if (rtb.x < lbf.x)
+		rtb.x = lbf.x;
+	if (rtb.y < lbf.y)
+		rtb.y = lbf.y;
+	if (rtb.z < lbf.z)
+		rtb.z = lbf.z;
+	
 }
 
 void CorrelateMain::loadData()
@@ -284,6 +295,35 @@ void CorrelateMain::save3DScan()
 	imgSave.saveImage(lastFilename + ".bmp");
     //
     //////////////////////////
+	
+	
+    //////////////////////////
+    // HDR file
+    //////////////////////////
+    //
+	ofFloatPixels hdrSave;
+	hdrSave.allocate(projWidth, projHeight, OF_PIXELS_RGB);
+	
+	//clear all values out to black
+	memset(hdrSave.getPixels(), 0, projWidth*projHeight*3 * sizeof(float));
+    iPoint = 0;
+	
+	for (it = dataWorldSpace.begin(); it != dataWorldSpace.end(); ++it)
+	{
+		const ofVec3f& xyz(*it);
+		
+		iPP = dataset_iPX[iPoint] + projWidth * dataset_iPY[iPoint];
+        
+		if (iPP<int(projWidth*projHeight) && iPP>=0)
+			memcpy(hdrSave.getPixels()+3*iPP, &xyz.x, 3 * sizeof(float));
+		
+		++iPoint;
+	}
+	
+	ofSaveImage(hdrSave, lastFilename + ".hdr");
+	ofSaveImage(hdrSave, lastFilename + ".dds");
+    //
+    //////////////////////////
     
     
     
@@ -338,14 +378,13 @@ void CorrelateMain::addToImage()
     int newWidth = projWidth * longImageCount;    
     
     //setup new image
-    unsigned char * newImage = new unsigned char[projWidth*projHeight*3*longImageCount];
-    memset(newImage, 0, 3*projWidth*projHeight*longImageCount);
-    
-    
+	ofFloatPixels newImage;
+	newImage.allocate(projWidth*longImageCount,projHeight, OF_PIXELS_RGB);
+    memset(newImage.getPixels(), 0, 3*projWidth*projHeight*longImageCount*sizeof(float));
     
     //copy old contents around
     for (int j = 0; j < projHeight; j++)
-        memcpy(newImage + newWidth*3*j, longImage + oldWidth*3*j, oldWidth * 3);
+        memcpy(newImage.getPixels() + newWidth*3*j*sizeof(float), longImage.getPixels() + oldWidth*3*j*sizeof(float), oldWidth * 3 *sizeof(float));
     
     
     
@@ -357,7 +396,6 @@ void CorrelateMain::addToImage()
     ofPoint& rtb(scrWorldSpace.rtb);
     
 	int iPP, iLIP;
-	unsigned char col[3];
     float* point;
 	
 	vector<ofVec3f>::iterator it;
@@ -366,14 +404,6 @@ void CorrelateMain::addToImage()
 	{
 		const ofVec3f& xyz(*it);
         
-        //check if not within selected bounds
-        if (point[0] < lbf.x || point[1] < lbf.y || point[2] < lbf.z || point[0] > rtb.x || point[1] > rtb.y || point[2] > rtb.z)
-            continue;
-        
-		//convert position to colour values
-		col[0] = ofMap(xyz[0],lbf.x,rtb.x,0,255,true);
-		col[1] = ofMap(xyz[1],lbf.y,rtb.y,0,255,true);
-		col[2] = ofMap(xyz[2],lbf.z,rtb.z,0,255,true);
 		
 		iPP = dataset_iPX[iPoint] + projWidth * dataset_iPY[iPoint];
         
@@ -382,7 +412,7 @@ void CorrelateMain::addToImage()
             //put pixels at right of image
             iLIP =  dataset_iPX[iPoint] + newWidth * dataset_iPY[iPoint] + oldWidth;
             
-			memcpy(newImage + 3*iLIP, col, 3);
+			memcpy(newImage.getPixels() + 3*iLIP, &xyz.x, 3*sizeof(float));
         }
 
 		++iPoint;
@@ -390,10 +420,6 @@ void CorrelateMain::addToImage()
     //
     //////////////////////////
     
-    
-    //delete old image and reassign
-    if (longImageCount > 0)
-        delete[] longImage;
     longImage = newImage;
     
     
@@ -401,20 +427,20 @@ void CorrelateMain::addToImage()
 
 void CorrelateMain::saveImage()
 {
-    ofImage imgSave;
-	imgSave.setImageType(OF_IMAGE_COLOR);
-	imgSave.allocate(projWidth * longImageCount, projHeight, OF_IMAGE_COLOR);
-    
-    memcpy(imgSave.getPixels(), longImage, projWidth*projHeight*longImageCount*3);
-    
-    imgSave.saveImage("long image.bmp");
+	/*
+	ofBuffer buf;
+	ofSaveImage(longImage, buf, OF_IMAGE_FORMAT_HDR, OF_IMAGE_QUALITY_BEST);
+	ofBufferToFile("long image.hdr", buf, true);
+	 */
+	ofSaveImage(longImage, "longimage.hdr", OF_IMAGE_QUALITY_BEST);
+	
 }
 
 void CorrelateMain::clearImage()
 {
     if (longImageCount > 0)
     {
-        delete[] longImage;
+        longImage.clear();
         longImageCount = 0;
     }
         

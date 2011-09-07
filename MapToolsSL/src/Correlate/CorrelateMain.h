@@ -66,7 +66,7 @@ protected:
 	
     
     // image output
-    unsigned char * longImage;
+	ofFloatPixels	longImage;
     unsigned int	longImageCount;
 
 	
