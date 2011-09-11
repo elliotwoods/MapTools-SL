@@ -34,7 +34,6 @@ void ScanSet::allocate()
         deAllocate();
 
     xyz = new float[3*nPoints];
-    rgb = new float[3*nPoints];
 
     iX = new unsigned int[nPoints];
     iY = new unsigned int[nPoints];
@@ -48,7 +47,6 @@ void ScanSet::deAllocate()
         return;
     
     delete[] xyz;
-    delete[] rgb;
     delete[] iX;
     delete[] iY;
     
@@ -62,20 +60,6 @@ void ScanSet::setup(ScanSet &other)
     
     memcpy(lbf, other.lbf, 4*3);
     memcpy(rtb, other.rtb, 4*3);
-}
-
-
-void ScanSet::calcRGB()
-{
-    if (!isAllocated)
-        return;
-    
-    for (int i=0; i<nPoints; i++)
-    {
-        rgb[i*3 + 0] = (xyz[i*3 + 0] - lbf[0]) / (rtb[0] - lbf[0]);
-        rgb[i*3 + 1] = (xyz[i*3 + 1] - lbf[1]) / (rtb[1] - lbf[1]);
-        rgb[i*3 + 2] = (xyz[i*3 + 2] - lbf[2]) / (rtb[2] - lbf[2]);
-    }    
 }
 
 void ScanSet::loadBin(string filename)
@@ -117,8 +101,6 @@ void ScanSet::loadBin(string filename)
     //////////////////////////
     
     loadFilename = filename;
-    
-    calcRGB();
 }
 
 void ScanSet::saveBin(string filename)
@@ -215,7 +197,6 @@ void ScanSet::operator=(ScanSet& other)
     allocate();
     
     memcpy(xyz, other.xyz, nPoints * 4 * 3);
-    memcpy(rgb, other.rgb, nPoints * 4 * 3);
     
     memcpy(iX, other.iX, nPoints * 4);
     memcpy(iY, other.iY, nPoints * 4);

@@ -22,8 +22,6 @@ class ScanSet
 
         void    setup(ScanSet &other);
     
-        void    calcRGB();
-    
         void    loadBin(string filename);
         void    saveBin(string filename);
     
@@ -32,7 +30,6 @@ class ScanSet
         void    operator=(ScanSet& other);
     
         float           *xyz;
-        float           *rgb;
     
         unsigned int    *iX, *iY;
         int             nPoints;
