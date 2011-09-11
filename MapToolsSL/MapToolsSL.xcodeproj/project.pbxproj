@@ -175,6 +175,9 @@
 		8B71A4C81413C20C00EA2D2C /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B71A4C21413C20C00EA2D2C /* tinyxmlparser.cpp */; };
 		8B71A4C91413C20C00EA2D2C /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B71A4C41413C20C00EA2D2C /* ofxXmlSettings.cpp */; };
 		8B71A4D61413C6F500EA2D2C /* Ray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B71A4D41413C6F500EA2D2C /* Ray.cpp */; };
+		8BD3CDA71417C41A00A755C2 /* AssembleScans.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BD3CDA11417C41A00A755C2 /* AssembleScans.cpp */; };
+		8BD3CDA91417C41A00A755C2 /* RANSACFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BD3CDA51417C41A00A755C2 /* RANSACFilter.cpp */; };
+		8BD3D0681417C4BC00A755C2 /* ofxPolyFit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BD3D0481417C4BB00A755C2 /* ofxPolyFit.cpp */; };
 		8BD8B4BC1414AAAD00FA30AF /* CameraEdsdk.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BD8B4BB1414AAAD00FA30AF /* CameraEdsdk.cpp */; };
 		8BD8B5621414AE4100FA30AF /* DPP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BD8B5431414AE4100FA30AF /* DPP.framework */; };
 		8BD8B5631414AE4200FA30AF /* EDSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BD8B5441414AE4100FA30AF /* EDSDK.framework */; };
@@ -183,6 +186,13 @@
 		8BD8B5661414AE4200FA30AF /* EdsStrings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BD8B5531414AE4100FA30AF /* EdsStrings.cpp */; };
 		8BD8B5671414AE4200FA30AF /* EdsWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BD8B5551414AE4100FA30AF /* EdsWrapper.cpp */; };
 		8BD8B5681414AE4200FA30AF /* ofxEdsdk.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BD8B5581414AE4100FA30AF /* ofxEdsdk.cpp */; };
+		8BDC9C90141CA9300024EFD9 /* basisTransformIndices.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC9C81141CA9300024EFD9 /* basisTransformIndices.cpp */; };
+		8BDC9C91141CA9300024EFD9 /* pfitBasis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC9C84141CA9300024EFD9 /* pfitBasis.cpp */; };
+		8BDC9C92141CA9300024EFD9 /* pfitDataSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC9C86141CA9300024EFD9 /* pfitDataSet.cpp */; };
+		8BDC9C93141CA9300024EFD9 /* FitBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC9C88141CA9300024EFD9 /* FitBase.cpp */; };
+		8BDC9C94141CA9300024EFD9 /* matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC9C8A141CA9300024EFD9 /* matrix.cpp */; };
+		8BDC9C95141CA9300024EFD9 /* polyNfit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC9C8C141CA9300024EFD9 /* polyNfit.cpp */; };
+		8BDC9C96141CA9300024EFD9 /* powerBases.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC9C8E141CA9300024EFD9 /* powerBases.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -543,6 +553,13 @@
 		8B71A4C51413C20C00EA2D2C /* ofxXmlSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxXmlSettings.h; sourceTree = "<group>"; };
 		8B71A4D41413C6F500EA2D2C /* Ray.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Ray.cpp; sourceTree = "<group>"; };
 		8B71A4D51413C6F500EA2D2C /* Ray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ray.h; sourceTree = "<group>"; };
+		8BD3CDA11417C41A00A755C2 /* AssembleScans.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AssembleScans.cpp; sourceTree = "<group>"; };
+		8BD3CDA21417C41A00A755C2 /* AssembleScans.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssembleScans.h; sourceTree = "<group>"; };
+		8BD3CDA51417C41A00A755C2 /* RANSACFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RANSACFilter.cpp; sourceTree = "<group>"; };
+		8BD3CDA61417C41A00A755C2 /* RANSACFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RANSACFilter.h; sourceTree = "<group>"; };
+		8BD3D0411417C4BB00A755C2 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		8BD3D0481417C4BB00A755C2 /* ofxPolyFit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxPolyFit.cpp; sourceTree = "<group>"; };
+		8BD3D0491417C4BB00A755C2 /* ofxPolyFit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPolyFit.h; sourceTree = "<group>"; };
 		8BD8B4BB1414AAAD00FA30AF /* CameraEdsdk.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CameraEdsdk.cpp; sourceTree = "<group>"; };
 		8BD8B4BE1414AAB600FA30AF /* CameraEdsdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraEdsdk.h; sourceTree = "<group>"; };
 		8BD8B5421414AE4100FA30AF /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -568,6 +585,21 @@
 		8BD8B5591414AE4100FA30AF /* ofxEdsdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxEdsdk.h; sourceTree = "<group>"; };
 		8BD8B55A1414AE4100FA30AF /* RateTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateTimer.h; sourceTree = "<group>"; };
 		8BD8B57A1414CA4800FA30AF /* settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = settings.xml; path = bin/data/settings.xml; sourceTree = SOURCE_ROOT; };
+		8BDC9C81141CA9300024EFD9 /* basisTransformIndices.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = basisTransformIndices.cpp; sourceTree = "<group>"; };
+		8BDC9C82141CA9300024EFD9 /* basisTransformIndices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = basisTransformIndices.h; sourceTree = "<group>"; };
+		8BDC9C84141CA9300024EFD9 /* pfitBasis.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pfitBasis.cpp; sourceTree = "<group>"; };
+		8BDC9C85141CA9300024EFD9 /* pfitBasis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pfitBasis.h; sourceTree = "<group>"; };
+		8BDC9C86141CA9300024EFD9 /* pfitDataSet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pfitDataSet.cpp; sourceTree = "<group>"; };
+		8BDC9C87141CA9300024EFD9 /* pfitDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pfitDataSet.h; sourceTree = "<group>"; };
+		8BDC9C88141CA9300024EFD9 /* FitBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FitBase.cpp; sourceTree = "<group>"; };
+		8BDC9C89141CA9300024EFD9 /* FitBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FitBase.h; sourceTree = "<group>"; };
+		8BDC9C8A141CA9300024EFD9 /* matrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = matrix.cpp; sourceTree = "<group>"; };
+		8BDC9C8B141CA9300024EFD9 /* matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = matrix.h; sourceTree = "<group>"; };
+		8BDC9C8C141CA9300024EFD9 /* polyNfit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = polyNfit.cpp; sourceTree = "<group>"; };
+		8BDC9C8D141CA9300024EFD9 /* polyNfit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = polyNfit.h; sourceTree = "<group>"; };
+		8BDC9C8E141CA9300024EFD9 /* powerBases.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = powerBases.cpp; sourceTree = "<group>"; };
+		8BDC9C8F141CA9300024EFD9 /* powerBases.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = powerBases.h; sourceTree = "<group>"; };
+		8BDC9C9C141CAB5D0024EFD9 /* todo.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = todo.rtf; sourceTree = SOURCE_ROOT; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -1283,9 +1315,11 @@
 			isa = PBXGroup;
 			children = (
 				8BD8B57A1414CA4800FA30AF /* settings.xml */,
+				8BDC9C9C141CAB5D0024EFD9 /* todo.rtf */,
 				8B71A4D31413C6F400EA2D2C /* CommonIncludes */,
 				8B71A4701413C16700EA2D2C /* Scanner */,
 				8B71A4671413C16700EA2D2C /* Correlate */,
+				8BD3CDA01417C41A00A755C2 /* Analyse */,
 				8B71A46D1413C16700EA2D2C /* main.cpp */,
 				8B71A46E1413C16700EA2D2C /* PCApp.cpp */,
 				8B71A46F1413C16700EA2D2C /* PCApp.h */,
@@ -1428,6 +1462,37 @@
 			path = ../../CommonIncludes;
 			sourceTree = "<group>";
 		};
+		8BD3CDA01417C41A00A755C2 /* Analyse */ = {
+			isa = PBXGroup;
+			children = (
+				8BD3CDA11417C41A00A755C2 /* AssembleScans.cpp */,
+				8BD3CDA21417C41A00A755C2 /* AssembleScans.h */,
+				8BD3CDA51417C41A00A755C2 /* RANSACFilter.cpp */,
+				8BD3CDA61417C41A00A755C2 /* RANSACFilter.h */,
+			);
+			path = Analyse;
+			sourceTree = "<group>";
+		};
+		8BD3CDAA1417C4B600A755C2 /* ofxPolyfit */ = {
+			isa = PBXGroup;
+			children = (
+				8BDC9C7E141CA9300024EFD9 /* libs */,
+				8BD3D0411417C4BB00A755C2 /* README */,
+				8BD3D0421417C4BB00A755C2 /* src */,
+			);
+			name = ofxPolyfit;
+			path = ../../../addons/ofxPolyfit;
+			sourceTree = "<group>";
+		};
+		8BD3D0421417C4BB00A755C2 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				8BD3D0481417C4BB00A755C2 /* ofxPolyFit.cpp */,
+				8BD3D0491417C4BB00A755C2 /* ofxPolyFit.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		8BD8B4C81414AE4100FA30AF /* ofxEdsdk */ = {
 			isa = PBXGroup;
 			children = (
@@ -1506,9 +1571,55 @@
 			path = EdsWrapper;
 			sourceTree = "<group>";
 		};
+		8BDC9C7E141CA9300024EFD9 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				8BDC9C7F141CA9300024EFD9 /* polyNfit */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		8BDC9C7F141CA9300024EFD9 /* polyNfit */ = {
+			isa = PBXGroup;
+			children = (
+				8BDC9C80141CA9300024EFD9 /* src */,
+			);
+			path = polyNfit;
+			sourceTree = "<group>";
+		};
+		8BDC9C80141CA9300024EFD9 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				8BDC9C81141CA9300024EFD9 /* basisTransformIndices.cpp */,
+				8BDC9C82141CA9300024EFD9 /* basisTransformIndices.h */,
+				8BDC9C83141CA9300024EFD9 /* Data */,
+				8BDC9C88141CA9300024EFD9 /* FitBase.cpp */,
+				8BDC9C89141CA9300024EFD9 /* FitBase.h */,
+				8BDC9C8A141CA9300024EFD9 /* matrix.cpp */,
+				8BDC9C8B141CA9300024EFD9 /* matrix.h */,
+				8BDC9C8C141CA9300024EFD9 /* polyNfit.cpp */,
+				8BDC9C8D141CA9300024EFD9 /* polyNfit.h */,
+				8BDC9C8E141CA9300024EFD9 /* powerBases.cpp */,
+				8BDC9C8F141CA9300024EFD9 /* powerBases.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		8BDC9C83141CA9300024EFD9 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				8BDC9C84141CA9300024EFD9 /* pfitBasis.cpp */,
+				8BDC9C85141CA9300024EFD9 /* pfitBasis.h */,
+				8BDC9C86141CA9300024EFD9 /* pfitDataSet.cpp */,
+				8BDC9C87141CA9300024EFD9 /* pfitDataSet.h */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				8BD3CDAA1417C4B600A755C2 /* ofxPolyfit */,
 				8B2C02E214122585002B929B /* ofxCv */,
 				8BD8B4C81414AE4100FA30AF /* ofxEdsdk */,
 				8B71A4BC1413C20C00EA2D2C /* ofxXmlSettings */,
@@ -1736,6 +1847,16 @@
 				8BD8B5661414AE4200FA30AF /* EdsStrings.cpp in Sources */,
 				8BD8B5671414AE4200FA30AF /* EdsWrapper.cpp in Sources */,
 				8BD8B5681414AE4200FA30AF /* ofxEdsdk.cpp in Sources */,
+				8BD3CDA71417C41A00A755C2 /* AssembleScans.cpp in Sources */,
+				8BD3CDA91417C41A00A755C2 /* RANSACFilter.cpp in Sources */,
+				8BD3D0681417C4BC00A755C2 /* ofxPolyFit.cpp in Sources */,
+				8BDC9C90141CA9300024EFD9 /* basisTransformIndices.cpp in Sources */,
+				8BDC9C91141CA9300024EFD9 /* pfitBasis.cpp in Sources */,
+				8BDC9C92141CA9300024EFD9 /* pfitDataSet.cpp in Sources */,
+				8BDC9C93141CA9300024EFD9 /* FitBase.cpp in Sources */,
+				8BDC9C94141CA9300024EFD9 /* matrix.cpp in Sources */,
+				8BDC9C95141CA9300024EFD9 /* polyNfit.cpp in Sources */,
+				8BDC9C96141CA9300024EFD9 /* powerBases.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -3,7 +3,7 @@
 //  PC Encode
 //
 //  Created by Elliot Woods on 06/05/2011.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Kimchi and Chips. All rights reserved.
 //
 
 #include "RANSACFilter.h"
@@ -81,17 +81,12 @@ void RANSACFilter::update()
 
 void RANSACFilter::filterRANSAC()
 {
+	//pade shaped fit
     RANSAC.init(1, 4, 2, BASIS_SHAPE_PADE_FIRST);
-    
-    double* input = new double[setInput.nPoints * 4];
-    double* output = new double[setInput.nPoints * 2];
-
+	
     double ProjectorX, ProjectorY;
     
-    double* inputMove = input;
-    double* outputMove = output;
-    
-    //fill RANSAC
+	//fill RANSAC
     for (int i=0; i<setInput.nPoints; i++)
     {
         ProjectorX = 2 * (double(setInput.iX[i]) / double(setInput.width)) - 1;

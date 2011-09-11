@@ -258,9 +258,8 @@ void CorrelateMain::save3DScan()
     // BMP file
     //////////////////////////
     //
-	ofImage imgSave;
-	imgSave.setImageType(OF_IMAGE_COLOR);
-	imgSave.allocate(projWidth, projHeight, OF_IMAGE_COLOR);
+	ofPixels imgSave;
+	imgSave.allocate(projWidth, projHeight, OF_PIXELS_RGB);
 	
 	//clear all values out to black
 	memset(imgSave.getPixels(), 0, projWidth*projHeight*3);
@@ -269,6 +268,7 @@ void CorrelateMain::save3DScan()
     ofPoint& rtb(scrWorldSpace.rtb);
     
 	int iPP, iPoint;
+	iPoint = 0;
 	unsigned char col[3];
 	vector<ofVec3f>::iterator it;
 	for (it = dataWorldSpace.begin(); it != dataWorldSpace.end(); ++it)
@@ -278,12 +278,12 @@ void CorrelateMain::save3DScan()
         //check if not within selected bounds
         if (xyz[0] < lbf.x || xyz[1] < lbf.y || xyz[2] < lbf.z || xyz[0] > rtb.x || xyz[1] > rtb.y || xyz[2] > rtb.z)
             continue;
-        
+
 		//convert position to colour values
 		col[0] = ofMap(xyz[0],lbf.x,rtb.x,0,255,true);
 		col[1] = ofMap(xyz[1],lbf.y,rtb.y,0,255,true);
 		col[2] = ofMap(xyz[2],lbf.z,rtb.z,0,255,true);
-		
+
 		iPP = dataset_iPX[iPoint] + projWidth * dataset_iPY[iPoint];
         
 		if (iPP<int(projWidth*projHeight) && iPP>=0)
@@ -292,7 +292,7 @@ void CorrelateMain::save3DScan()
 		++iPoint;
 	}
 	
-	imgSave.saveImage(lastFilename + ".bmp");
+	//ofSaveImage(imgSave, lastFilename + ".bmp");
     //
     //////////////////////////
 	
@@ -303,25 +303,36 @@ void CorrelateMain::save3DScan()
     //
 	ofFloatPixels hdrSave;
 	hdrSave.allocate(projWidth, projHeight, OF_PIXELS_RGB);
+	imgSave.allocate(projWidth, projHeight, OF_PIXELS_RGB);
 	
 	//clear all values out to black
 	memset(hdrSave.getPixels(), 0, projWidth*projHeight*3 * sizeof(float));
-    iPoint = 0;
+	memset(imgSave.getPixels(), 0, projWidth*projHeight*3 * sizeof(unsigned char));
 	
+    iPoint = 0;
 	for (it = dataWorldSpace.begin(); it != dataWorldSpace.end(); ++it)
 	{
 		const ofVec3f& xyz(*it);
 		
+		//convert position to colour values
+		col[0] = ofMap(xyz[0],lbf.x,rtb.x,0,255,true);
+		col[1] = ofMap(xyz[1],lbf.y,rtb.y,0,255,true);
+		col[2] = ofMap(xyz[2],lbf.z,rtb.z,0,255,true);
+
 		iPP = dataset_iPX[iPoint] + projWidth * dataset_iPY[iPoint];
         
 		if (iPP<int(projWidth*projHeight) && iPP>=0)
 			memcpy(hdrSave.getPixels()+3*iPP, &xyz.x, 3 * sizeof(float));
+
+		if (iPP<int(projWidth*projHeight) && iPP>=0)
+			memcpy(imgSave.getPixels()+3*iPP, col, 3);
 		
 		++iPoint;
 	}
 	
 	ofSaveImage(hdrSave, lastFilename + ".hdr");
 	ofSaveImage(hdrSave, lastFilename + ".dds");
+	ofSaveImage(imgSave, lastFilename + ".png");
     //
     //////////////////////////
     

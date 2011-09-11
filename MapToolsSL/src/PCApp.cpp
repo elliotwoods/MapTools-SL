@@ -68,11 +68,12 @@ void PCApp::setup(){
 	/////////////////////////////////////////////////////////
 	// MAIN TAB GROUP
 	/////////////////////////////////////////////////////////
-	
+	//
 	_scrTabMain->push(gridScan);
 
 #ifndef SCAN_ONLY
 	_scrTabMain->push(&_Correlator.scrGridMain);
+	_scrTabMain->push(&_Assemble.scrGridMain);
 #endif	
 
 	screens.mainScreen = _scrTabMain;
@@ -97,7 +98,9 @@ void PCApp::update(){
 			//we're looking at correlate
 			_Correlator.update();
 			break;
-            
+      
+		case 2:
+			_Assemble.update();
 #endif
             break;
 			
