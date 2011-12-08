@@ -1,2 +1,13 @@
-.DS_Store
-build
+build/
+bin/
+obj/
+xcuserdata/
+
+*.depend
+*.layout
+*.mode*v3
+*.pbxuser
+*.app*
+*.DS_*
+*.perspectivev3
+*.xcworkspace
