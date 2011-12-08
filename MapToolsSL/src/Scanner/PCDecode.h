@@ -70,7 +70,7 @@ class PCDecode : public PCConfig
 		void					updateThresholdSelection(int &iSelectionClass);
 		void					updateSpacePreview(int width, int height, unsigned char data[], ofTexture &texture, std::vector<PCPixel*> &foundPixels);
 		
-		void					moveSendCursor(ofPoint &ptCursorPosition);
+		void					moveSendCursor(ofVec2f &xy);
 	
 		CameraBase				&_camera;
 		

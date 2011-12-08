@@ -43,13 +43,13 @@ screensFrameData("Frame data  " + indexString())
     //  SCREENS
     ////////////////////////////////
     //
-    _scrThreshold = new scrTexture(_texThresholdMasked, "Threshold");
+    _scrThreshold = new scrDraw2D("Threshold", _texThresholdMasked);
     screensThreshold.push(_scrThreshold);
     
-	_scrBinary = new scrTexture(_texCameraBinary, "Binary image");
+	_scrBinary = new scrDraw2D("Binary image", _texCameraBinary);
     screensThreshold.push(_scrBinary);
     
-    _scrSubFrameData = new scrTexture(_texSubFrameData, "Data");
+    _scrSubFrameData = new scrDraw2D("Data", _texSubFrameData);
     screensFrameData.push(_scrSubFrameData);
     //
     ////////////////////////////////    

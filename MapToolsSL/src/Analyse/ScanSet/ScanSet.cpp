@@ -3,46 +3,51 @@
 //  MapTools Structured Light
 //
 //  Created by Elliot Woods on 08/05/2011.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Kimchi and Chips. All rights reserved.
 //
 
 #include "ScanSet.h"
 
+ScanSetHeader::ScanSetHeader()  {
+	header[0] = '3';
+	header[1] = 'D';
+}
+
+bool ScanSetHeader::operator==(const ScanSetHeader &other) {
+	return this->header[0] == other.header[0] && this->header[1] == other.header[1];
+}
+
+//--------------------------------------
+
 ScanSet::ScanSet() :
 isAllocated(false),
 nPoints(0),
-hasBounds(false)
-{
+hasBounds(false) {
     
 }
 
-ScanSet::~ScanSet()
-{
+ScanSet::~ScanSet() {
     deAllocate();
 }
 
-void ScanSet::allocate(int count)
-{
+void ScanSet::allocate(int count) {
     nPoints = count;
     
     allocate();
 }
 
-void ScanSet::allocate()
-{
+void ScanSet::allocate() {
     if (isAllocated)
         deAllocate();
 
-    xyz = new float[3*nPoints];
-
+    xyz = new ofVec3f[nPoints];
     iX = new unsigned int[nPoints];
     iY = new unsigned int[nPoints];
 
     isAllocated = true;
 }
 
-void ScanSet::deAllocate()
-{
+void ScanSet::deAllocate() {
     if (!isAllocated)
         return;
     
@@ -53,58 +58,53 @@ void ScanSet::deAllocate()
     isAllocated = false;
 }
 
-void ScanSet::setup(ScanSet &other)
-{
+void ScanSet::setup(ScanSet &other) {
     width = other.width;
     height = other.height;
     
-    memcpy(lbf, other.lbf, 4*3);
-    memcpy(rtb, other.rtb, 4*3);
+	lbf = other.lbf;
+	rtb = other.rtb;
 }
 
-void ScanSet::loadBin(string filename)
-{
-    //////////////////////////
-    // Load binary data
-    //////////////////////////
-    //
-    ifstream inFile(filename.c_str(), ios::out | ios::binary);
-    
-    char header[2];
-    
-    //read overall data
-    inFile.read(header, 2);
-    
-    if (header[0] != '3' || header[1] != 'D')
+void ScanSet::loadBin(string filename) {
+	
+	TalkyBuffer buffer;
+	if (!buffer.loadFile(ofToDataPath(filename))) {
+		ofLogError() << "ScanSet::loadBin : loading file " << filename << " failed. Check that it's not locked or missing.";
+		return;
+	}
+	
+	buffer >> header;
+	
+    if (!(header == ScanSetHeader()))
     {
         ofLog(OF_LOG_ERROR, "ScanSet: Failed to load scan binary file, incorrect header");
         return;
     }
-    
-    inFile.read((char*) &nPoints, 4);
-    inFile.read((char*) &width, 2);
-    inFile.read((char*) &height, 2);
-    inFile.read((char*) lbf, 4 * 3);
-    inFile.read((char*) rtb, 4 * 3);
-    
+	
+	buffer >> nPoints;
+	buffer >> width;
+	buffer >> height;
+	buffer >> lbf;
+	buffer >> rtb;
+	
     allocate(nPoints);    
     
-    for (int i=0; i<nPoints; i++)
-    {
-        inFile.read((char*) &iX[i], 4);
-        inFile.read((char*) &iY[i], 4);
-        inFile.read((char*) &xyz[i*3], 4 * 3);
+    for (int i=0; i<nPoints; i++) {
+		buffer >> iX[i];
+		buffer >> iX[i];
+		buffer >> xyz[i];
     }
-    
-    inFile.close();
-    //
-    //////////////////////////
     
     loadFilename = filename;
 }
 
-void ScanSet::saveBin(string filename)
-{
+bool ScanSet::inside(ofVec3f& point, ofVec3f &lbf, ofVec3f& rtb) {
+	return !(point.x < lbf.x || point.y < lbf[1] || point.z < lbf[2] || point.x > rtb.x || point.y > rtb[1] || point.z > rtb[2]);
+}
+
+void ScanSet::saveBin(string filename, bool thresholdBounds) {
+	
     //////////////////////////
     // Binary data
     //////////////////////////
@@ -116,26 +116,23 @@ void ScanSet::saveBin(string filename)
     //write overall data
     
     outFile << "3D";
-    outFile.write((char*) &null, 4);
-    outFile.write((char*) &width, 2);
-    outFile.write((char*) &height, 2);
-    outFile.write((char*) lbf, 4 * 3);
-    outFile.write((char*) rtb, 4 * 3);
-    
-    float* point;
+	outFile << null; //we come back write this later
+	outFile << width;
+	outFile << height;
+	outFile << lbf;
+	outFile << rtb;
     
     for (int i=0; i<nPoints; i++)
     {
-        point = &xyz[i*3];
         
         //check if not within selected bounds
-        if (hasBounds)
-            if (point[0] < lbf[0] || point[1] < lbf[1] || point[2] < lbf[2] || point[0] > rtb[0] || point[1] > rtb[1] || point[2] > rtb[2])
+        if (hasBounds && thresholdBounds)
+            if (!inside(xyz[i],lbf,rtb))
                 continue;
         
         outFile.write((char*) &iX[i], 4);
         outFile.write((char*) &iY[i], 4);
-        outFile.write((char*) point, 4 * 3);
+        outFile.write((char*) &xyz[i], sizeof(ofVec3f));
         
         nPointsSelected++;
     }
@@ -146,8 +143,8 @@ void ScanSet::saveBin(string filename)
     //
     //////////////////////////  
 }
-void ScanSet::saveImage(string filename)
-{
+
+void ScanSet::saveImage(string filename, bool thresholdBounds) {
     //////////////////////////
     // BMP file
     //////////////////////////
@@ -161,21 +158,21 @@ void ScanSet::saveImage(string filename)
     
 	int iPP;
 	unsigned char col[3];
-    float* point;
+    ofVec3f* point;
 	
 	for (int iPoint=0; iPoint<nPoints; iPoint++)
 	{
-        point = &xyz[iPoint*3];
+        point = &xyz[iPoint];
         
         //check if not within selected bounds
-        if (hasBounds)
-            if (point[0] < lbf[0] || point[1] < lbf[1] || point[2] < lbf[2] || point[0] > rtb[0] || point[1] > rtb[1] || point[2] > rtb[2])
+        if (hasBounds && thresholdBounds)
+			if (!inside(*point, lbf, rtb))
                 continue;
         
 		//convert position to colour values
-		col[0] = ofMap(point[0],lbf[0],rtb[0],0,255,true);
-		col[1] = ofMap(point[1],lbf[1],rtb[1],0,255,true);
-		col[2] = ofMap(point[2],lbf[2],rtb[2],0,255,true);
+		col[0] = ofMap(point->x,lbf.x,rtb.x,0,255,true);
+		col[1] = ofMap(point->y,lbf.y,rtb.y,0,255,true);
+		col[2] = ofMap(point->z,lbf.z,rtb.z,0,255,true);
 		
 		iPP = iX[iPoint] + width * iY[iPoint];
         
@@ -188,16 +185,23 @@ void ScanSet::saveImage(string filename)
     //////////////////////////
 }
 
-void ScanSet::operator=(ScanSet& other)
-{
+void ScanSet::operator=(ScanSet& other) {
     setup(other);
     nPoints = other.nPoints;
     loadFilename = other.loadFilename;
     
     allocate();
     
-    memcpy(xyz, other.xyz, nPoints * 4 * 3);
+    memcpy(xyz, other.xyz, nPoints * sizeof(ofVec3f));
     
     memcpy(iX, other.iX, nPoints * 4);
     memcpy(iY, other.iY, nPoints * 4);
+}
+
+ofVec3f& ScanSet::operator[](const unsigned int i) {
+	return xyz[i];
+}
+
+void ScanSet::customDraw() {
+	ofDrawAxis(100);
 }

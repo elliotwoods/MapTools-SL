@@ -3,7 +3,7 @@
 //  PC Encode
 //
 //  Created by Elliot Woods on 08/05/2011.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Kimchi and Chips. All rights reserved.
 //
 
 #include "AssembleScans.h"
@@ -73,6 +73,7 @@ void AssembleScans::assemble()
     if (filenames.size() < 1)
         return;
 
+	//data is the base
     data.loadBin(filenames[0]);
     
     ScanSet other;
@@ -92,6 +93,15 @@ void AssembleScans::assemble(ScanSet &base, ScanSet &addition)
         ofLog(OF_LOG_WARNING, "AssembleScans: We cannot assemble these 2 scans as they have different projector dimensions");
         return;
     }
+	
+	
+	
+	//////////////////////////
+	// FIND COMMON AND
+	// DISCRETE POINTS
+	// WITHIN THE 2 SETS
+	//////////////////////////
+	//
     
     //find common and unique points between two sets
     vector<int> commonPointsBase, commonPointsAddition;
@@ -126,32 +136,45 @@ void AssembleScans::assemble(ScanSet &base, ScanSet &addition)
         
     //create fit data to move
     //points from addition to base
-    double* input = new double[nCommonPoints * 3];
-    double* output = new double[nCommonPoints * 3];
-    
-    double* inputMover = input;
-    double* outputMover = output;
-    
+	pfitDataSetf dataSet;
+	dataSet.init(3, 3, nCommonPoints);
+	pfitDataPointf pt = dataSet.begin();
+	ofVec3f *input, *output;
     char iDim;
     for (int iPoint = 0; iPoint < nCommonPoints; iPoint++)
     {
-        for (iDim=0; iDim<3; iDim++)
-        {
-            inputMover[iDim] = addition.xyz[commonPointsAddition[iPoint] * 3 + iDim];
-            outputMover[iDim] = base.xyz[commonPointsBase[iPoint] * 3 + iDim];
-        }
-        
-        inputMover += 3;
-        outputMover += 3;
+		input = (ofVec3f*)pt.getInput();
+		output = (ofVec3f*)pt.getOutput();
+		
+		*input = addition[commonPointsAddition[iPoint]];
+		*output = base[commonPointsAddition[iPoint]];
+	
+		++pt;
     }
+	//
+	//////////////////////////
     
+	
+	
+	
+	//////////////////////////
+	// FIT ON COMMON POINTS
+	//////////////////////////
+	//
     //perform fit
-	/**TODO**/
-    //ransac.RANSAC(input, output, nCommonPoints, ransac_iterations, ransac_selection, ransac_residual, ransac_inclusion);
-    
-    //delete fit data
-    delete[] input;
-    delete[] output;
+    ransac.RANSAC(dataSet, ransac_iterations, ransac_selection, ransac_residual, ransac_inclusion);
+	//
+	//////////////////////////
+	
+	
+	
+	
+	//////////////////////////
+	// SETUP AND EVALUATE
+	// NEW DATASET
+	// ADDING DISCRETE POINTS
+	//////////////////////////
+	//
     
     //setup new dataset
     cout << "Found " << nCommonPoints << " common points\n";
@@ -166,7 +189,7 @@ void AssembleScans::assemble(ScanSet &base, ScanSet &addition)
     
     
     //evaluate addition points in base space
-    float* combinedMover = combined.xyz + base.nPoints * 3;
+    ofVec3f* combinedMover = combined.xyz + base.nPoints;
     unsigned int * iXMover = combined.iX + base.nPoints;
     unsigned int * iYMover = combined.iY + base.nPoints;
     
@@ -174,24 +197,26 @@ void AssembleScans::assemble(ScanSet &base, ScanSet &addition)
     
     cout << "Adding " << uniquePointsAddition.size() << " points to exsting set of " << base.nPoints << ".\n";
     
+	pfitDataPointf evalpt;
     for (int i=0; i<uniquePointsAddition.size(); i++)
     {
         
         idxAdditionSet = uniquePointsAddition[i];
-        /** TODO **/
-        //ransac.evaluate(addition.xyz + 3 * idxAdditionSet, combinedMover);
+        evalpt = pfitDataPointf(3, 3, (float*)&addition.xyz[idxAdditionSet], (float*)combinedMover);
+        ransac.evaluate(evalpt);
+		
         *iXMover = addition.iX[idxAdditionSet];
         *iYMover = addition.iY[idxAdditionSet];
         
-        combinedMover += 3;
-        iXMover++;
-        iYMover++;
+		++combinedMover;
+        ++iXMover;
+        ++iYMover;
     }
-    
-    combined.calcRGB();
-    
+
     //replace base with combined
     base = combined;
+	//
+	//////////////////////////
 }
 
 

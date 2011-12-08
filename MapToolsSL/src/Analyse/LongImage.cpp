@@ -3,14 +3,14 @@
 //  MapTools Structured Light
 //
 //  Created by Elliot Woods on 10/05/2011.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Kimchi and Chips. All rights reserved.
 //
 
 #include "LongImage.h"
 
 LongImage::LongImage() :
 scrMainGrid("Long Image"),
-scrPreview(longImage.getTextureReference(), "Output"),
+scrPreview("Output", longImage),
 selectFiles("Select scan(s) to add", "Logs", "scan"),
 bangAdd("Add scans to image"),
 bangSave("Save long image"),

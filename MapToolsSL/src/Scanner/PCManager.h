@@ -89,7 +89,7 @@ public:
 	vector<CameraBase*>		_camera;
 		
 	//interface
-	scrTexture				_scrProjectorMask;
+	scrDraw2D				_scrProjectorMask;
 	scrWidgets				_scrControls;
 
 	//cal vars

@@ -7,13 +7,15 @@
 //  Copyright 2011 Kimchi and Chips. All rights reserved.
 //
 
-#include "ofxCv.h"
+/**HACK**/
+//#include "ofxCv.h"
 
 #include "Ray.h"
 
 #define CV_SCALE_FACTOR 100.0f
 
-using namespace ofxCv;
+/**HACK**/
+//using namespace ofxCv;
 
 typedef struct {
 	ofVec2f xy[2];
@@ -30,7 +32,8 @@ public:
 	
 	void	getRay(const CamPoint &c, int iCamera, Ray& r) const;
 	
-	Calibration		calibration[2];
+	/**HACK**/
+	//Calibration		calibration[2];
 	ofMatrix4x4		matPosRotFromXtoOther[2];
 	ofMatrix4x4		matP[2], matPInverse[2];
 	bool			loaded;	

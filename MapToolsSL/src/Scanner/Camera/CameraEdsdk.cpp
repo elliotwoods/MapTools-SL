@@ -8,6 +8,8 @@
 
 #include "CameraEdsdk.h"
 
+#ifndef SKIP_EDSDK
+
 CameraEdsdk::CameraEdsdk() :
 waitingForFrame(false) {
 	fnum = 0;
@@ -58,3 +60,5 @@ void CameraEdsdk::copyToGrey() {
 	
 	ofSaveImage(greyPixels, "cap" + ofToString(fnum++) + ".jpg");
 }
+
+#endif

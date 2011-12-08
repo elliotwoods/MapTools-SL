@@ -13,7 +13,7 @@
 #define FOREACH_CAMERA for (int iCam=0; iCam<nCameras; iCam++)
 
 PCManager::PCManager() :
-_scrProjectorMask(_texProjectorMask, "Projector mask"),
+_scrProjectorMask("Projector mask", _texProjectorMask),
 _wdgStartScan("Start scan"),
 _wdgClear("Clear all (including mask)"),
 _scrControls("Controls"),

@@ -27,7 +27,7 @@ viewScale(1.85f) // TODO : find where this comes from. this value is for a 640x3
 	ofAddListener(cameraRawScreen.evtDraw, this, &CameraHead::drawCorners);
 	ofAddListener(cameraUndistortedScreen.evtDraw, this, &CameraHead::drawOnUndistorted);
 	ofAddListener(calibrationScreen.evtDraw3D, this, &CameraHead::drawFrustum);
-	ofAddListener(cameraUndistortedScreen.evtCursorPressed, this, &CameraHead::updateCursor);
+	ofAddListener(cameraUndistortedScreen.evtMousePressed, this, &CameraHead::updateCursor);
 	
 	ofAddListener(ofEvents.exit, this, &CameraHead::close);
 	
@@ -56,7 +56,7 @@ void CameraHead::init(int iDevice) {
 	greyBetweenBuffer.allocate(width, height, OF_IMAGE_GRAYSCALE);
 	greyThreadedInternal.allocate(width, height, OF_IMAGE_GRAYSCALE);
 	
-	calib.setBoardSize(9,6);
+	calib.setBoardSize(7,6);
 	calib.setSquareSize(4);
 	
 	frustum.setMode(OF_PRIMITIVE_LINE_STRIP);
@@ -285,7 +285,7 @@ void CameraHead::shrink(unsigned int s) {
 		calib.imagePoints.erase(calib.imagePoints.end()-1);
 }
 
-void CameraHead::updateCursor(ofPoint& p) {
+void CameraHead::updateCursor(ofVec2f& p) {
 	if (lockCorners.tryLock())
 	{
 		if (calib.isReady)

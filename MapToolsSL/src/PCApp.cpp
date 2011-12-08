@@ -20,12 +20,11 @@ void PCApp::setup(){
 	
 	_scanner = new PCManager();
 	
-	screens.init();
 	//setup scanner
 	_scanner->setup();
 
 	_scrTabMain = new scrGroupTabbed("Overview group", 32);
-	screens.mainScreen = _scrTabMain;
+	screens.init(*_scrTabMain);
 	
 	/////////////////////////////////////////////////////////
 	// SCAN GROUP
@@ -75,8 +74,6 @@ void PCApp::setup(){
 	_scrTabMain->push(&_Correlator.scrGridMain);
 	_scrTabMain->push(&_Assemble.scrGridMain);
 #endif	
-
-	screens.mainScreen = _scrTabMain;
 	/////////////////////////////////////////////////////////
 	
 //	tabMain->setBounds(0, 0, ofGetWidth(), ofGetHeight());

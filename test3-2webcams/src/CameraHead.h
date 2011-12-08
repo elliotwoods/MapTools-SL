@@ -61,7 +61,7 @@ public:
 	ofEvent<Ray>	evtMoveRay;
 	float			viewScale;
 protected:
-	void	updateCursor(ofPoint& p);
+	void	updateCursor(ofVec2f& p);
 	
 	void	threadedFunction();
 	void	threadedAdd();

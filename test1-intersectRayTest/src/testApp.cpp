@@ -31,7 +31,7 @@ void testApp::draw(){
 	ofEnableSmoothing();
 	ofDrawAxis(1.0f);
 	ofSetColor(120,120,120);
-	ofDrawGrid(5.0f);
+	//ofDrawGrid(5.0f);
 	ofPopStyle();
 	
 	ray1.draw();

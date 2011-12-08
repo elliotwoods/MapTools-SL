@@ -3,13 +3,13 @@
 //  PC Encode
 //
 //  Created by Elliot Woods on 06/05/2011.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Kimchi and Chips. All rights reserved.
 //
 
 #include "ofxCVgui.h"
 #include "ofxPolyFit.h"
 
-#include "scrScanSet.h"
+#include "ScanSet.h"
 
 class RANSACFilter
 {
@@ -28,7 +28,8 @@ class RANSACFilter
     
         scrGroupGrid    scrData;
         scrGroupGrid    scrLeftGroup;
-        scrScanSet      scrInput, scrFiltered;
+		scrDraw3D		scrInput, scrFiltered;
+	
         scrFileSelect   scrSelectFile;
     
         wdgButton       *bangLoadScan, *bangRANSAC, *bangSaveFiltered;
@@ -38,7 +39,8 @@ class RANSACFilter
         float           ransac_residual;
         float           ransac_inclusion;
         float           ransac_iterations;
-        ofxPolyFit      RANSAC;
+        ofxPolyFitd		RANSAC;
+		pfitDataSetd	dataSet;
     
     
         ///////////////////

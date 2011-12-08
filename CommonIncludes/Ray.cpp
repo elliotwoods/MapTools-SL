@@ -6,7 +6,7 @@
 //  Copyright 2011 Kimchi and Chips. All rights reserved.
 //
 
-#include "ray.h"
+#include "Ray.h"
 
 Ray::Ray() {
 }

@@ -141,15 +141,15 @@ class SubScanBase : public PCConfig
         // GRAPHICS
         //////////////////////////////////
         //
-        ofTexture       _texCameraBinary;
-        ofTexture       _texSubFrameData;
-        ofTexture       _texThresholdMasked;
+        ofTexture	_texCameraBinary;
+        ofTexture	_texSubFrameData;
+        ofTexture	_texThresholdMasked;
     
-        scrTexture				*_scrThreshold;
-        scrTexture              *_scrBinary;
-        scrTexture              *_scrSubFrameData;
+        scrDraw2D	*_scrThreshold;
+        scrDraw2D	*_scrBinary;
+        scrDraw2D	*_scrSubFrameData;
     
-        Histogram               *_histThresholdRange;
+        Histogram	*_histThresholdRange;
         //
         //////////////////////////////////
     

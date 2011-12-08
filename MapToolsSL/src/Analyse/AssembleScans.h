@@ -4,14 +4,13 @@
 //  PC Encode
 //
 //  Created by Elliot Woods on 08/05/2011.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Kimchi and Chips. All rights reserved.
 //
 
 #include "ofxCVgui.h"
 #include "ofxPolyFit.h"
 
-#include "scrScanSet.h"
-
+#include "ScanSet.h"
 
 
 class AssembleScans
@@ -38,7 +37,7 @@ class AssembleScans
     
         scrFileSelect   *scrSelectFiles;
         scrWidgets      scrControl;
-        scrScanSet      scrData;
+        scrDraw3D		scrData;
     
         wdgButton       bangAssemble, bangSave;
     
