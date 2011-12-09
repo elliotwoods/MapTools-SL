@@ -21,6 +21,9 @@ public:
 	Ray intersect(Ray &other);
 	void transform(ofMatrix4x4 m);
 	
+	ofVec3f	getMidpoint() const;
+	float	getLength() const;
+	
 	ofVec3f		s, t;
 	ofColor		color;
 	

@@ -6,7 +6,7 @@
 //  Copyright 2011 Kimchi and Chips. All rights reserved.
 //
 
-#include "ray.h"
+#include "Ray.h"
 
 Ray::Ray() {
 }
@@ -39,7 +39,7 @@ void Ray::draw(float f) {
 		
 		
 		ofSetLineWidth(f==0.0f ? 1.0f : f);
-		ofLine(s-1000*t, s+1000*t)
+		ofLine(s-1000*t, s+1000*t);
 	}
 	
 	//line section
@@ -116,4 +116,12 @@ Ray Ray::intersect(Ray &other) {
 	
 	intersectRay.infinite = false;
 	return intersectRay;
+}
+
+ofVec3f Ray::getMidpoint() const {
+	return s + t*0.5;
+}
+
+float Ray::getLength() const {
+	return t.length();
 }

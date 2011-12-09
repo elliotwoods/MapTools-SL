@@ -9,7 +9,10 @@
 #include "PCconstants.h"
 #include "PCManager.h"
 
+#ifndef SCAN_ONLY
 #include "CorrelateMain.h"
+#include "AssembleScans.h"
+#endif
 
 //#define SCAN_ONLY
 
@@ -47,10 +50,11 @@ class PCApp : public ofBaseApp {
 
 protected:
 
-		PCManager			_scanner;
+		PCManager			*_scanner;
 #ifndef SCAN_ONLY
 	//correlator
 	CorrelateMain			_Correlator;
+	AssembleScans			_Assemble;
 #endif
 	
 	//calibration variables

@@ -13,8 +13,7 @@ void testApp::setup(){
 	
 	intersecter.color = ofColor(255,255,0);
 	
-	gui.init();
-	gui.mainScreen = &mainScreen;
+	gui.init(mainScreen);
 	mainScreen.setGridWidth(1);
 
 	for (int i=0; i<2; ++i)
@@ -174,7 +173,7 @@ void testApp::draw3DCam(ofNode& n) {
 	
 	ofPushMatrix();
 	ofRotate(90,1,0,0);
-	ofDrawGrid(100);
+	//ofDrawGrid(100);
 	ofPopMatrix();
 	
 	ofPushMatrix();

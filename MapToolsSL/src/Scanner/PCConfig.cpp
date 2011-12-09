@@ -77,8 +77,12 @@ bool PCConfig::configLoad(string filename)
 	
 	success = configFileXML.loadFile(filename);
 	if (!success)
-		success = configFileXML.doc.LoadFile("/Users/elliot/dev/openFrameworks/openFrameworks/apps/MapTools-SL/MapToolsSL/bin/data/" + filename);
-	
+		/** HACK **/
+#ifdef TARGET_OSX
+		success = configFileXML.loadFile("/Users/elliot/dev/openFrameworks/openFrameworks/apps/MapTools-SL/MapToolsSL/bin/data/" + filename);
+	#else
+		success = configFileXML.loadFile("c:\\openFrameworks\\007\\apps\\MapTools-SL\\MapToolsSL\\bin\\settings.xml");
+#endif
 	if (success)
 	{
 		try
@@ -138,6 +142,30 @@ bool PCConfig::configLoad(string filename)
 		{
 			success=false;
 		}
+	}
+
+	
+	/**HACK**/
+	if (!success) {
+		projWidth = 1024;
+		projHeight = 768;
+
+		interleaveWidth = 2;
+		interleaveHeight = 2;
+		errorBits = 0;
+
+		camWidth = 1280;
+		camHeight = 720;
+		captureDelay = 1000;
+		camIDs.push_back(0);
+		camIDs.push_back(1);
+		nCameras = camIDs.size();
+
+		thresholdPercentile = 0.7;
+		sdev = 0;
+		maxPixelMoveSquared = 100;
+		isLogging = true;
+		success = true;
 	}
 
 	if (!success)

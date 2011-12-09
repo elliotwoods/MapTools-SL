@@ -41,6 +41,7 @@ void CameraBase::updatePreview() {
 }
 
 void CameraBase::capture() {
+	clearTimer();
 	grab();
 }
 

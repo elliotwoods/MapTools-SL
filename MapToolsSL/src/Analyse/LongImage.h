@@ -3,11 +3,10 @@
 //  MapTools Structured Light
 //
 //  Created by Elliot Woods on 10/05/2011.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Kimchi and Chips. All rights reserved.
 //
 
 #include "ofxCVgui.h"
-#include "scrScanSet.h"
 
 class LongImage
 {
@@ -26,7 +25,7 @@ class LongImage
         scrWidgets      scrControls;
         scrFileSelect   selectFiles;
     
-        scrTexture      scrPreview;
+        scrDraw2D		scrPreview;
 //        scrScanSet      scrData;
     
         wdgButton       bangAdd, bangSave, bangClear;

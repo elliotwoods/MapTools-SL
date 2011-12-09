@@ -81,18 +81,20 @@ _scrCamera("Camera image", camera) {
 	///////////////////////////////////////
 	// SCREENS
 	///////////////////////////////////////
-	_scrProjectorSpace = new scrTexture(_texCameraSpacePreview, "Projector space preview");
-	ofAddListener(_scrProjectorSpace->evtCursorMove, this, &PCDecode::moveSendCursor);
-	_scrCameraSpace = new scrTexture(_texProjectorSpacePreview, "Camera space preview");
+	//
+	_scrProjectorSpace = new scrDraw2D("Projector space preview", _texCameraSpacePreview);
+	ofAddListener(_scrProjectorSpace->evtMouseMoved, this, &PCDecode::moveSendCursor);
+	_scrCameraSpace = new scrDraw2D("Camera space preview", _texProjectorSpacePreview);
 	
-    _scrCameraNFinds = new scrTexture(_texCameraSpaceNFinds, "NFinds");
-	_scrProjectorNFinds = new scrTexture(_texProjectorSpaceNFinds, "NFinds");
+    _scrCameraNFinds = new scrDraw2D("NFinds", _texCameraSpaceNFinds);
+	_scrProjectorNFinds = new scrDraw2D("NFinds", _texProjectorSpaceNFinds);
     
     _scrHistograms = new scrHistograms("Histograms");
     _scrHistograms->addHistogram(_histThresholdRange);
     _scrHistograms->addHistogram(_histNFinds);
     
     _scrSubScans = &_subScanSet.screens;
+	//
 	///////////////////////////////////////
     
     
@@ -208,7 +210,7 @@ void PCDecode::updateProjectorSpacePreview()
 	///////////////////////////
 }
 
-void PCDecode::moveSendCursor(ofPoint &ptCursorPosition)
+void PCDecode::moveSendCursor(ofVec2f &xy)
 {
 	/*
 	//this function will only work with sdev type PCPixels
@@ -236,8 +238,7 @@ void PCDecode::moveSendCursor(ofPoint &ptCursorPosition)
 	*/
 }
 
-void PCDecode::initCalibration()
-{
+void PCDecode::initCalibration() {
     _subScanSet.initCalibration();
 }
 

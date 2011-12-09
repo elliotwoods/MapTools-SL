@@ -8,13 +8,15 @@
 
 #include "CameraEdsdk.h"
 
+#ifndef SKIP_EDSDK
+
 CameraEdsdk::CameraEdsdk() :
 waitingForFrame(false) {
 	fnum = 0;
 }
 
 void CameraEdsdk::close() {
-	cam.close();
+	//cam.close();
 }
 
 bool CameraEdsdk::isFrameNew() {
@@ -58,3 +60,5 @@ void CameraEdsdk::copyToGrey() {
 	
 	ofSaveImage(greyPixels, "cap" + ofToString(fnum++) + ".jpg");
 }
+
+#endif

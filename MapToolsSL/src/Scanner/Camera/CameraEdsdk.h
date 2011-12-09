@@ -7,6 +7,10 @@
 //  Copyright 2011 Kimchi and Chips. All rights reserved.
 //
 
+#define SKIP_EDSDK
+
+#ifndef SKIP_EDSDK
+
 #include "ofxEdsdk.h"
 #include "ofxCv.h"
 
@@ -35,3 +39,4 @@ protected:
 	bool waitingForFrame;
 	int fnum;
 };
+#endif

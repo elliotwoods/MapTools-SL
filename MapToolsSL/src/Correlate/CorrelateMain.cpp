@@ -11,7 +11,7 @@
 
 CorrelateMain::CorrelateMain() :
 scrControl("Correlate control"),
-scrFileSelection("Select data", "./Logs/", "bin"),
+scrFileSelection("Select data", ".", "bin"),
 
 scrWorldSpace("World XYZ"),
 
@@ -24,6 +24,7 @@ longImageCount(0)
 	// Initialise some values
 	////////////////////////////
 	//
+	stereoIntersectThreshold = 0.1;
 	//
 	////////////////////////////
 
@@ -106,6 +107,17 @@ void CorrelateMain::update()
     
     if (bangClearImage->getBang())
         clearImage();
+	
+	ofPoint& lbf(scrWorldSpace.lbf);
+    ofPoint& rtb(scrWorldSpace.rtb);
+	
+	if (rtb.x < lbf.x)
+		rtb.x = lbf.x;
+	if (rtb.y < lbf.y)
+		rtb.y = lbf.y;
+	if (rtb.z < lbf.z)
+		rtb.z = lbf.z;
+	
 }
 
 void CorrelateMain::loadData()
@@ -228,6 +240,7 @@ void CorrelateMain::loadData()
 	
 	//clear test set window
 <<<<<<< HEAD
+<<<<<<< HEAD
 	scrWorldSpace.setWith(&dataWorldSpace[0].x, 0);
 =======
 	scrTestCorrelate.setWith(dataSet.getOutput(), 0);
@@ -258,6 +271,9 @@ void CorrelateMain::runPolyfit()
 	fit.correlate(dataSet);
 	ofLogNotice() << "fit residual = " << fit.residualRMS(dataSet);
 >>>>>>> 2a83f9ac0f91a9132d03d9cd6c580684a8a9c575
+=======
+	scrWorldSpace.setWith(&dataWorldSpace[0].x, 0);
+>>>>>>> ab31210c1bee3b2e282e4c8b6701bf110c45f6bb
 	
 	bangEvaluate->enabled=true;
 }
@@ -265,6 +281,7 @@ void CorrelateMain::runPolyfit()
 
 void CorrelateMain::evaluate()
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
     calibration.evaluate(dataCameraSpace, dataWorldSpace, stereoIntersectThreshold);
 	scrWorldSpace.setWith(&dataWorldSpace[0].x, dataWorldSpace.size());
@@ -281,6 +298,11 @@ void CorrelateMain::evaluate()
 	//we'll enable the save xyz, if we're in new format
 	bangSave3DScan->enabled = newFormat;
 >>>>>>> 2a83f9ac0f91a9132d03d9cd6c580684a8a9c575
+=======
+    calibration.evaluate(dataCameraSpace, dataWorldSpace, stereoIntersectThreshold);
+	scrWorldSpace.setWith(&dataWorldSpace[0].x, dataWorldSpace.size());
+	bangSave3DScan->enabled = true;
+>>>>>>> ab31210c1bee3b2e282e4c8b6701bf110c45f6bb
 }
 
 void CorrelateMain::save3DScan()
@@ -289,9 +311,8 @@ void CorrelateMain::save3DScan()
     // BMP file
     //////////////////////////
     //
-	ofImage imgSave;
-	imgSave.setImageType(OF_IMAGE_COLOR);
-	imgSave.allocate(projWidth, projHeight, OF_IMAGE_COLOR);
+	ofPixels imgSave;
+	imgSave.allocate(projWidth, projHeight, OF_PIXELS_RGB);
 	
 	//clear all values out to black
 	memset(imgSave.getPixels(), 0, projWidth*projHeight*3);
@@ -300,6 +321,7 @@ void CorrelateMain::save3DScan()
     ofPoint& rtb(scrWorldSpace.rtb);
     
 	int iPP, iPoint;
+	iPoint = 0;
 	unsigned char col[3];
 	vector<ofVec3f>::iterator it;
 	for (it = dataWorldSpace.begin(); it != dataWorldSpace.end(); ++it)
@@ -309,12 +331,12 @@ void CorrelateMain::save3DScan()
         //check if not within selected bounds
         if (xyz[0] < lbf.x || xyz[1] < lbf.y || xyz[2] < lbf.z || xyz[0] > rtb.x || xyz[1] > rtb.y || xyz[2] > rtb.z)
             continue;
-        
+
 		//convert position to colour values
 		col[0] = ofMap(xyz[0],lbf.x,rtb.x,0,255,true);
 		col[1] = ofMap(xyz[1],lbf.y,rtb.y,0,255,true);
 		col[2] = ofMap(xyz[2],lbf.z,rtb.z,0,255,true);
-		
+
 		iPP = dataset_iPX[iPoint] + projWidth * dataset_iPY[iPoint];
         
 		if (iPP<int(projWidth*projHeight) && iPP>=0)
@@ -323,7 +345,47 @@ void CorrelateMain::save3DScan()
 		++iPoint;
 	}
 	
-	imgSave.saveImage(lastFilename + ".bmp");
+	//ofSaveImage(imgSave, lastFilename + ".bmp");
+    //
+    //////////////////////////
+	
+	
+    //////////////////////////
+    // HDR file
+    //////////////////////////
+    //
+	ofFloatPixels hdrSave;
+	hdrSave.allocate(projWidth, projHeight, OF_PIXELS_RGB);
+	imgSave.allocate(projWidth, projHeight, OF_PIXELS_RGB);
+	
+	//clear all values out to black
+	memset(hdrSave.getPixels(), 0, projWidth*projHeight*3 * sizeof(float));
+	memset(imgSave.getPixels(), 0, projWidth*projHeight*3 * sizeof(unsigned char));
+	
+    iPoint = 0;
+	for (it = dataWorldSpace.begin(); it != dataWorldSpace.end(); ++it)
+	{
+		const ofVec3f& xyz(*it);
+		
+		//convert position to colour values
+		col[0] = ofMap(xyz[0],lbf.x,rtb.x,0,255,true);
+		col[1] = ofMap(xyz[1],lbf.y,rtb.y,0,255,true);
+		col[2] = ofMap(xyz[2],lbf.z,rtb.z,0,255,true);
+
+		iPP = dataset_iPX[iPoint] + projWidth * dataset_iPY[iPoint];
+        
+		if (iPP<int(projWidth*projHeight) && iPP>=0)
+			memcpy(hdrSave.getPixels()+3*iPP, &xyz.x, 3 * sizeof(float));
+
+		if (iPP<int(projWidth*projHeight) && iPP>=0)
+			memcpy(imgSave.getPixels()+3*iPP, col, 3);
+		
+		++iPoint;
+	}
+	
+	ofSaveImage(hdrSave, lastFilename + ".hdr");
+	ofSaveImage(hdrSave, lastFilename + ".dds");
+	ofSaveImage(imgSave, lastFilename + ".png");
     //
     //////////////////////////
     
@@ -380,14 +442,13 @@ void CorrelateMain::addToImage()
     int newWidth = projWidth * longImageCount;    
     
     //setup new image
-    unsigned char * newImage = new unsigned char[projWidth*projHeight*3*longImageCount];
-    memset(newImage, 0, 3*projWidth*projHeight*longImageCount);
-    
-    
+	ofFloatPixels newImage;
+	newImage.allocate(projWidth*longImageCount,projHeight, OF_PIXELS_RGB);
+    memset(newImage.getPixels(), 0, 3*projWidth*projHeight*longImageCount*sizeof(float));
     
     //copy old contents around
     for (int j = 0; j < projHeight; j++)
-        memcpy(newImage + newWidth*3*j, longImage + oldWidth*3*j, oldWidth * 3);
+        memcpy(newImage.getPixels() + newWidth*3*j*sizeof(float), longImage.getPixels() + oldWidth*3*j*sizeof(float), oldWidth * 3 *sizeof(float));
     
     
     
@@ -399,7 +460,6 @@ void CorrelateMain::addToImage()
     ofPoint& rtb(scrWorldSpace.rtb);
     
 	int iPP, iLIP;
-	unsigned char col[3];
     float* point;
 	
 	vector<ofVec3f>::iterator it;
@@ -408,14 +468,6 @@ void CorrelateMain::addToImage()
 	{
 		const ofVec3f& xyz(*it);
         
-        //check if not within selected bounds
-        if (point[0] < lbf.x || point[1] < lbf.y || point[2] < lbf.z || point[0] > rtb.x || point[1] > rtb.y || point[2] > rtb.z)
-            continue;
-        
-		//convert position to colour values
-		col[0] = ofMap(xyz[0],lbf.x,rtb.x,0,255,true);
-		col[1] = ofMap(xyz[1],lbf.y,rtb.y,0,255,true);
-		col[2] = ofMap(xyz[2],lbf.z,rtb.z,0,255,true);
 		
 		iPP = dataset_iPX[iPoint] + projWidth * dataset_iPY[iPoint];
         
@@ -424,7 +476,7 @@ void CorrelateMain::addToImage()
             //put pixels at right of image
             iLIP =  dataset_iPX[iPoint] + newWidth * dataset_iPY[iPoint] + oldWidth;
             
-			memcpy(newImage + 3*iLIP, col, 3);
+			memcpy(newImage.getPixels() + 3*iLIP, &xyz.x, 3*sizeof(float));
         }
 
 		++iPoint;
@@ -432,10 +484,6 @@ void CorrelateMain::addToImage()
     //
     //////////////////////////
     
-    
-    //delete old image and reassign
-    if (longImageCount > 0)
-        delete[] longImage;
     longImage = newImage;
     
     
@@ -443,20 +491,20 @@ void CorrelateMain::addToImage()
 
 void CorrelateMain::saveImage()
 {
-    ofImage imgSave;
-	imgSave.setImageType(OF_IMAGE_COLOR);
-	imgSave.allocate(projWidth * longImageCount, projHeight, OF_IMAGE_COLOR);
-    
-    memcpy(imgSave.getPixels(), longImage, projWidth*projHeight*longImageCount*3);
-    
-    imgSave.saveImage("long image.bmp");
+	/*
+	ofBuffer buf;
+	ofSaveImage(longImage, buf, OF_IMAGE_FORMAT_HDR, OF_IMAGE_QUALITY_BEST);
+	ofBufferToFile("long image.hdr", buf, true);
+	 */
+	ofSaveImage(longImage, "longimage.hdr", OF_IMAGE_QUALITY_BEST);
+	
 }
 
 void CorrelateMain::clearImage()
 {
     if (longImageCount > 0)
     {
-        delete[] longImage;
+        longImage.clear();
         longImageCount = 0;
     }
         

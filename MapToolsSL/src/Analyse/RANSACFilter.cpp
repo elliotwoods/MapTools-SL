@@ -3,7 +3,7 @@
 //  PC Encode
 //
 //  Created by Elliot Woods on 06/05/2011.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Kimchi and Chips. All rights reserved.
 //
 
 #include "RANSACFilter.h"
@@ -22,15 +22,15 @@ ransac_inclusion(0.2),
 ransac_iterations(5)
 {
     
-    scrGridMain.push(&scrLeftGroup);
-    scrGridMain.push(&scrData);
+    scrGridMain.push(scrLeftGroup);
+    scrGridMain.push(scrData);
     
-    scrLeftGroup.push(&scrControl);
-    scrLeftGroup.push(&scrSelectFile);
+    scrLeftGroup.push(scrControl);
+    scrLeftGroup.push(scrSelectFile);
     
     scrData.setGridWidth(1);
-    scrData.push(&scrInput);
-    scrData.push(&scrFiltered);
+    scrData.push(scrInput);
+    scrData.push(scrFiltered);
     
     bangLoadScan = new wdgButton("Load scan");
     bangRANSAC = new wdgButton("Perform RANSAC filter");
@@ -81,58 +81,54 @@ void RANSACFilter::update()
 
 void RANSACFilter::filterRANSAC()
 {
+	//pade shaped fit
     RANSAC.init(1, 4, 2, BASIS_SHAPE_PADE_FIRST);
-    
-    double* input = new double[setInput.nPoints * 4];
-    double* output = new double[setInput.nPoints * 2];
-
+	
     double ProjectorX, ProjectorY;
     
-    double* inputMove = input;
-    double* outputMove = output;
-    
-    //fill RANSAC
+	dataSet.init(4, 2, setInput.nPoints);
+	pfitDataPointd pt = dataSet.begin();
+
+	double *input, *output;
     for (int i=0; i<setInput.nPoints; i++)
     {
+		
         ProjectorX = 2 * (double(setInput.iX[i]) / double(setInput.width)) - 1;
         ProjectorY = 1 - 2 * (double(setInput.iY[i]) / double(setInput.height));
         
+		input = pt.getInput();
+        output = pt.getOutput();
+		
+        input[0] = setInput.xyz[i].x;
+        input[1] = setInput.xyz[i].y;
+        input[2] = setInput.xyz[i].z;        
+        input[3] = ProjectorX;
         
-        inputMove[0] = setInput.xyz[i*3 + 0];
-        inputMove[1] = setInput.xyz[i*3 + 1];
-        inputMove[2] = setInput.xyz[i*3 + 2];        
-        inputMove[3] = ProjectorX;
-        
-        outputMove[0] = ProjectorX;
-        outputMove[1] = ProjectorY;
-        
-        inputMove += 4;
-        outputMove += 2;
-    }
+        output[0] = ProjectorX;
+        output[1] = ProjectorY;
+		
+		++pt;
+	}
     
-	/**TODO**/
-    //RANSAC.RANSAC(input, output, setInput.nPoints, ransac_iterations, ransac_selection, ransac_residual, ransac_inclusion);
+	RANSAC.RANSAC(dataSet, ransac_iterations, ransac_selection, ransac_residual, ransac_inclusion);
     
-    set<int>::iterator it;
-    
+	
+	//setup output dataset and copy in filtered points
+	int nPointsOutput = dataSet.getActiveCount();
     setFiltered.setup(setInput);
-    setFiltered.allocate(RANSAC.bestConsensus.size());
-
+    setFiltered.allocate(nPointsOutput);
     
-    
-    int i=0;
-    for (it = RANSAC.bestConsensus.begin(); it != RANSAC.bestConsensus.end(); it++)
-    {
-        for (int iDim=0; iDim<3; iDim++)
-        {
-            setFiltered.xyz[i*3 + iDim] = setInput.xyz[*it * 3 + iDim];
-            setFiltered.rgb[i*3 + iDim] = setInput.rgb[*it * 3 + iDim];
-        }
+	pfitIndexSet::iterator it;
+	pfitIndexSet s = dataSet.getActiveIndices();
+    int iOutput=0;
+    for (it=s.begin(); it != s.end(); ++it) {
+		
+		setFiltered.xyz[iOutput] = setInput.xyz[*it];
         
-        setFiltered.iX[i] = setInput.iX[*it];
-        setFiltered.iY[i] = setInput.iY[*it];
+        setFiltered.iX[iOutput] = setInput.iX[*it];
+        setFiltered.iY[iOutput] = setInput.iY[*it];
         
-        i++;
+        ++iOutput;
     }
     
 }

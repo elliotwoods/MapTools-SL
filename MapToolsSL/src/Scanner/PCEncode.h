@@ -11,13 +11,12 @@
 
 
 #include "ofMain.h"
+#include "ofxCvGui.h"
+
 #include "PCconstants.h"
-#include "scrTexture.h"
 #include "PCConfig.h"
 
 #include "PayloadBase.h"
-
-#include "scrTexture.h"
 
 class PCEncode : public PCConfig 
 {
@@ -35,7 +34,7 @@ public:
 	void					updateScanFrame(int iScanInterleaveFrame, int iInterleave);
 	void					updateCalibrationFrame(int iCalibrationFrame);
 	
-	scrTexture				scrSend;
+	scrDraw2D				scrSend;
 private:
 	
 	ofTexture				_texOutput;

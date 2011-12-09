@@ -27,12 +27,14 @@ void PCLogger::save(string filename)
 	//'whether to log'
 	if (!isLogging)
 		return;
-	
+	/*
 	#ifdef TARGET_WIN32
 		filename = "logs\\" + filename;
 	#else
 		filename = "logs/" + filename;
 	#endif
+	*/
+	/** HACK **/
 
 	//////////////////////////////////////////////////////
 	// SAVE IMAGES
@@ -62,16 +64,21 @@ void PCLogger::save(string filename)
 	//////////////////////////////////////////////////////
 	//first we have to create the filename
 	//with path for iostream to access file
-	string strFileWithPath;
+
+
+	/** HACK **/
+	string strFileWithPath = filename;
+	/*
 #ifdef TARGET_WIN32
 	strFileWithPath = ".\\data\\" + filename;
 #else
 	strFileWithPath = "../../../data/" + filename;
 #endif
+	*/
 	
 	
 	saveConfig(strFileWithPath + "-config.txt");
-	savePixelsText(strFileWithPath + "-data.txt");
+	//savePixelsText(strFileWithPath + "-data.txt");
 	savePixelsBinary(strFileWithPath + ".bin");
 	//////////////////////////////////////////////////////
 

@@ -33,7 +33,7 @@
 /////////////////////////////////////
 //
 #ifdef TARGET_OSX
-	#define PCENCODE_CAM_EDSDK
+	#define PCENCODE_CAM_DEFAULT
 #else
 	#define PCENCODE_CAM_VIDEO_INPUT
 #endif
@@ -89,7 +89,7 @@ public:
 	vector<CameraBase*>		_camera;
 		
 	//interface
-	scrTexture				_scrProjectorMask;
+	scrDraw2D				_scrProjectorMask;
 	scrWidgets				_scrControls;
 
 	//cal vars
@@ -101,6 +101,7 @@ protected:
 	void	advanceFrame();
 
 	bool	_firstFrame;
+	vector<bool>	_waitingForFrame;
 	
 	void					updateProjectorMask();
 	void					clearProjectorMask();

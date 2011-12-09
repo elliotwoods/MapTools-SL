@@ -19,6 +19,7 @@ void CameraDefault::close(){
 bool CameraDefault::init(int ID, int width, int height)
 {
     bool success = _grabber.initGrabber(width, height, true);
+	_grabber.listDevices();
 	preview = &_grabber.getTextureReference();
 	
 	return success;

@@ -13,7 +13,7 @@
 #define FOREACH_CAMERA for (int iCam=0; iCam<nCameras; iCam++)
 
 PCManager::PCManager() :
-_scrProjectorMask(_texProjectorMask, "Projector mask"),
+_scrProjectorMask("Projector mask", _texProjectorMask),
 _wdgStartScan("Start scan"),
 _wdgClear("Clear all (including mask)"),
 _scrControls("Controls"),
@@ -61,7 +61,7 @@ void PCManager::setup()
 	{
         
 		//initialise payload
-		Payload::Pointer = new PayloadBinary();
+		Payload::Pointer = new PayloadGraycode();
 		Payload::Pointer->setup();
 		
 		//instantiate the encoder
@@ -82,6 +82,7 @@ void PCManager::setup()
 			_camera.push_back(new CameraEdsdk());
 			#endif
 			
+			_waitingForFrame.push_back(false);
 
 			_decoder.push_back(new PCDecode(*_camera[iCam], _boolProjectorMask));
 			
@@ -127,8 +128,10 @@ void PCManager::update()
 	FOREACH_CAMERA {
 		if (state==0)
 			_camera[iCam]->updatePreview();
-		else if (!_firstFrame)
+		else if (!_firstFrame && !_waitingForFrame[iCam]) {
 			_camera[iCam]->capture();
+			_waitingForFrame[iCam] = true;
+		}
 	
 		_decoder[iCam]->update();
 	}
@@ -138,8 +141,13 @@ void PCManager::update()
 	//for a dslr this means have we downloaded a frame from the camera
 	//for a usb cam, it means have we waited long enough to clear the buffer
 	bool frameReady=true;
-	FOREACH_CAMERA
-		frameReady &= _camera[iCam]->isFrameNew();
+	bool frameReadyThis;
+	FOREACH_CAMERA {
+		frameReadyThis = _camera[iCam]->isFrameNew();
+		frameReady &= frameReadyThis;
+		if (frameReady)
+			_waitingForFrame[iCam] = false;
+	}
 	if (!frameReady)
 		return;
 

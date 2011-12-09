@@ -14,61 +14,66 @@ PCApp::~PCApp()
 //--------------------------------------------------------------
 
 void PCApp::setup(){
+	
 	ofSetVerticalSync(true);
 	ofSetLogLevel(OF_LOG_VERBOSE);
 	
-	screens.init();
+	_scanner = new PCManager();
+	
 	//setup scanner
-	_scanner.setup();
+	_scanner->setup();
 
 	_scrTabMain = new scrGroupTabbed("Overview group", 32);
-	screens.mainScreen = _scrTabMain;
+	screens.init(*_scrTabMain);
 	
 	/////////////////////////////////////////////////////////
 	// SCAN GROUP
 	/////////////////////////////////////////////////////////
+	//
 	scrGroupGrid *gridScan = new scrGroupGrid("Scan");
 	
 	//add the send message group
 	scrGroupTabbed *scrMessageGroup = new scrGroupTabbed("Send message");
-	scrMessageGroup->push(&_scanner._encoder->scrSend);
-	scrMessageGroup->push(&_scanner._scrProjectorMask);
+	scrMessageGroup->push(&_scanner->_encoder->scrSend);
+	scrMessageGroup->push(&_scanner->_scrProjectorMask);
 	gridScan->push(scrMessageGroup);
 	
 
-	gridScan->push(&_scanner._scrControls);
+	gridScan->push(&_scanner->_scrControls);
 	for (int iCam=0; iCam<PCConfig().nCameras; iCam++)
 	{
 		//add projection space preview to the send group
 		scrGroupTabbed *scrProjDataGroup = new scrGroupTabbed("Projector data");
-		scrProjDataGroup->push(_scanner._decoder[iCam]->_scrProjectorSpace);
-		scrProjDataGroup->push(_scanner._decoder[iCam]->_scrProjectorNFinds);
+		scrProjDataGroup->push(_scanner->_decoder[iCam]->_scrProjectorSpace);
+		scrProjDataGroup->push(_scanner->_decoder[iCam]->_scrProjectorNFinds);
 		gridScan->push(scrProjDataGroup);
 		
 		scrGroupTabbed *scrCamDataGroup = new scrGroupTabbed("Camera space");
-		scrCamDataGroup->push(_scanner._decoder[iCam]->_scrCameraSpace);
-		scrCamDataGroup->push(_scanner._decoder[iCam]->_scrCameraNFinds);
+		scrCamDataGroup->push(_scanner->_decoder[iCam]->_scrCameraSpace);
+		scrCamDataGroup->push(_scanner->_decoder[iCam]->_scrCameraNFinds);
 		gridScan->push(scrCamDataGroup);
 		
-		gridScan->push(&_scanner._decoder[iCam]->_scrCamera);
+		gridScan->push(&_scanner->_decoder[iCam]->_scrCamera);
 		
-		gridScan->push(_scanner._decoder[iCam]->_scrHistograms);
+		gridScan->push(_scanner->_decoder[iCam]->_scrHistograms);
         
-        gridScan->push(_scanner._decoder[iCam]->_scrSubScans);
+        gridScan->push(_scanner->_decoder[iCam]->_scrSubScans);
 	}
+	//
 	/////////////////////////////////////////////////////////
 
+	
+	
 	/////////////////////////////////////////////////////////
 	// MAIN TAB GROUP
 	/////////////////////////////////////////////////////////
-	
+	//
 	_scrTabMain->push(gridScan);
 
 #ifndef SCAN_ONLY
 	_scrTabMain->push(&_Correlator.scrGridMain);
+	_scrTabMain->push(&_Assemble.scrGridMain);
 #endif	
-
-	screens.mainScreen = _scrTabMain;
 	/////////////////////////////////////////////////////////
 	
 //	tabMain->setBounds(0, 0, ofGetWidth(), ofGetHeight());
@@ -82,7 +87,7 @@ void PCApp::update(){
 	switch (_scrTabMain->iSelection) {
 		case 0:
 			//we're looking at scan
-			_scanner.update();
+			_scanner->update();
 			break;
             
 #ifndef SCAN_ONLY
@@ -90,7 +95,9 @@ void PCApp::update(){
 			//we're looking at correlate
 			_Correlator.update();
 			break;
-            
+      
+		case 2:
+			_Assemble.update();
 #endif
             break;
 			
@@ -98,17 +105,17 @@ void PCApp::update(){
 			break;
 	}
 	
-	screens.showInterface(_scanner.state==0 || _scrTabMain->iSelection>0);
+	screens.showInterface(_scanner->state==0 || _scrTabMain->iSelection>0);
 }
 
 //--------------------------------------------------------------
 
 void PCApp::draw(){
-	if (_scanner.state==PC_STATE_SCANNING)
-		ofLog(OF_LOG_VERBOSE, "PCApp: drawing interleave frame " + ofToString(Payload::Pointer->iScanInterleaveFrame(_scanner.iFrame)));
+	if (_scanner->state==PC_STATE_SCANNING)
+		ofLog(OF_LOG_VERBOSE, "PCApp: drawing interleave frame " + ofToString(Payload::Pointer->iScanInterleaveFrame(_scanner->iFrame)));
 
-	if (_scanner.state==PC_STATE_CALIBRATING)
-		ofLog(OF_LOG_VERBOSE, "PCApp: drawing calibration frame " + ofToString(_scanner.iFrame, 0));
+	if (_scanner->state==PC_STATE_CALIBRATING)
+		ofLog(OF_LOG_VERBOSE, "PCApp: drawing calibration frame " + ofToString(_scanner->iFrame, 0));
 }
 void PCApp::keyPressed(int key){
 	
@@ -119,29 +126,29 @@ void PCApp::keyPressed(int key){
 		//	break;
 
 		case 32: // SPACE = run system
-			if (_scanner.state==0)
-				_scanner.start();
+			if (_scanner->state==0)
+				_scanner->start();
 			else
-				_scanner.stop();
+				_scanner->stop();
 		break;
 			
 		case 'c': // c = calibrate threshold
-			_scanner.calibrate();
+			_scanner->calibrate();
 			break;
 
 		case 's': // s = save current activity
-			//_scanner.save(getDateString());
-			_scanner.save(ofToString(_scanner.screenDistance, 2));
+			//_scanner->save(getDateString());
+			_scanner->save(ofToString(_scanner->screenDistance, 2));
 			break;
 		
 		case 'd': // d = save as 'data'
-			_scanner.save(ofToString(PCConfig().projWidth) + "," + ofToString(_scanner.interleaveWidth) + "x" +
-				ofToString(PCConfig().projHeight) + "," + ofToString(_scanner.interleaveHeight));
+			_scanner->save(ofToString(PCConfig().projWidth) + "," + ofToString(_scanner->interleaveWidth) + "x" +
+				ofToString(PCConfig().projHeight) + "," + ofToString(_scanner->interleaveHeight));
 			break;
 		
 
 		case 'v': // v = video settings
-			_scanner.videoSettings();
+			_scanner->videoSettings();
 			break;
 
 // currently out of order
