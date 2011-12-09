@@ -126,35 +126,30 @@ void ScanSet::save(string filename, bool thresholdBounds) {
     int nPointsSelected = 0;
 	int blank = 0;
     
-    ofstream outFile(ofToDataPath(filename, true).c_str(), ios::out | ios::binary);
-    
+	TalkyBuffer buffer;
+	
     //write overall data
     
-    outFile << header;
-	outFile << blank; //we come back write this later (number of points selected)
-	outFile << width;
-	outFile << height;
-	outFile << lbf;
-	outFile << rtb;
+    buffer << header;
+	
+	buffer << blank; //we come back write this later (number of points selected)
+	buffer << width;
+	buffer << height;
+	buffer << lbf;
+	buffer << rtb;
     
     for (int i=0; i<size; i++)
     {
-        
         //check if not within selected bounds
         if (hasBounds && thresholdBounds)
             if (!inside(xyz[i],lbf,rtb))
                 continue;
-        
-        outFile.write((char*) &iX[i], 4);
-        outFile.write((char*) &iY[i], 4);
-        outFile.write((char*) &xyz[i], sizeof(ofVec3f));
-        
-        nPointsSelected++;
+        buffer << iX[i];
+		buffer << iY[i];
+		buffer << xyz[i];
     }
     
-    outFile.seekp(2);
-    outFile.write((char*) &nPointsSelected, 4);    
-    outFile.close();
+	buffer.saveFile(filename);
     //
     //////////////////////////  
 }

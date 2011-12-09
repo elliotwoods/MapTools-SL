@@ -12,6 +12,18 @@
 		8B2CBF48148DEADF0083E0F0 /* ofxTCPServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B2CBF42148DEADF0083E0F0 /* ofxTCPServer.cpp */; };
 		8B2CBF49148DEADF0083E0F0 /* ofxUDPManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B2CBF44148DEADF0083E0F0 /* ofxUDPManager.cpp */; };
 		8B50FBD014923EB500A6237F /* ofxGrabCam.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B50FBBD14923EB400A6237F /* ofxGrabCam.cpp */; };
+		8B50FBF514928ADC00A6237F /* Axb.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B50FBE314928ADC00A6237F /* Axb.c */; };
+		8B50FBF714928ADC00A6237F /* lm.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B50FBE714928ADC00A6237F /* lm.c */; };
+		8B50FBF914928ADC00A6237F /* lmbc.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B50FBE914928ADC00A6237F /* lmbc.c */; };
+		8B50FBFB14928ADC00A6237F /* lmblec.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B50FBEB14928ADC00A6237F /* lmblec.c */; };
+		8B50FBFC14928ADC00A6237F /* lmbleic.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B50FBEC14928ADC00A6237F /* lmbleic.c */; };
+		8B50FBFD14928ADC00A6237F /* lmlec.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B50FBED14928ADC00A6237F /* lmlec.c */; };
+		8B50FBFE14928ADC00A6237F /* misc.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B50FBEE14928ADC00A6237F /* misc.c */; };
+		8B50FC0014928ADC00A6237F /* ofxLevMar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B50FBF314928ADC00A6237F /* ofxLevMar.cpp */; };
+		8B50FD061492A1B400A6237F /* ofxTalky.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B50FCB31492A1B400A6237F /* ofxTalky.cpp */; };
+		8B50FD1D1492A1E300A6237F /* TalkyBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B50FD171492A1E000A6237F /* TalkyBase.cpp */; };
+		8B50FD1E1492A1E300A6237F /* TalkyBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B50FD191492A1E000A6237F /* TalkyBuffer.cpp */; };
+		8B50FD1F1492A1E300A6237F /* TalkyMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B50FD1B1492A1E100A6237F /* TalkyMessage.cpp */; };
 		8B71A49C1413C16700EA2D2C /* LongImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B71A4631413C16700EA2D2C /* LongImage.cpp */; };
 		8B71A49E1413C16700EA2D2C /* CorrelateMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B71A4681413C16700EA2D2C /* CorrelateMain.cpp */; };
 		8B71A49F1413C16700EA2D2C /* CorrelateRays.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B71A46A1413C16700EA2D2C /* CorrelateRays.cpp */; };
@@ -94,10 +106,6 @@
 		8BDC9C94141CA9300024EFD9 /* matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC9C8A141CA9300024EFD9 /* matrix.cpp */; };
 		8BDC9C95141CA9300024EFD9 /* polyNfit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC9C8C141CA9300024EFD9 /* polyNfit.cpp */; };
 		8BDC9C96141CA9300024EFD9 /* powerBases.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC9C8E141CA9300024EFD9 /* powerBases.cpp */; };
-		8BF80234141E22ED00916227 /* TalkyBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8017E141E22EC00916227 /* TalkyBase.cpp */; };
-		8BF80235141E22ED00916227 /* TalkyBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BF80180141E22EC00916227 /* TalkyBuffer.cpp */; };
-		8BF80236141E22ED00916227 /* TalkyMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BF80182141E22EC00916227 /* TalkyMessage.cpp */; };
-		8BF8027B141E22EE00916227 /* ofxTalky.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BF80228141E22ED00916227 /* ofxTalky.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -161,6 +169,29 @@
 		8B50FBBB14923EB400A6237F /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.md; sourceTree = "<group>"; };
 		8B50FBBD14923EB400A6237F /* ofxGrabCam.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxGrabCam.cpp; sourceTree = "<group>"; };
 		8B50FBBE14923EB400A6237F /* ofxGrabCam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGrabCam.h; sourceTree = "<group>"; };
+		8B50FBE314928ADC00A6237F /* Axb.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Axb.c; sourceTree = "<group>"; };
+		8B50FBE514928ADC00A6237F /* compiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = compiler.h; sourceTree = "<group>"; };
+		8B50FBE614928ADC00A6237F /* levmar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = levmar.h; sourceTree = "<group>"; };
+		8B50FBE714928ADC00A6237F /* lm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lm.c; sourceTree = "<group>"; };
+		8B50FBE914928ADC00A6237F /* lmbc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lmbc.c; sourceTree = "<group>"; };
+		8B50FBEB14928ADC00A6237F /* lmblec.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lmblec.c; sourceTree = "<group>"; };
+		8B50FBEC14928ADC00A6237F /* lmbleic.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lmbleic.c; sourceTree = "<group>"; };
+		8B50FBED14928ADC00A6237F /* lmlec.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lmlec.c; sourceTree = "<group>"; };
+		8B50FBEE14928ADC00A6237F /* misc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = misc.c; sourceTree = "<group>"; };
+		8B50FBEF14928ADC00A6237F /* misc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = misc.h; sourceTree = "<group>"; };
+		8B50FBF114928ADC00A6237F /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.md; sourceTree = "<group>"; };
+		8B50FBF314928ADC00A6237F /* ofxLevMar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxLevMar.cpp; sourceTree = "<group>"; };
+		8B50FBF414928ADC00A6237F /* ofxLevMar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxLevMar.h; sourceTree = "<group>"; };
+		8B50FC061492A1B200A6237F /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		8B50FC071492A1B200A6237F /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.md; sourceTree = "<group>"; };
+		8B50FCB31492A1B400A6237F /* ofxTalky.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTalky.cpp; sourceTree = "<group>"; };
+		8B50FCB41492A1B400A6237F /* ofxTalky.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTalky.h; sourceTree = "<group>"; };
+		8B50FD171492A1E000A6237F /* TalkyBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TalkyBase.cpp; path = src/TalkyBase.cpp; sourceTree = "<group>"; };
+		8B50FD181492A1E000A6237F /* TalkyBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TalkyBase.h; path = src/TalkyBase.h; sourceTree = "<group>"; };
+		8B50FD191492A1E000A6237F /* TalkyBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TalkyBuffer.cpp; path = src/TalkyBuffer.cpp; sourceTree = "<group>"; };
+		8B50FD1A1492A1E000A6237F /* TalkyBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TalkyBuffer.h; path = src/TalkyBuffer.h; sourceTree = "<group>"; };
+		8B50FD1B1492A1E100A6237F /* TalkyMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TalkyMessage.cpp; path = src/TalkyMessage.cpp; sourceTree = "<group>"; };
+		8B50FD1C1492A1E200A6237F /* TalkyMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TalkyMessage.h; path = src/TalkyMessage.h; sourceTree = "<group>"; };
 		8B71A4631413C16700EA2D2C /* LongImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LongImage.cpp; path = ../Analyse/LongImage.cpp; sourceTree = "<group>"; };
 		8B71A4641413C16700EA2D2C /* LongImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LongImage.h; path = ../Analyse/LongImage.h; sourceTree = "<group>"; };
 		8B71A4681413C16700EA2D2C /* CorrelateMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CorrelateMain.cpp; sourceTree = "<group>"; };
@@ -407,15 +438,6 @@
 		8BDC9C8E141CA9300024EFD9 /* powerBases.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = powerBases.cpp; sourceTree = "<group>"; };
 		8BDC9C8F141CA9300024EFD9 /* powerBases.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = powerBases.h; sourceTree = "<group>"; };
 		8BDC9C9C141CAB5D0024EFD9 /* todo.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = todo.rtf; sourceTree = SOURCE_ROOT; };
-		8BF8017C141E22EC00916227 /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
-		8BF8017E141E22EC00916227 /* TalkyBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TalkyBase.cpp; sourceTree = "<group>"; };
-		8BF8017F141E22EC00916227 /* TalkyBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TalkyBase.h; sourceTree = "<group>"; };
-		8BF80180141E22EC00916227 /* TalkyBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TalkyBuffer.cpp; sourceTree = "<group>"; };
-		8BF80181141E22EC00916227 /* TalkyBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TalkyBuffer.h; sourceTree = "<group>"; };
-		8BF80182141E22EC00916227 /* TalkyMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TalkyMessage.cpp; sourceTree = "<group>"; };
-		8BF80183141E22EC00916227 /* TalkyMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TalkyMessage.h; sourceTree = "<group>"; };
-		8BF80228141E22ED00916227 /* ofxTalky.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTalky.cpp; sourceTree = "<group>"; };
-		8BF80229141E22ED00916227 /* ofxTalky.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTalky.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -515,6 +537,109 @@
 				8B50FBBE14923EB400A6237F /* ofxGrabCam.h */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		8B50FBDD14928ADC00A6237F /* ofxLevMar */ = {
+			isa = PBXGroup;
+			children = (
+				8B50FBE014928ADC00A6237F /* libs */,
+				8B50FBF114928ADC00A6237F /* readme.md */,
+				8B50FBF214928ADC00A6237F /* src */,
+			);
+			name = ofxLevMar;
+			path = ../../../addons/ofxLevMar;
+			sourceTree = "<group>";
+		};
+		8B50FBE014928ADC00A6237F /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				8B50FBE114928ADC00A6237F /* levmar */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		8B50FBE114928ADC00A6237F /* levmar */ = {
+			isa = PBXGroup;
+			children = (
+				8B50FBE214928ADC00A6237F /* src */,
+			);
+			path = levmar;
+			sourceTree = "<group>";
+		};
+		8B50FBE214928ADC00A6237F /* src */ = {
+			isa = PBXGroup;
+			children = (
+				8B50FBE314928ADC00A6237F /* Axb.c */,
+				8B50FBE514928ADC00A6237F /* compiler.h */,
+				8B50FBE614928ADC00A6237F /* levmar.h */,
+				8B50FBE714928ADC00A6237F /* lm.c */,
+				8B50FBE914928ADC00A6237F /* lmbc.c */,
+				8B50FBEB14928ADC00A6237F /* lmblec.c */,
+				8B50FBEC14928ADC00A6237F /* lmbleic.c */,
+				8B50FBED14928ADC00A6237F /* lmlec.c */,
+				8B50FBEE14928ADC00A6237F /* misc.c */,
+				8B50FBEF14928ADC00A6237F /* misc.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		8B50FBF214928ADC00A6237F /* src */ = {
+			isa = PBXGroup;
+			children = (
+				8B50FBF314928ADC00A6237F /* ofxLevMar.cpp */,
+				8B50FBF414928ADC00A6237F /* ofxLevMar.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		8B50FC011492A1B200A6237F /* ofxTalky */ = {
+			isa = PBXGroup;
+			children = (
+				8B50FC041492A1B200A6237F /* libs */,
+				8B50FCB11492A1B400A6237F /* src */,
+			);
+			name = ofxTalky;
+			path = ../../../addons/ofxTalky;
+			sourceTree = "<group>";
+		};
+		8B50FC041492A1B200A6237F /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				8B50FC051492A1B200A6237F /* Talky */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		8B50FC051492A1B200A6237F /* Talky */ = {
+			isa = PBXGroup;
+			children = (
+				8B50FD171492A1E000A6237F /* TalkyBase.cpp */,
+				8B50FD181492A1E000A6237F /* TalkyBase.h */,
+				8B50FD191492A1E000A6237F /* TalkyBuffer.cpp */,
+				8B50FD1A1492A1E000A6237F /* TalkyBuffer.h */,
+				8B50FD1B1492A1E100A6237F /* TalkyMessage.cpp */,
+				8B50FD1C1492A1E200A6237F /* TalkyMessage.h */,
+				8B50FC061492A1B200A6237F /* .gitignore */,
+				8B50FC071492A1B200A6237F /* readme.md */,
+			);
+			path = Talky;
+			sourceTree = "<group>";
+		};
+		8B50FCB11492A1B400A6237F /* src */ = {
+			isa = PBXGroup;
+			children = (
+				8B50FCB21492A1B400A6237F /* events */,
+				8B50FCB31492A1B400A6237F /* ofxTalky.cpp */,
+				8B50FCB41492A1B400A6237F /* ofxTalky.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		8B50FCB21492A1B400A6237F /* events */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = events;
 			sourceTree = "<group>";
 		};
 		8B71A45F1413C16700EA2D2C /* src */ = {
@@ -1187,72 +1312,16 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
-		8BF800E1141E22EB00916227 /* libs */ = {
-			isa = PBXGroup;
-			children = (
-				8BF800E2141E22EB00916227 /* Talky */,
-			);
-			path = libs;
-			sourceTree = "<group>";
-		};
-		8BF800E2141E22EB00916227 /* Talky */ = {
-			isa = PBXGroup;
-			children = (
-				8BF8017C141E22EC00916227 /* readme.txt */,
-				8BF8017D141E22EC00916227 /* src */,
-			);
-			path = Talky;
-			sourceTree = "<group>";
-		};
-		8BF8017D141E22EC00916227 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				8BF8017E141E22EC00916227 /* TalkyBase.cpp */,
-				8BF8017F141E22EC00916227 /* TalkyBase.h */,
-				8BF80180141E22EC00916227 /* TalkyBuffer.cpp */,
-				8BF80181141E22EC00916227 /* TalkyBuffer.h */,
-				8BF80182141E22EC00916227 /* TalkyMessage.cpp */,
-				8BF80183141E22EC00916227 /* TalkyMessage.h */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		8BF80226141E22ED00916227 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				8BF80227141E22ED00916227 /* events */,
-				8BF80228141E22ED00916227 /* ofxTalky.cpp */,
-				8BF80229141E22ED00916227 /* ofxTalky.h */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		8BF80227141E22ED00916227 /* events */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = events;
-			sourceTree = "<group>";
-		};
-		8BF8FEF4141E22E800916227 /* ofxTalky */ = {
-			isa = PBXGroup;
-			children = (
-				8BF800E1141E22EB00916227 /* libs */,
-				8BF80226141E22ED00916227 /* src */,
-			);
-			name = ofxTalky;
-			path = ../../../addons/ofxTalky;
-			sourceTree = "<group>";
-		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				8B50FBDD14928ADC00A6237F /* ofxLevMar */,
 				8B50FB7C14923EB400A6237F /* ofxGrabCam */,
 				8B9E7E21148FC5B6008884E1 /* ofxOpenCv */,
 				8B9E7D86148F3E6D008884E1 /* ofxCVgui */,
 				8B9E7B94148F3CDA008884E1 /* ofxCv */,
 				8B2CBF37148DEADF0083E0F0 /* ofxNetwork */,
-				8BF8FEF4141E22E800916227 /* ofxTalky */,
+				8B50FC011492A1B200A6237F /* ofxTalky */,
 				8BD3CDAA1417C4B600A755C2 /* ofxPolyfit */,
 				8B71A4BC1413C20C00EA2D2C /* ofxXmlSettings */,
 			);
@@ -1448,10 +1517,6 @@
 				8BDC9C95141CA9300024EFD9 /* polyNfit.cpp in Sources */,
 				8BDC9C96141CA9300024EFD9 /* powerBases.cpp in Sources */,
 				8BD584A8141CB7E600662019 /* ScanSet.cpp in Sources */,
-				8BF80234141E22ED00916227 /* TalkyBase.cpp in Sources */,
-				8BF80235141E22ED00916227 /* TalkyBuffer.cpp in Sources */,
-				8BF80236141E22ED00916227 /* TalkyMessage.cpp in Sources */,
-				8BF8027B141E22EE00916227 /* ofxTalky.cpp in Sources */,
 				8B2CBF46148DEADF0083E0F0 /* ofxTCPClient.cpp in Sources */,
 				8B2CBF47148DEADF0083E0F0 /* ofxTCPManager.cpp in Sources */,
 				8B2CBF48148DEADF0083E0F0 /* ofxTCPServer.cpp in Sources */,
@@ -1499,6 +1564,18 @@
 				8B9E7F6F148FC5B8008884E1 /* ofxCvImage.cpp in Sources */,
 				8B9E7F70148FC5B8008884E1 /* ofxCvShortImage.cpp in Sources */,
 				8B50FBD014923EB500A6237F /* ofxGrabCam.cpp in Sources */,
+				8B50FBF514928ADC00A6237F /* Axb.c in Sources */,
+				8B50FBF714928ADC00A6237F /* lm.c in Sources */,
+				8B50FBF914928ADC00A6237F /* lmbc.c in Sources */,
+				8B50FBFB14928ADC00A6237F /* lmblec.c in Sources */,
+				8B50FBFC14928ADC00A6237F /* lmbleic.c in Sources */,
+				8B50FBFD14928ADC00A6237F /* lmlec.c in Sources */,
+				8B50FBFE14928ADC00A6237F /* misc.c in Sources */,
+				8B50FC0014928ADC00A6237F /* ofxLevMar.cpp in Sources */,
+				8B50FD061492A1B400A6237F /* ofxTalky.cpp in Sources */,
+				8B50FD1D1492A1E300A6237F /* TalkyBase.cpp in Sources */,
+				8B50FD1E1492A1E300A6237F /* TalkyBuffer.cpp in Sources */,
+				8B50FD1F1492A1E300A6237F /* TalkyMessage.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1589,6 +1666,7 @@
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				HEADER_SEARCH_PATHS = (
+					../../../addons/ofxLevMar/libs/levmar/src,
 					../../../addons/ofxCv/libs/ofxCv/include/,
 					../../../addons/ofxOpenCv/libs/opencv/include/,
 					"$(OF_CORE_HEADERS)",
@@ -1740,6 +1818,7 @@
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				HEADER_SEARCH_PATHS = (
+					../../../addons/ofxLevMar/libs/levmar/src,
 					../../../addons/ofxCv/libs/ofxCv/include/,
 					../../../addons/ofxOpenCv/libs/opencv/include/,
 					"$(OF_CORE_HEADERS)",
