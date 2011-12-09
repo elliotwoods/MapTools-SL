@@ -22,7 +22,6 @@
 *.lib
 *.sbr
 *.sdf
-*.vsp
 *.opensdf
 ipch/
 obj/
