@@ -130,8 +130,8 @@ void ScanSet::save(string filename, bool thresholdBounds) {
     
     //write overall data
     
-    outFile << "3D";
-	outFile << blank; //we come back write this later
+    outFile << header;
+	outFile << blank; //we come back write this later (number of points selected)
 	outFile << width;
 	outFile << height;
 	outFile << lbf;
