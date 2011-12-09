@@ -17,7 +17,6 @@ string getAttribName(int iCam, int i, int j) {
 }
 
 void CorrelateRays::load() {
-	/*
 	FileStorage fs(ofToDataPath("transforms.xml"), FileStorage::READ);
 	
 	for (int iCam=0; iCam<2; iCam++)
@@ -42,12 +41,10 @@ void CorrelateRays::load() {
 	
 	calcMatrices();
 	loaded = true;
-	 */
 }
 									   
 void CorrelateRays::calcMatrices() {
-	/**HACK**/
-	/*
+
 	for (int iCam=0; iCam<2; iCam++)
 	{
 		Mat matCv = calibration[iCam].getUndistortedIntrinsics().getCameraMatrix();
@@ -90,7 +87,6 @@ void CorrelateRays::calcMatrices() {
 		///////////
 		
 	}
-	 */
 }
 
 void CorrelateRays::evaluate(const vector<CamPoint> &c, vector<ofVec3f> &w, float threshold) {
@@ -115,7 +111,7 @@ void CorrelateRays::evaluate(const vector<CamPoint> &c, vector<ofVec3f> &w, floa
 	}
 }
 
-void CorrelateRays::getRay(const CamPoint &c, int iCamera, Ray &r) const {
+void CorrelateRays::getRay(const CamPoint &c, int iCamera, Ray &r) {
 	ofVec3f dx;
 	
 	ofVec2f xyRaw;
@@ -123,8 +119,7 @@ void CorrelateRays::getRay(const CamPoint &c, int iCamera, Ray &r) const {
 	xyRaw.y = c.xy[iCamera].y * height;
 
 	ofVec2f xy;
-	/**HACK**/
-	//xy = calibration[iCamera].undistort(xyRaw);
+	xy = calibration[iCamera].undistort(xyRaw);
 	
 	xy.x = xy.x * focalX[iCamera] + principalX[iCamera];
 	xy.y = xy.y * focalY[iCamera] + principalY[iCamera];  

@@ -10,7 +10,7 @@
 			<interleave width="1" height="1" />
 			<errorcheck nFrames="0" />
 	</encoding>
-    
+		
 	<decoding>
 		<!--cameras width="2592" height="1944">
 			gain="40" exposure="128" delay="40" /-->
@@ -24,9 +24,9 @@
 			<!--camera id="1" /-->
 		</cameras>
 
-        <data sdev="0" />
+				<data sdev="0" />
 		<threshold percentile="0.7" />
-        <PCPixel maxPixelMoveSquared="100" />
+				<PCPixel maxPixelMoveSquared="100" />
 	</decoding>
 	
 	<logging on="1" />

@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="MapToolsSL" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin\Debug\MapToolsSL" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj\Debug\" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="..\..\..\..\libs\openFrameworks" />
+					<Add directory="..\..\..\..\libs\openFrameworks\3d" />
+					<Add directory="..\..\..\..\libs\openFrameworks\app" />
+					<Add directory="..\..\..\..\libs\openFrameworks\communication" />
+					<Add directory="..\..\..\..\libs\openFrameworks\events" />
+					<Add directory="..\..\..\..\libs\openFrameworks\gl" />
+					<Add directory="..\..\..\..\libs\openFrameworks\graphics" />
+					<Add directory="..\..\..\..\libs\openFrameworks\math" />
+					<Add directory="..\..\..\..\libs\openFrameworks\sound" />
+					<Add directory="..\..\..\..\libs\openFrameworks\types" />
+					<Add directory="..\..\..\..\libs\openFrameworks\utils" />
+					<Add directory="..\..\..\..\libs\openFrameworks\video" />
+					<Add directory="..\..\..\..\libs\glew\include" />
+					<Add directory="..\..\..\..\libs\glu\include" />
+					<Add directory="..\..\..\..\libs\glut\include" />
+					<Add directory="..\..\..\..\libs\cairo\include" />
+					<Add directory="..\..\..\..\libs\cairo\include\cairo" />
+					<Add directory="..\..\..\..\libs\FreeImage\include" />
+					<Add directory="..\..\..\..\libs\fmodex\include" />
+					<Add directory="..\..\..\..\libs\freetype\include" />
+					<Add directory="..\..\..\..\libs\poco\include" />
+					<Add directory="..\..\..\..\libs\quicktime\include" />
+					<Add directory="..\..\..\..\libs\tess2\include" />
+					<Add directory="..\..\..\..\libs\videoInput\include" />
+					<Add directory="..\..\..\..\addons\ofxCVgui\src" />
+					<Add directory="..\..\..\..\addons\ofxCVgui\src\include" />
+					<Add directory="..\..\..\..\addons\ofxCVgui\src\screens" />
+					<Add directory="..\..\..\..\addons\ofxCVgui\src\screens\Groups" />
+					<Add directory="..\..\..\..\addons\ofxCVgui\src\widgets" />
+					<Add directory="..\..\..\..\addons\ofxCVgui\src\histograms" />
+					<Add directory="..\..\..\..\addons\ofxCv\src" />
+					<Add directory="..\..\..\..\addons\ofxCv\libs\ofxCv\include" />
+					<Add directory="..\..\..\..\addons\ofxOpenCV\libs\opencv\include" />
+					<Add directory="..\..\..\..\addons\ofxNetwork\src" />
+					<Add directory="..\..\..\..\addons\ofxTalky\libs\Talky\src" />
+					<Add directory="..\..\..\..\addons\ofxTalky\src" />
+					<Add directory="..\..\..\..\addons\ofxPolyfit\src" />
+					<Add directory="..\..\..\..\addons\ofxPolyfit\libs\polyNfit\src" />
+					<Add directory="..\..\..\..\addons\ofxPolyfit\libs\polyNfit\src\Data" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin\Release\MapToolsSL" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj\Release\" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\histograms\Histogram.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\histograms\Histogram.h" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\include\GUIAssets.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\include\GUIAssets.h" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\include\GUIConstants.h" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\include\GUIDesigner.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\include\GUIDesigner.h" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\include\GUIGlobal.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\include\GUIGlobal.h" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\include\btnBase.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\include\btnBase.h" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\ofxCVgui.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\ofxCVgui.h" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\screens\Groups\scrGroupBase.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\screens\Groups\scrGroupBase.h" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\screens\Groups\scrGroupGrid.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\screens\Groups\scrGroupGrid.h" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\screens\Groups\scrGroupSwap.h" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\screens\Groups\scrGroupTabbed.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\screens\Groups\scrGroupTabbed.h" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\screens\scrBase.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\screens\scrBase.h" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\screens\scrDraw2D.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\screens\scrDraw2D.h" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\screens\scrDraw3D.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\screens\scrDraw3D.h" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\screens\scrFileSelect.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\screens\scrFileSelect.h" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\screens\scrHistograms.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\screens\scrHistograms.h" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\screens\scrPointCloud.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\screens\scrPointCloud.h" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\screens\scrVbo.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\screens\scrVbo.h" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\screens\scrViewport.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\screens\scrViewport.h" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\screens\scrWidgets.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\screens\scrWidgets.h" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\screens\screens.h" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\widgets\wdgBase.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\widgets\wdgBase.h" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\widgets\wdgButton.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\widgets\wdgButton.h" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\widgets\wdgColour.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\widgets\wdgColour.h" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\widgets\wdgCounter.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\widgets\wdgCounter.h" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\widgets\wdgFPS.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\widgets\wdgFPS.h" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\widgets\wdgHistogram.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\widgets\wdgHistogram.h" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\widgets\wdgSlider.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\widgets\wdgSlider.h" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\widgets\wdgTransform.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\widgets\wdgTransform.h" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\widgets\wdgXYZ.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\widgets\wdgXYZ.h" />
+		<Unit filename="..\..\..\..\addons\ofxCVgui\src\widgets\widgets.h" />
+		<Unit filename="..\..\..\..\addons\ofxCv\libs\ofxCv\include\ofxCv\Calibration.h" />
+		<Unit filename="..\..\..\..\addons\ofxCv\libs\ofxCv\include\ofxCv\ContourFinder.h" />
+		<Unit filename="..\..\..\..\addons\ofxCv\libs\ofxCv\include\ofxCv\Distance.h" />
+		<Unit filename="..\..\..\..\addons\ofxCv\libs\ofxCv\include\ofxCv\Helpers.h" />
+		<Unit filename="..\..\..\..\addons\ofxCv\libs\ofxCv\include\ofxCv\Tracker.h" />
+		<Unit filename="..\..\..\..\addons\ofxCv\libs\ofxCv\include\ofxCv\Utilities.h" />
+		<Unit filename="..\..\..\..\addons\ofxCv\libs\ofxCv\include\ofxCv\Wrappers.h" />
+		<Unit filename="..\..\..\..\addons\ofxCv\libs\ofxCv\src\Calibration.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxCv\libs\ofxCv\src\ContourFinder.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxCv\libs\ofxCv\src\Distance.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxCv\libs\ofxCv\src\Helpers.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxCv\libs\ofxCv\src\Tracker.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxCv\libs\ofxCv\src\Utilities.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxCv\libs\ofxCv\src\Wrappers.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxNetwork\src\ofxNetwork.h" />
+		<Unit filename="..\..\..\..\addons\ofxNetwork\src\ofxNetworkUtils.h" />
+		<Unit filename="..\..\..\..\addons\ofxNetwork\src\ofxTCPClient.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxNetwork\src\ofxTCPClient.h" />
+		<Unit filename="..\..\..\..\addons\ofxNetwork\src\ofxTCPManager.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxNetwork\src\ofxTCPManager.h" />
+		<Unit filename="..\..\..\..\addons\ofxNetwork\src\ofxTCPServer.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxNetwork\src\ofxTCPServer.h" />
+		<Unit filename="..\..\..\..\addons\ofxNetwork\src\ofxUDPManager.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxNetwork\src\ofxUDPManager.h" />
+		<Unit filename="..\..\..\..\addons\ofxPolyfit\libs\polyNfit\src\Data\pfitBasis.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxPolyfit\libs\polyNfit\src\Data\pfitBasis.h" />
+		<Unit filename="..\..\..\..\addons\ofxPolyfit\libs\polyNfit\src\Data\pfitDataSet.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxPolyfit\libs\polyNfit\src\Data\pfitDataSet.h" />
+		<Unit filename="..\..\..\..\addons\ofxPolyfit\libs\polyNfit\src\FitBase.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxPolyfit\libs\polyNfit\src\FitBase.h" />
+		<Unit filename="..\..\..\..\addons\ofxPolyfit\libs\polyNfit\src\basisTransformIndices.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxPolyfit\libs\polyNfit\src\basisTransformIndices.h" />
+		<Unit filename="..\..\..\..\addons\ofxPolyfit\libs\polyNfit\src\matrix.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxPolyfit\libs\polyNfit\src\matrix.h" />
+		<Unit filename="..\..\..\..\addons\ofxPolyfit\libs\polyNfit\src\polyNfit.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxPolyfit\libs\polyNfit\src\polyNfit.h" />
+		<Unit filename="..\..\..\..\addons\ofxPolyfit\libs\polyNfit\src\powerBases.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxPolyfit\libs\polyNfit\src\powerBases.h" />
+		<Unit filename="..\..\..\..\addons\ofxTalky\libs\Talky\src\TalkyBase.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxTalky\libs\Talky\src\TalkyBase.h" />
+		<Unit filename="..\..\..\..\addons\ofxTalky\libs\Talky\src\TalkyBuffer.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxTalky\libs\Talky\src\TalkyBuffer.h" />
+		<Unit filename="..\..\..\..\addons\ofxTalky\libs\Talky\src\TalkyException.h" />
+		<Unit filename="..\..\..\..\addons\ofxTalky\libs\Talky\src\TalkyMessage.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxTalky\libs\Talky\src\TalkyMessage.h" />
+		<Unit filename="..\..\..\..\addons\ofxTalky\src\ofxTalky.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxTalky\src\ofxTalky.h" />
+		<Unit filename="..\src\Analyse\AssembleScans.cpp" />
+		<Unit filename="..\src\Analyse\AssembleScans.h" />
+		<Unit filename="..\src\Analyse\LongImage.cpp" />
+		<Unit filename="..\src\Analyse\LongImage.h" />
+		<Unit filename="..\src\Analyse\RANSACFilter.cpp" />
+		<Unit filename="..\src\Analyse\RANSACFilter.h" />
+		<Unit filename="..\src\Analyse\ScanSet\ScanSet.cpp" />
+		<Unit filename="..\src\Analyse\ScanSet\ScanSet.h" />
+		<Unit filename="..\src\Correlate\CorrelateMain.cpp" />
+		<Unit filename="..\src\Correlate\CorrelateMain.h" />
+		<Unit filename="..\src\Correlate\CorrelateRays.cpp" />
+		<Unit filename="..\src\Correlate\CorrelateRays.h" />
+		<Unit filename="..\src\Correlate\scrSelectBounds.cpp" />
+		<Unit filename="..\src\Correlate\scrSelectBounds.h" />
+		<Unit filename="..\src\PCApp.cpp" />
+		<Unit filename="..\src\PCApp.h" />
+		<Unit filename="..\src\Scanner\Camera\CameraBase.cpp" />
+		<Unit filename="..\src\Scanner\Camera\CameraBase.h" />
+		<Unit filename="..\src\Scanner\Camera\CameraDefault.cpp" />
+		<Unit filename="..\src\Scanner\Camera\CameraDefault.h" />
+		<Unit filename="..\src\Scanner\Camera\CameraEdsdk.cpp" />
+		<Unit filename="..\src\Scanner\Camera\CameraEdsdk.h" />
+		<Unit filename="..\src\Scanner\Camera\CameraTheosVideoInput.cpp" />
+		<Unit filename="..\src\Scanner\Camera\CameraTheosVideoInput.h" />
+		<Unit filename="..\src\Scanner\PCConfig.cpp" />
+		<Unit filename="..\src\Scanner\PCConfig.h" />
+		<Unit filename="..\src\Scanner\PCDecode.cpp" />
+		<Unit filename="..\src\Scanner\PCDecode.h" />
+		<Unit filename="..\src\Scanner\PCEncode.cpp" />
+		<Unit filename="..\src\Scanner\PCEncode.h" />
+		<Unit filename="..\src\Scanner\PCLogger.cpp" />
+		<Unit filename="..\src\Scanner\PCLogger.h" />
+		<Unit filename="..\src\Scanner\PCManager.cpp" />
+		<Unit filename="..\src\Scanner\PCManager.h" />
+		<Unit filename="..\src\Scanner\PCPixel.cpp" />
+		<Unit filename="..\src\Scanner\PCPixel.h" />
+		<Unit filename="..\src\Scanner\PCconstants.h" />
+		<Unit filename="..\src\Scanner\PCincludes.h" />
+		<Unit filename="..\src\Scanner\Payloads\PayloadBase.cpp" />
+		<Unit filename="..\src\Scanner\Payloads\PayloadBase.h" />
+		<Unit filename="..\src\Scanner\Payloads\PayloadBinary.cpp" />
+		<Unit filename="..\src\Scanner\Payloads\PayloadBinary.h" />
+		<Unit filename="..\src\Scanner\Payloads\PayloadGraycode.cpp" />
+		<Unit filename="..\src\Scanner\Payloads\PayloadGraycode.h" />
+		<Unit filename="..\src\Scanner\SubScans\SubScanBase.cpp" />
+		<Unit filename="..\src\Scanner\SubScans\SubScanBase.h" />
+		<Unit filename="..\src\Scanner\SubScans\SubScanBasic.cpp" />
+		<Unit filename="..\src\Scanner\SubScans\SubScanBasic.h" />
+		<Unit filename="..\src\Scanner\SubScans\SubScanInterleave.cpp" />
+		<Unit filename="..\src\Scanner\SubScans\SubScanInterleave.h" />
+		<Unit filename="..\src\Scanner\SubScans\SubScanSet.cpp" />
+		<Unit filename="..\src\Scanner\SubScans\SubScanSet.h" />
+		<Unit filename="..\src\main.cpp" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

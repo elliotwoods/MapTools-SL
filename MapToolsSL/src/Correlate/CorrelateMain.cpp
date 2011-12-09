@@ -237,10 +237,6 @@ void CorrelateMain::loadData()
 			break;
 		}
 	
-	
-	//clear test set window
-	scrWorldSpace.setWith(&dataWorldSpace[0].x, 0);
-	
 	bangEvaluate->enabled=true;
 }
 
