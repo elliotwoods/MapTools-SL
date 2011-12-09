@@ -47,11 +47,22 @@
 					<Add directory="..\..\..\..\addons\ofxCv\libs\ofxCv\include" />
 					<Add directory="..\..\..\..\addons\ofxOpenCV\libs\opencv\include" />
 					<Add directory="..\..\..\..\addons\ofxNetwork\src" />
+					<Add directory="..\..\..\..\addons\ofxXmlSettings\src" />
+					<Add directory="..\..\..\..\addons\ofxXmlSettings\libs" />
 					<Add directory="..\..\..\..\addons\ofxTalky\libs\Talky\src" />
 					<Add directory="..\..\..\..\addons\ofxTalky\src" />
 					<Add directory="..\..\..\..\addons\ofxPolyfit\src" />
 					<Add directory="..\..\..\..\addons\ofxPolyfit\libs\polyNfit\src" />
 					<Add directory="..\..\..\..\addons\ofxPolyfit\libs\polyNfit\src\Data" />
+					<Add directory="..\src" />
+					<Add directory="..\src\Analyse" />
+					<Add directory="..\src\Analyse\ScanSet" />
+					<Add directory="..\src\Correlate" />
+					<Add directory="..\src\Scanner" />
+					<Add directory="..\src\Scanner\Camera" />
+					<Add directory="..\src\Scanner\Payloads" />
+					<Add directory="..\src\Scanner\SubScans" />
+					<Add directory="..\..\CommonIncludes" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -175,6 +186,12 @@
 		<Unit filename="..\..\..\..\addons\ofxTalky\libs\Talky\src\TalkyMessage.h" />
 		<Unit filename="..\..\..\..\addons\ofxTalky\src\ofxTalky.cpp" />
 		<Unit filename="..\..\..\..\addons\ofxTalky\src\ofxTalky.h" />
+		<Unit filename="..\..\..\..\addons\ofxXmlSettings\libs\tinyxml.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxXmlSettings\libs\tinyxml.h" />
+		<Unit filename="..\..\..\..\addons\ofxXmlSettings\libs\tinyxmlerror.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxXmlSettings\libs\tinyxmlparser.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.h" />
 		<Unit filename="..\src\Analyse\AssembleScans.cpp" />
 		<Unit filename="..\src\Analyse\AssembleScans.h" />
 		<Unit filename="..\src\Analyse\LongImage.cpp" />

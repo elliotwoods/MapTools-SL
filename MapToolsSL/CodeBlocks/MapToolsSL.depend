@@ -1714,7 +1714,7 @@
 	<algorithm>
 	<windows.h>
 
-1323416485 c:\openframeworks\openframeworks\addons\ofxtalky\libs\talky\src\talkymessage.h
+1323428696 c:\openframeworks\openframeworks\addons\ofxtalky\libs\talky\src\talkymessage.h
 	<ctime>
 	<string>
 	<sstream>
@@ -1817,4 +1817,303 @@
 
 1323415400 source:c:\openframeworks\openframeworks\addons\ofxpolyfit\libs\polynfit\src\powerbases.cpp
 	"powerBases.h"
+
+1323417887 source:c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\analyse\assemblescans.cpp
+	"AssembleScans.h"
+
+1323410487 c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\analyse\assemblescans.h
+	"ofxCVgui.h"
+	"ofxPolyFit.h"
+	"ScanSet.h"
+
+1323415400 c:\openframeworks\openframeworks\addons\ofxpolyfit\src\ofxpolyfit.h
+	"ofMain.h"
+	<fstream>
+	<set>
+	"polyNfit.h"
+
+1323410483 c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\analyse\scanset\scanset.h
+	"ofMain.h"
+	"ofxTalky.h"
+
+1323410487 source:c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\analyse\longimage.cpp
+	"LongImage.h"
+
+1323410487 c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\analyse\longimage.h
+	"ofxCVgui.h"
+
+1323410487 source:c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\analyse\ransacfilter.cpp
+	"RANSACFilter.h"
+
+1323410487 c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\analyse\ransacfilter.h
+	"ofxCVgui.h"
+	"ofxPolyFit.h"
+	"ScanSet.h"
+
+1323410483 source:c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\analyse\scanset\scanset.cpp
+	"ScanSet.h"
+
+1323421152 source:c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\correlate\correlatemain.cpp
+	"CorrelateMain.h"
+
+1323410487 c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\correlate\correlatemain.h
+	"ofMain.h"
+	"ofxCVgui.h"
+	"scrSelectBounds.h"
+	"CorrelateRays.h"
+	<fstream>
+	<iostream>
+
+1323410487 c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\correlate\scrselectbounds.h
+	"scrPointCloud.h"
+
+1323427752 c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\correlate\correlaterays.h
+	"ofxCv/Calibration.h"
+	"Ray.h"
+
+1323425105 c:\openframeworks\openframeworks\apps\maptools-sl\commonincludes\ray.h
+	"ofMain.h"
+
+1323427752 source:c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\correlate\correlaterays.cpp
+	"CorrelateRays.h"
+
+1323410487 source:c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\correlate\scrselectbounds.cpp
+	"scrSelectBounds.h"
+
+1322667494 source:c:\openframeworks\openframeworks\addons\ofxxmlsettings\libs\tinyxml.cpp
+	<ctype.h>
+	<sstream>
+	<iostream>
+	"tinyxml.h"
+
+1322667494 c:\openframeworks\openframeworks\addons\ofxxmlsettings\libs\tinyxml.h
+	<ctype.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	<string>
+	<iostream>
+	<sstream>
+	"tinystr.h"
+
+1322667494 source:c:\openframeworks\openframeworks\addons\ofxxmlsettings\libs\tinyxmlerror.cpp
+	"tinyxml.h"
+
+1322667494 source:c:\openframeworks\openframeworks\addons\ofxxmlsettings\libs\tinyxmlparser.cpp
+	<ctype.h>
+	<stddef.h>
+	"tinyxml.h"
+	<windows.h>
+
+1323420418 source:c:\openframeworks\openframeworks\addons\ofxxmlsettings\src\ofxxmlsettings.cpp
+	"ofxXmlSettings.h"
+	<vector>
+	<string>
+	<iostream>
+
+1322667494 c:\openframeworks\openframeworks\addons\ofxxmlsettings\src\ofxxmlsettings.h
+	"ofMain.h"
+	<string.h>
+	"tinyxml.h"
+
+1323410487 source:c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\pcapp.cpp
+	"PCApp.h"
+	<cmath>
+
+1323410487 c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\pcapp.h
+	"ofMain.h"
+	"ofxCVgui.h"
+	"PCconstants.h"
+	"PCManager.h"
+	"CorrelateMain.h"
+	"AssembleScans.h"
+
+1323410487 c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\scanner\pcconstants.h
+
+1323410487 c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\scanner\pcmanager.h
+	"ofMain.h"
+	"PCEncode.h"
+	"PCLogger.h"
+	"PCDecode.h"
+	"SubScanSet.h"
+	"SubScanBasic.h"
+	"PayloadGraycode.h"
+	"PayloadBinary.h"
+	"ofxCVgui.h"
+	"CameraDefault.h"
+	"CameraTheosVideoInput.h"
+	"CameraEdsdk.h"
+
+1323410487 c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\scanner\pcencode.h
+	"ofMain.h"
+	"ofxCvGui.h"
+	"PCconstants.h"
+	"PCConfig.h"
+	"PayloadBase.h"
+
+1323410487 c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\scanner\pcconfig.h
+	"PCconstants.h"
+	"ofxXmlSettings.h"
+
+1323410487 c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\scanner\payloads\payloadbase.h
+	<cmath>
+	"PCConfig.h"
+
+1323410487 c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\scanner\pclogger.h
+	"PCconstants.h"
+	"PCConfig.h"
+	"PCEncode.h"
+	"PCDecode.h"
+	"ofMain.h"
+	<ctime>
+	<iostream>
+	<fstream>
+
+1323410487 c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\scanner\pcdecode.h
+	"CameraBase.h"
+	"PCconstants.h"
+	"PCConfig.h"
+	"ofMain.h"
+	"PCEncode.h"
+	"ofxCVgui.h"
+	"PCPixel.h"
+	"PayloadBase.h"
+	"SubScanSet.h"
+	<algorithm>
+
+1323410483 c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\scanner\camera\camerabase.h
+	"PCConfig.h"
+
+1323410487 c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\scanner\pcpixel.h
+	"PCconstants.h"
+	"PCConfig.h"
+	"ofMain.h"
+	<math.h>
+
+1323410487 c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\scanner\subscans\subscanset.h
+	"SubScanBase.h"
+	"SubScanBasic.h"
+	"SubScanInterleave.h"
+
+1323410487 c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\scanner\subscans\subscanbase.h
+	"ofMain.h"
+	"PCConfig.h"
+	"ofxCVGui.h"
+	"PayloadBase.h"
+	"PCPixel.h"
+	"CameraBase.h"
+	<sstream>
+
+1323410487 c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\scanner\subscans\subscanbasic.h
+	"SubScanBase.h"
+
+1323410487 c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\scanner\subscans\subscaninterleave.h
+	"SubScanBase.h"
+
+1323410487 c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\scanner\payloads\payloadgraycode.h
+	"PayloadBase.h"
+	"ofMain.h"
+
+1323410487 c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\scanner\payloads\payloadbinary.h
+	"PayloadBase.h"
+	"ofMain.h"
+
+1323410487 c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\scanner\camera\cameradefault.h
+	"CameraBase.h"
+
+1323410487 c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\scanner\camera\cameratheosvideoinput.h
+	"ofMain.h"
+	"CameraBase.h"
+	"videoInput.h"
+
+1323410483 c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\scanner\camera\cameraedsdk.h
+	"ofxEdsdk.h"
+	"ofxCv.h"
+	"CameraBase.h"
+
+1323328044 c:\openframeworks\openframeworks\addons\ofxcv\src\ofxcv.h
+	"opencv2/opencv.hpp"
+	"ofxCv/Utilities.h"
+	"ofxCv/Wrappers.h"
+	"ofxCv/Helpers.h"
+	"ofxCv/Distance.h"
+	"ofxCv/Calibration.h"
+	"ofxCv/ContourFinder.h"
+	"ofxCv/Tracker.h"
+	"ofxCv/RunningBackground.h"
+
+1323426027 c:\openframeworks\openframeworks\addons\ofxcv\libs\ofxcv\include\ofxcv\runningbackground.h
+	"ofxCv/Utilities.h"
+	"opencv2/opencv.hpp"
+	"ofMain.h"
+
+1323410483 source:c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\scanner\camera\camerabase.cpp
+	"CameraBase.h"
+
+1323410487 source:c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\scanner\camera\cameradefault.cpp
+	"CameraDefault.h"
+
+1323410483 source:c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\scanner\camera\cameraedsdk.cpp
+	"CameraEdsdk.h"
+
+1323410483 source:c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\scanner\camera\cameratheosvideoinput.cpp
+	"CameraTheosVideoInput.h"
+
+1323419911 source:c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\scanner\pcconfig.cpp
+	"PCConfig.h"
+
+1323410487 source:c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\scanner\pcdecode.cpp
+	"PCDecode.h"
+
+1323410487 source:c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\scanner\pcencode.cpp
+	"PCEncode.h"
+
+1323410487 source:c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\scanner\pclogger.cpp
+	"PCLogger.h"
+
+1323410487 source:c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\scanner\pcmanager.cpp
+	"PCManager.h"
+
+1323410487 source:c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\scanner\pcpixel.cpp
+	"PCPixel.h"
+
+1323410487 source:c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\scanner\payloads\payloadbase.cpp
+	"PayloadBase.h"
+
+1323410487 source:c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\scanner\payloads\payloadbinary.cpp
+	"PayloadBinary.h"
+
+1323410487 source:c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\scanner\payloads\payloadgraycode.cpp
+	"PayloadGraycode.h"
+
+1323410487 source:c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\scanner\subscans\subscanbase.cpp
+	"SubScanBase.h"
+
+1323410487 source:c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\scanner\subscans\subscanbasic.cpp
+	"SubScanBasic.h"
+
+1323410487 source:c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\scanner\subscans\subscaninterleave.cpp
+	"SubScanInterleave.h"
+
+1323410487 source:c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\scanner\subscans\subscanset.cpp
+	"SubScanSet.h"
+
+1323410487 source:c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\main.cpp
+	"ofMain.h"
+	"ofVideoGrabber.h"
+	"ofAppGlutWindow.h"
+	"PCApp.h"
+	"PCconstants.h"
+	"GUIConstants.h"
+
+1322667498 c:\openframeworks\openframeworks\libs\openframeworks\app\ofappglutwindow.h
+	"ofConstants.h"
+	"ofAppBaseWindow.h"
+	"ofEvents.h"
+	"ofTypes.h"
+
+1322667498 c:\openframeworks\openframeworks\libs\openframeworks\app\ofappbasewindow.h
+	"ofPoint.h"
+	"ofTypes.h"
 

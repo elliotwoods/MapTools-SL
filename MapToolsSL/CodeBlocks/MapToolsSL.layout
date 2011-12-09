@@ -1,37 +1,49 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="..\..\..\..\addons\ofxCVgui\src\histograms\Histogram.h" open="1" top="0" tabpos="1">
+	<File name="..\..\..\..\addons\ofxCVgui\src\histograms\Histogram.h" open="1" top="0" tabpos="2">
 		<Cursor position="472" topLine="0" />
 	</File>
-	<File name="..\..\..\..\addons\ofxCVgui\src\screens\scrBase.h" open="1" top="0" tabpos="2">
+	<File name="..\..\..\..\addons\ofxCVgui\src\screens\scrBase.h" open="1" top="0" tabpos="3">
 		<Cursor position="211" topLine="0" />
 	</File>
-	<File name="..\..\..\..\addons\ofxCv\libs\ofxCv\include\ofxCv\Calibration.h" open="1" top="0" tabpos="4">
+	<File name="..\..\..\..\addons\ofxCv\libs\ofxCv\include\ofxCv\Calibration.h" open="1" top="0" tabpos="5">
 		<Cursor position="802" topLine="2" />
 	</File>
-	<File name="..\..\..\..\addons\ofxCv\libs\ofxCv\include\ofxCv\Helpers.h" open="1" top="0" tabpos="5">
+	<File name="..\..\..\..\addons\ofxCv\libs\ofxCv\include\ofxCv\Helpers.h" open="1" top="0" tabpos="6">
 		<Cursor position="398" topLine="0" />
 	</File>
-	<File name="..\..\..\..\addons\ofxCv\libs\ofxCv\src\Calibration.cpp" open="1" top="0" tabpos="3">
+	<File name="..\..\..\..\addons\ofxCv\libs\ofxCv\src\Calibration.cpp" open="1" top="0" tabpos="4">
 		<Cursor position="933" topLine="0" />
 	</File>
-	<File name="..\..\..\..\addons\ofxPolyfit\libs\polyNfit\src\Data\pfitDataSet.cpp" open="1" top="0" tabpos="10">
+	<File name="..\..\..\..\addons\ofxPolyfit\libs\polyNfit\src\Data\pfitDataSet.cpp" open="1" top="0" tabpos="11">
 		<Cursor position="8295" topLine="291" />
 	</File>
-	<File name="..\..\..\..\addons\ofxPolyfit\libs\polyNfit\src\Data\pfitDataSet.h" open="1" top="0" tabpos="11">
-		<Cursor position="171" topLine="0" />
+	<File name="..\..\..\..\addons\ofxPolyfit\libs\polyNfit\src\Data\pfitDataSet.h" open="1" top="0" tabpos="12">
+		<Cursor position="743" topLine="0" />
 	</File>
-	<File name="..\..\..\..\addons\ofxTalky\libs\Talky\src\TalkyBase.cpp" open="1" top="0" tabpos="6">
+	<File name="..\..\..\..\addons\ofxTalky\libs\Talky\src\TalkyBase.cpp" open="1" top="0" tabpos="7">
 		<Cursor position="6158" topLine="299" />
 	</File>
-	<File name="..\..\..\..\addons\ofxTalky\libs\Talky\src\TalkyBuffer.cpp" open="1" top="0" tabpos="8">
+	<File name="..\..\..\..\addons\ofxTalky\libs\Talky\src\TalkyBuffer.cpp" open="1" top="0" tabpos="9">
 		<Cursor position="1805" topLine="73" />
 	</File>
-	<File name="..\..\..\..\addons\ofxTalky\libs\Talky\src\TalkyBuffer.h" open="1" top="0" tabpos="7">
+	<File name="..\..\..\..\addons\ofxTalky\libs\Talky\src\TalkyBuffer.h" open="1" top="0" tabpos="8">
 		<Cursor position="199" topLine="0" />
 	</File>
-	<File name="..\..\..\..\addons\ofxTalky\src\ofxTalky.h" open="1" top="0" tabpos="9">
+	<File name="..\..\..\..\addons\ofxTalky\src\ofxTalky.h" open="1" top="0" tabpos="10">
 		<Cursor position="178" topLine="0" />
+	</File>
+	<File name="..\..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.h" open="1" top="1" tabpos="16">
+		<Cursor position="100" topLine="0" />
+	</File>
+	<File name="..\src\Analyse\AssembleScans.h" open="1" top="0" tabpos="13">
+		<Cursor position="227" topLine="0" />
+	</File>
+	<File name="..\src\Correlate\CorrelateRays.h" open="1" top="0" tabpos="14">
+		<Cursor position="203" topLine="0" />
+	</File>
+	<File name="..\src\Scanner\PCConfig.h" open="1" top="0" tabpos="15">
+		<Cursor position="235" topLine="0" />
 	</File>
 </CodeBlocks_layout_file>

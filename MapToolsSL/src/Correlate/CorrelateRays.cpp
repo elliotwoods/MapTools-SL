@@ -25,7 +25,7 @@ void CorrelateRays::load() {
 			for (int j=0; j<4; ++j)
 				fs[getAttribName(iCam,i,j)] >> matPosRotFromXtoOther[iCam](i, j);
 		
-		calibration[iCam].load("calib-" + ofToString(iCam) + ".yml");
+		calibration[iCam].load("calib-" + ofToString(iCam) + ".yml", true);
 		
 		Mat cam = calibration[iCam].getUndistortedIntrinsics().getCameraMatrix();
 		focalX[iCam] = cam.at<double>(0,0);
