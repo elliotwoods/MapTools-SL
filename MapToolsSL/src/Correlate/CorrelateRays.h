@@ -10,6 +10,7 @@
 #include "ofxCv/Calibration.h"
 
 #include "Ray.h"
+#include "ScanSet.h"
 
 #define CV_SCALE_FACTOR 100.0f
 
@@ -27,7 +28,7 @@ public:
 	void	load();
 	
 	void	evaluate(const vector<CamPoint> &c, vector<ofVec3f> &w, float threshold=0.05); 
-	
+	void	evaluate(const vector<CamPoint> &c, ScanSet &s, float threshold=0.05);
 	void	getRay(const CamPoint &c, int iCamera, Ray& r);
 	
 	Calibration		calibration[2];

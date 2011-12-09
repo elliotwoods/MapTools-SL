@@ -111,6 +111,25 @@ void CorrelateRays::evaluate(const vector<CamPoint> &c, vector<ofVec3f> &w, floa
 	}
 }
 
+void CorrelateRays::evaluate(const vector<CamPoint> &c, ScanSet &s, float threshold) {
+	int nPoints = c.size();
+	
+	Ray r1, r2, intersect;
+	ofVec3f midpoint;
+	ofVec3f *w = s.xyz;
+
+	for (int i=0; i<nPoints; ++i) {
+		getRay(c[i], 0, r1);
+		getRay(c[i], 1, r2);
+		intersect = r1.intersect(r2);
+
+		if (intersect.getLength() > threshold * CV_SCALE_FACTOR)
+			w[i].x = w[i].y = w[i].z = 0.0f;
+		else
+			w[i] = intersect.getMidpoint() / CV_SCALE_FACTOR;
+	}
+}
+
 void CorrelateRays::getRay(const CamPoint &c, int iCamera, Ray &r) {
 	ofVec3f dx;
 	

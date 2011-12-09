@@ -50,7 +50,8 @@ longImageCount(0)
 	bangLoadCalibration = new wdgButton("Load calibration");
 	bangEvaluate = new wdgButton("Reproject points");
 	
-	bangSave3DScan = new wdgButton("Save projection space XYZ");
+	bangSave3DScan = new wdgButton("Save scan");
+	bangSaveMap = new wdgButton("Save map");
 	bangAddToImage = new wdgButton("Add current projector to Image");
     wdgCounter *counterNProjectors = new wdgCounter("Projectors in Long Image", longImageCount);
 	bangSaveImage = new wdgButton("Save image");
@@ -67,6 +68,7 @@ longImageCount(0)
     scrControl.push(wdgLBF);
     scrControl.push(wdgRTB);
 	scrControl.push(bangSave3DScan);
+	scrControl.push(bangSaveMap);
     scrControl.push(bangAddToImage);
     scrControl.push(counterNProjectors);
     scrControl.push(bangSaveImage);
@@ -99,7 +101,10 @@ void CorrelateMain::update()
 	}
 	
 	if (bangSave3DScan->getBang())
-		save3DScan();
+		saveScan();
+
+	if (bangSaveMap->getBang())
+		saveMap();
     
     if (bangAddToImage->getBang())
         addToImage();
@@ -142,7 +147,7 @@ void CorrelateMain::loadData()
 			///////////////////////////////
 			//
 			thisFilename = ofToDataPath(scrFileSelection.getPath(iFile));
-            lastFilename = thisFilename;
+            lastFilename = ofFile(thisFilename).getBaseName();
 			ifstream inFile(thisFilename.c_str(),
 							ios::in | ios::binary);
 			//
@@ -239,6 +244,11 @@ void CorrelateMain::loadData()
 			break;
 		}
 	
+	scanSet.initialise(projWidth, projHeight, nPoints);
+	for (int i=0; i<nPoints; i++) {
+		scanSet.iX[i] = dataset_iPX[i];
+		scanSet.iY[i] = dataset_iPY[i];
+	}
 	bangEvaluate->enabled=true;
 }
 
@@ -246,12 +256,65 @@ void CorrelateMain::loadData()
 void CorrelateMain::evaluate()
 {
     calibration.evaluate(dataCameraSpace, dataWorldSpace, stereoIntersectThreshold);
+	calibration.evaluate(dataCameraSpace, scanSet, stereoIntersectThreshold);
 	scrWorldSpace.setWith(&dataWorldSpace[0].x, dataWorldSpace.size());
 	bangSave3DScan->enabled = true;
 }
 
-void CorrelateMain::save3DScan()
-{
+void CorrelateMain::saveScan()
+{   
+	scanSet.save(lastFilename);
+
+    //////////////////////////
+    // Binary data
+    //////////////////////////
+    //
+    int nPointsSelected = 0;
+	int blank = 0;
+
+    string filename = lastFilename + ".scan";
+    
+    ofstream outFile(ofToDataPath(filename, true).c_str(), ios::out | ios::binary);
+    
+    //write overall data
+	
+    outFile << "3D";
+    outFile.write((char*) &blank, 4);
+    outFile.write((char*) &projWidth, 2);
+    outFile.write((char*) &projHeight, 2);
+    outFile.write((char*) &scrWorldSpace.lbf.x, 4 * 3);
+    outFile.write((char*) &scrWorldSpace.rtb.x, 4 * 3);
+	
+    int iPoint = 0;
+	vector<ofVec3f>::iterator it;
+    ofPoint& lbf(scrWorldSpace.lbf);
+    ofPoint& rtb(scrWorldSpace.rtb);
+
+	for (it = dataWorldSpace.begin(); it != dataWorldSpace.end(); ++it)
+	{
+		const ofVec3f& xyz(*it);
+        
+        //check if not within selected bounds
+        if (xyz[0] < lbf.x || xyz[1] < lbf.y || xyz[2] < lbf.z || xyz[0] > rtb.x || xyz[1] > rtb.y || xyz[2] > rtb.z)
+            continue;
+        
+        outFile.write((char*) &dataset_iPX[iPoint], 4);
+        outFile.write((char*) &dataset_iPY[iPoint], 4);
+        outFile.write((char*) &xyz, 4 * 3);
+        
+        nPointsSelected++;
+		++iPoint;
+    }
+    
+    outFile.seekp(2);
+    outFile.write((char*) &nPointsSelected, 4);    
+    outFile.close();
+    //
+    //////////////////////////
+}
+
+void CorrelateMain::saveMap() {
+	
     //////////////////////////
     // BMP file
     //////////////////////////
@@ -333,50 +396,7 @@ void CorrelateMain::save3DScan()
 	ofSaveImage(imgSave, lastFilename + ".png");
     //
     //////////////////////////
-    
-    
-    
-    //////////////////////////
-    // Binary data
-    //////////////////////////
-    //
-    int nPointsSelected = 0, null;
-    
-    string filename = lastFilename + ".scan";
-    
-    ofstream outFile(filename.c_str(), ios::out | ios::binary);
-    
-    //write overall data
-	
-    outFile << "3D";
-    outFile.write((char*) &null, 4);
-    outFile.write((char*) &projWidth, 2);
-    outFile.write((char*) &projHeight, 2);
-    outFile.write((char*) &scrWorldSpace.lbf.x, 4 * 3);
-    outFile.write((char*) &scrWorldSpace.rtb.x, 4 * 3);
-	
-    iPoint = 0;
-	for (it = dataWorldSpace.begin(); it != dataWorldSpace.end(); ++it)
-	{
-		const ofVec3f& xyz(*it);
-        
-        //check if not within selected bounds
-        if (xyz[0] < lbf.x || xyz[1] < lbf.y || xyz[2] < lbf.z || xyz[0] > rtb.x || xyz[1] > rtb.y || xyz[2] > rtb.z)
-            continue;
-        
-        outFile.write((char*) &dataset_iPX[iPoint], 4);
-        outFile.write((char*) &dataset_iPY[iPoint], 4);
-        outFile.write((char*) &xyz, 4 * 3);
-        
-        nPointsSelected++;
-		++iPoint;
-    }
-    
-    outFile.seekp(2);
-    outFile.write((char*) &nPointsSelected, 4);    
-    outFile.close();
-    //
-    //////////////////////////
+
 }
 
 void CorrelateMain::addToImage()

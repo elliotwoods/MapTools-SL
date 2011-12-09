@@ -14,6 +14,7 @@
 #include "scrSelectBounds.h"
 
 #include "CorrelateRays.h"
+#include "ScanSet.h"
 
 #include <fstream>
 #include <iostream>
@@ -38,7 +39,8 @@ protected:
 	
 	void			evaluate();
 	
-	void			save3DScan();
+	void			saveScan();
+	void			saveMap();
     void            addToImage();
     void            saveImage();
     void            clearImage();
@@ -47,6 +49,7 @@ protected:
 	
 	wdgButton		*bangLoad, *bangEvaluate, *bangLoadCalibration;
 	wdgButton		*bangSave3DScan, *bangAddToImage, *bangSaveImage, *bangClearImage;
+	wdgButton		*bangSaveMap;
 
 	unsigned int	nPoints;
 	bool			swapCameras;
@@ -64,10 +67,9 @@ protected:
 	unsigned int	dataset_iPX[MAXPOINTS];
 	unsigned int	dataset_iPY[MAXPOINTS];
 	
+	ScanSet			scanSet;
     
     // image output
 	ofFloatPixels	longImage;
     unsigned int	longImageCount;
-
-	
 };

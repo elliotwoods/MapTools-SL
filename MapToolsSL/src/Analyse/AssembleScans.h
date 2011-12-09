@@ -8,10 +8,16 @@
 //
 
 #include "ofxCVgui.h"
-#include "ofxPolyFit.h"
+#include "ofxLevMar.h"
 
 #include "ScanSet.h"
 
+using namespace ofxLevMar;
+
+class TraRot : public Model<float> {
+public:
+	void evaluate(pfitDataPoint<float>& p, const vector<float> &parameters) const;
+};
 
 class AssembleScans
 {
@@ -28,8 +34,7 @@ class AssembleScans
         void        assemble(ScanSet &base, ScanSet &addition);
     
         ScanSet     data;
-    
-        ofxPolyFit  ransac;
+ 
         float           ransac_selection;
         float           ransac_residual;
         float           ransac_inclusion;
@@ -41,4 +46,5 @@ class AssembleScans
     
         wdgButton       bangAssemble, bangSave;
     
+		Fit<float>		levmar;
 };

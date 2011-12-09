@@ -71,8 +71,14 @@
 					<Add library="libPocoNetmt" />
 					<Add library="libPocoUtilmt" />
 					<Add library="libPocoXMLmt" />
+					<Add library="libglut" />
+					<Add library="glew32s" />
+					
+					
 					<Add directory="..\..\..\..\libs\openFrameworksCompiled\lib\win_cb" />
 					<Add directory="..\..\..\..\libs\poco\lib\win_cb" />
+					<Add directory="..\..\..\..\libs\glut\lib\win_cb" />
+					<Add directory="..\..\..\..\libs\glew\lib\win_cb" />
 				</Linker>
 			</Target>
 			<Target title="Release">

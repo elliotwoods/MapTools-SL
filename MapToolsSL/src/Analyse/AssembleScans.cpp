@@ -8,6 +8,15 @@
 
 #include "AssembleScans.h"
 
+void TraRot::evaluate(pfitDataPoint<float>& p, const vector<float> &parameters) const {
+	ofVec3f &in(*(ofVec3f*)p.getInput());
+	ofVec3f &out(*(ofVec3f*)p.getOutput());
+
+	//rotate then translate
+	out = in.rotate(parameters[3], parameters[4], parameters[5])
+		+ ofVec3f(parameters[0], parameters[1], parameters[2]);
+}
+
 AssembleScans::AssembleScans() :
 scrGridMain("Assemble scans"),
 scrControl("Control"),
@@ -19,7 +28,7 @@ ransac_selection(0.1),
 ransac_inclusion(0.5),
 ransac_iterations(5)
 {
-    scrSelectFiles = new scrFileSelect("Select scan sets", "Logs", "scan");
+    scrSelectFiles = new scrFileSelect("Select scan sets", SCANSET_LOCATION, SCANSET_EXTENSION);
     
     scrGridMain.push(&scrControl);
     scrGridMain.push(scrSelectFiles);
@@ -37,8 +46,6 @@ ransac_iterations(5)
     scrControl.push(sliderInclusion);
     scrControl.push(sliderIterations);
     scrControl.push(&bangSave);
-    
-    ransac.init(1, 3, 3, BASIS_SHAPE_TRIANGLE);
 }
 
 AssembleScans::~AssembleScans()
@@ -53,7 +60,7 @@ void AssembleScans::update()
     
     if (bangSave.getBang())
     {
-        data.saveBin(ofToDataPath("assembled.scan"));
+        data.save(ofToDataPath("assembled." + SCANSET_EXTENSION));
         data.saveImage("assembled.bmp");
     }
 }
@@ -74,13 +81,13 @@ void AssembleScans::assemble()
         return;
 
 	//data is the base
-    data.loadBin(filenames[0]);
+    data.load(filenames[0]);
     
     ScanSet other;
     
     for (int iOther = 1; iOther < filenames.size(); iOther++)
     {
-        other.loadBin(filenames[iOther]);
+        other.load(filenames[iOther]);
         assemble(data, other);        
     }
 }
@@ -113,11 +120,11 @@ void AssembleScans::assemble(ScanSet &base, ScanSet &addition)
     int iPointAddition;
     bool foundCommon;
     //
-    for (iPointAddition=0; iPointAddition < addition.nPoints; iPointAddition++)
+    for (iPointAddition=0; iPointAddition < addition.size; iPointAddition++)
     {
         foundCommon = false;
         
-        for (int iPointBase=0; iPointBase<base.nPoints; iPointBase++)
+        for (int iPointBase=0; iPointBase<base.size; iPointBase++)
         {
             if (base.iX[iPointBase] == addition.iX[iPointAddition] && base.iY[iPointBase] == addition.iY[iPointAddition])
             {
@@ -162,7 +169,9 @@ void AssembleScans::assemble(ScanSet &base, ScanSet &addition)
 	//////////////////////////
 	//
     //perform fit
-    ransac.RANSAC(dataSet, ransac_iterations, ransac_selection, ransac_residual, ransac_inclusion);
+	TraRot model;
+	vector<float> pTraRot(6);
+	levmar.correlate(dataSet, model, pTraRot, 1000);
 	//
 	//////////////////////////
 	
@@ -179,23 +188,22 @@ void AssembleScans::assemble(ScanSet &base, ScanSet &addition)
     //setup new dataset
     cout << "Found " << nCommonPoints << " common points\n";
     ScanSet combined;
-    combined.setup(base);
-    combined.allocate(base.nPoints + uniquePointsAddition.size());
+    combined.initialise(base, base.size + uniquePointsAddition.size());
     
     //copy base points into combined set
-    memcpy(combined.xyz, base.xyz, base.nPoints * 3 * 4);
-    memcpy(combined.iX, base.iX, base.nPoints * 4);
-    memcpy(combined.iY, base.iY, base.nPoints * 4);
+    memcpy(combined.xyz, base.xyz, base.size * 3 * 4);
+    memcpy(combined.iX, base.iX, base.size * 4);
+    memcpy(combined.iY, base.iY, base.size * 4);
     
     
     //evaluate addition points in base space
-    ofVec3f* combinedMover = combined.xyz + base.nPoints;
-    unsigned int * iXMover = combined.iX + base.nPoints;
-    unsigned int * iYMover = combined.iY + base.nPoints;
+    ofVec3f* combinedMover = combined.xyz + base.size;
+    unsigned int * iXMover = combined.iX + base.size;
+    unsigned int * iYMover = combined.iY + base.size;
     
     int idxAdditionSet;
     
-    cout << "Adding " << uniquePointsAddition.size() << " points to exsting set of " << base.nPoints << ".\n";
+    cout << "Adding " << uniquePointsAddition.size() << " points to exsting set of " << base.size << ".\n";
     
 	pfitDataPointf evalpt;
     for (int i=0; i<uniquePointsAddition.size(); i++)
@@ -203,7 +211,7 @@ void AssembleScans::assemble(ScanSet &base, ScanSet &addition)
         
         idxAdditionSet = uniquePointsAddition[i];
         evalpt = pfitDataPointf(3, 3, (float*)&addition.xyz[idxAdditionSet], (float*)combinedMover);
-        ransac.evaluate(evalpt);
+        model.evaluate(evalpt, pTraRot);
 		
         *iXMover = addition.iX[idxAdditionSet];
         *iYMover = addition.iY[idxAdditionSet];

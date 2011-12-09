@@ -1,0 +1,567 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="CommonIncludes">
+      <UniqueIdentifier>{2322425a-00ce-4021-b962-c753a9dae7b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{04ceaaad-97ac-49e8-b80b-b7b329e7899c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Scanner">
+      <UniqueIdentifier>{a1728cf0-8140-4d26-b102-1422b710ed81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Scanner\SubScans">
+      <UniqueIdentifier>{853696de-f2b7-4d0f-9147-27998e4a948b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Scanner\Payloads">
+      <UniqueIdentifier>{4af8e3f1-af09-42f9-81cd-d51ad1f19c2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Scanner\Camera">
+      <UniqueIdentifier>{f388faac-85c7-4975-9976-1c4f17e72361}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Correlate">
+      <UniqueIdentifier>{461b697e-e326-49b6-a895-7e43c8e83ba4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Analyse">
+      <UniqueIdentifier>{1762d8dd-88bb-4176-9cb1-20c893dad120}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\ScanSet">
+      <UniqueIdentifier>{df7c24a5-ccff-4bf7-8de3-9042d41cab3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons">
+      <UniqueIdentifier>{c53cf904-916e-4575-9a1b-7250b1313f00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxPolyfit">
+      <UniqueIdentifier>{4a575b1f-0cf2-4045-867a-e395b3cc83c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxTalky">
+      <UniqueIdentifier>{12fcbb4e-151a-4557-a451-75eb0e143715}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxCVgui">
+      <UniqueIdentifier>{c8a826b4-7ecf-42bf-bdee-67a86a54aba7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxXmlSettings">
+      <UniqueIdentifier>{a1a76c31-8303-4a05-bea3-fabc72c969f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Common">
+      <UniqueIdentifier>{72a5d6b4-4b30-43a5-a0b7-ec3149c4d1d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxCV">
+      <UniqueIdentifier>{fe862468-95a1-409f-8386-ea7c20b0cd66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxGrabCam">
+      <UniqueIdentifier>{9ab0d2e1-4014-454b-8185-1f09fdafa63e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxLevMar">
+      <UniqueIdentifier>{bfaa1dc5-ee51-4ec6-a76d-41f84dd72a40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxLevMar\libs">
+      <UniqueIdentifier>{c4523964-c1e3-4049-a27b-e8e9c2ffc5a4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\PCApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scanner\PCDecode.cpp">
+      <Filter>src\Scanner</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scanner\PCEncode.cpp">
+      <Filter>src\Scanner</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scanner\PCLogger.cpp">
+      <Filter>src\Scanner</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scanner\PCManager.cpp">
+      <Filter>src\Scanner</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scanner\PCPixel.cpp">
+      <Filter>src\Scanner</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scanner\PCConfig.cpp">
+      <Filter>src\Scanner</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scanner\SubScans\SubScanInterleave.cpp">
+      <Filter>src\Scanner\SubScans</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scanner\SubScans\SubScanSet.cpp">
+      <Filter>src\Scanner\SubScans</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scanner\SubScans\SubScanBase.cpp">
+      <Filter>src\Scanner\SubScans</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scanner\SubScans\SubScanBasic.cpp">
+      <Filter>src\Scanner\SubScans</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scanner\Payloads\PayloadBinary.cpp">
+      <Filter>src\Scanner\Payloads</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scanner\Payloads\PayloadGraycode.cpp">
+      <Filter>src\Scanner\Payloads</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scanner\Payloads\PayloadBase.cpp">
+      <Filter>src\Scanner\Payloads</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scanner\Camera\CameraTheosVideoInput.cpp">
+      <Filter>src\Scanner\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scanner\Camera\CameraBase.cpp">
+      <Filter>src\Scanner\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scanner\Camera\CameraDefault.cpp">
+      <Filter>src\Scanner\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Correlate\scrSelectBounds.cpp">
+      <Filter>src\Correlate</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Correlate\CorrelateMain.cpp">
+      <Filter>src\Correlate</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analyse\AssembleScans.cpp">
+      <Filter>src\Analyse</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analyse\LongImage.cpp">
+      <Filter>src\Analyse</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analyse\RANSACFilter.cpp">
+      <Filter>src\Analyse</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTalky\libs\Talky\src\TalkyBuffer.cpp">
+      <Filter>addons\ofxTalky</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTalky\libs\Talky\src\TalkyMessage.cpp">
+      <Filter>addons\ofxTalky</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxPolyfit\src\ofxPolyFit.cpp">
+      <Filter>addons\ofxPolyfit</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxPolyfit\libs\polyNfit\src\basisTransformIndices.cpp">
+      <Filter>addons\ofxPolyfit</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxPolyfit\libs\polyNfit\src\Data\pfitBasis.cpp">
+      <Filter>addons\ofxPolyfit</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxPolyfit\libs\polyNfit\src\Data\pfitDataSet.cpp">
+      <Filter>addons\ofxPolyfit</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxPolyfit\libs\polyNfit\src\FitBase.cpp">
+      <Filter>addons\ofxPolyfit</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxPolyfit\libs\polyNfit\src\matrix.cpp">
+      <Filter>addons\ofxPolyfit</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxPolyfit\libs\polyNfit\src\polyNfit.cpp">
+      <Filter>addons\ofxPolyfit</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxPolyfit\libs\polyNfit\src\powerBases.cpp">
+      <Filter>addons\ofxPolyfit</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analyse\ScanSet\ScanSet.cpp">
+      <Filter>src\ScanSet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\histograms\Histogram.cpp">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\include\btnBase.cpp">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\include\GUIAssets.cpp">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\include\GUIDesigner.cpp">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\include\GUIGlobal.cpp">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\ofxCVgui.cpp">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\Groups\scrGroupBase.cpp">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\Groups\scrGroupGrid.cpp">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\Groups\scrGroupTabbed.cpp">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\scrBase.cpp">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\scrDraw2D.cpp">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\scrDraw3D.cpp">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\scrFileSelect.cpp">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\scrHistograms.cpp">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\scrPointCloud.cpp">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\scrVbo.cpp">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\scrViewport.cpp">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\scrWidgets.cpp">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\widgets\wdgBase.cpp">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\widgets\wdgButton.cpp">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\widgets\wdgColour.cpp">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\widgets\wdgCounter.cpp">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\widgets\wdgFPS.cpp">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\widgets\wdgHistogram.cpp">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\widgets\wdgSlider.cpp">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\widgets\wdgTransform.cpp">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\widgets\wdgXYZ.cpp">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.cpp">
+      <Filter>addons\ofxXmlSettings</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlerror.cpp">
+      <Filter>addons\ofxXmlSettings</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlparser.cpp">
+      <Filter>addons\ofxXmlSettings</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.cpp">
+      <Filter>addons\ofxXmlSettings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Correlate\CorrelateRays.cpp">
+      <Filter>src\Correlate</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CommonIncludes\Ray.cpp">
+      <Filter>src\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCv\libs\ofxCv\src\Calibration.cpp">
+      <Filter>addons\ofxCV</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCv\libs\ofxCv\src\ContourFinder.cpp">
+      <Filter>addons\ofxCV</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCv\libs\ofxCv\src\Distance.cpp">
+      <Filter>addons\ofxCV</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCv\libs\ofxCv\src\Helpers.cpp">
+      <Filter>addons\ofxCV</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCv\libs\ofxCv\src\Tracker.cpp">
+      <Filter>addons\ofxCV</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCv\libs\ofxCv\src\Utilities.cpp">
+      <Filter>addons\ofxCV</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCv\libs\ofxCv\src\Wrappers.cpp">
+      <Filter>addons\ofxCV</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGrabCam\src\ofxGrabCam.cpp">
+      <Filter>addons\ofxGrabCam</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxLevMar\src\ofxLevMar.cpp">
+      <Filter>addons\ofxLevMar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxLevMar\libs\levmar\src\Axb.c">
+      <Filter>addons\ofxLevMar\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxLevMar\libs\levmar\src\lm.c">
+      <Filter>addons\ofxLevMar\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxLevMar\libs\levmar\src\lmbc.c">
+      <Filter>addons\ofxLevMar\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxLevMar\libs\levmar\src\lmblec.c">
+      <Filter>addons\ofxLevMar\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxLevMar\libs\levmar\src\lmbleic.c">
+      <Filter>addons\ofxLevMar\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxLevMar\libs\levmar\src\lmlec.c">
+      <Filter>addons\ofxLevMar\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxLevMar\libs\levmar\src\misc.c">
+      <Filter>addons\ofxLevMar\libs</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\PCApp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scanner\PCconstants.h">
+      <Filter>src\Scanner</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scanner\PCDecode.h">
+      <Filter>src\Scanner</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scanner\PCEncode.h">
+      <Filter>src\Scanner</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scanner\PCincludes.h">
+      <Filter>src\Scanner</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scanner\PCLogger.h">
+      <Filter>src\Scanner</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scanner\PCManager.h">
+      <Filter>src\Scanner</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scanner\PCPixel.h">
+      <Filter>src\Scanner</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scanner\PCConfig.h">
+      <Filter>src\Scanner</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scanner\SubScans\SubScanBasic.h">
+      <Filter>src\Scanner\SubScans</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scanner\SubScans\SubScanInterleave.h">
+      <Filter>src\Scanner\SubScans</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scanner\SubScans\SubScanSet.h">
+      <Filter>src\Scanner\SubScans</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scanner\SubScans\SubScanBase.h">
+      <Filter>src\Scanner\SubScans</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scanner\Payloads\PayloadBinary.h">
+      <Filter>src\Scanner\Payloads</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scanner\Payloads\PayloadGraycode.h">
+      <Filter>src\Scanner\Payloads</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scanner\Payloads\PayloadBase.h">
+      <Filter>src\Scanner\Payloads</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scanner\Camera\CameraDefault.h">
+      <Filter>src\Scanner\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scanner\Camera\CameraTheosVideoInput.h">
+      <Filter>src\Scanner\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scanner\Camera\CameraBase.h">
+      <Filter>src\Scanner\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Correlate\scrSelectBounds.h">
+      <Filter>src\Correlate</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Correlate\CorrelateMain.h">
+      <Filter>src\Correlate</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Analyse\AssembleScans.h">
+      <Filter>src\Analyse</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Analyse\LongImage.h">
+      <Filter>src\Analyse</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Analyse\RANSACFilter.h">
+      <Filter>src\Analyse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTalky\libs\Talky\src\TalkyBuffer.h">
+      <Filter>addons\ofxTalky</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTalky\libs\Talky\src\TalkyMessage.h">
+      <Filter>addons\ofxTalky</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTalky\libs\Talky\src\TalkyException.h">
+      <Filter>addons\ofxTalky</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxPolyfit\src\ofxPolyFit.h">
+      <Filter>addons\ofxPolyfit</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxPolyfit\libs\polyNfit\src\basisTransformIndices.h">
+      <Filter>addons\ofxPolyfit</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxPolyfit\libs\polyNfit\src\Data\pfitBasis.h">
+      <Filter>addons\ofxPolyfit</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxPolyfit\libs\polyNfit\src\Data\pfitDataSet.h">
+      <Filter>addons\ofxPolyfit</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxPolyfit\libs\polyNfit\src\FitBase.h">
+      <Filter>addons\ofxPolyfit</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxPolyfit\libs\polyNfit\src\matrix.h">
+      <Filter>addons\ofxPolyfit</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxPolyfit\libs\polyNfit\src\polyNfit.h">
+      <Filter>addons\ofxPolyfit</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxPolyfit\libs\polyNfit\src\powerBases.h">
+      <Filter>addons\ofxPolyfit</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Analyse\ScanSet\ScanSet.h">
+      <Filter>src\ScanSet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\histograms\Histogram.h">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\include\btnBase.h">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\include\GUIAssets.h">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\include\GUIConstants.h">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\include\GUIDesigner.h">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\include\GUIGlobal.h">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\ofxCVgui.h">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\Groups\scrGroupBase.h">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\Groups\scrGroupGrid.h">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\Groups\scrGroupSwap.h">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\Groups\scrGroupTabbed.h">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\scrBase.h">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\scrDraw2D.h">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\scrDraw3D.h">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\screens.h">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\scrFileSelect.h">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\scrHistograms.h">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\scrPointCloud.h">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\scrVbo.h">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\scrViewport.h">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\scrWidgets.h">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\widgets\wdgBase.h">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\widgets\wdgButton.h">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\widgets\wdgColour.h">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\widgets\wdgCounter.h">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\widgets\wdgFPS.h">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\widgets\wdgHistogram.h">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\widgets\wdgSlider.h">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\widgets\wdgTransform.h">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\widgets\wdgXYZ.h">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\widgets\widgets.h">
+      <Filter>addons\ofxCVgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.h">
+      <Filter>addons\ofxXmlSettings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.h">
+      <Filter>addons\ofxXmlSettings</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Correlate\CorrelateRays.h">
+      <Filter>src\Correlate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CommonIncludes\Ray.h">
+      <Filter>src\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCv\libs\ofxCv\include\ofxCv\Calibration.h">
+      <Filter>addons\ofxCV</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCv\libs\ofxCv\include\ofxCv\ContourFinder.h">
+      <Filter>addons\ofxCV</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCv\libs\ofxCv\include\ofxCv\Distance.h">
+      <Filter>addons\ofxCV</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCv\libs\ofxCv\include\ofxCv\Helpers.h">
+      <Filter>addons\ofxCV</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCv\libs\ofxCv\include\ofxCv\Tracker.h">
+      <Filter>addons\ofxCV</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCv\libs\ofxCv\include\ofxCv\Utilities.h">
+      <Filter>addons\ofxCV</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCv\libs\ofxCv\include\ofxCv\Wrappers.h">
+      <Filter>addons\ofxCV</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGrabCam\src\ofxGrabCam.h">
+      <Filter>addons\ofxGrabCam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxLevMar\src\ofxLevMar.h">
+      <Filter>addons\ofxLevMar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxLevMar\libs\levmar\src\compiler.h">
+      <Filter>addons\ofxLevMar\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxLevMar\libs\levmar\src\levmar.h">
+      <Filter>addons\ofxLevMar\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxLevMar\libs\levmar\src\misc.h">
+      <Filter>addons\ofxLevMar\libs</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\data\settings.xml" />
+  </ItemGroup>
+</Project>

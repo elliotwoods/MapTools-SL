@@ -9,7 +9,12 @@
 
 #include "ofMain.h"
 
-#include "ofxTalky.h"
+#include "TalkyBuffer.h"
+
+#define SCANSET_EXTENSION string("points")
+#define SCANSET_LOCATION string("Logs")
+
+using namespace Talky;
 
 class ScanSetHeader {
 public:
@@ -25,14 +30,17 @@ public:
 	ScanSet();
 	~ScanSet();
 
+
+	void    initialise(const ScanSet &other, int size);	
+	void    initialise(int width, int height, int size);
+
+	///for use when you set nPoints manually
 	void    allocate();
-	void    allocate(int count);
 	void    deAllocate();
 
-	void    setup(ScanSet &other);
 
-	void    loadBin(string filename);
-	void    saveBin(string filename, bool thresholdBounds=true);
+	void    load(string filename);
+	void    save(string filename, bool thresholdBounds=true);
 
 	void    saveImage(string filename, bool thresholdBounds=true);
 
@@ -48,7 +56,7 @@ public:
 	ScanSetHeader	header;
 	ofVec3f			*xyz;
 	unsigned int	*iX, *iY;
-	unsigned int	nPoints;
+	unsigned int	size;
 
 	unsigned short  width, height;
 

@@ -21,7 +21,7 @@ bool ScanSetHeader::operator==(const ScanSetHeader &other) {
 
 ScanSet::ScanSet() :
 isAllocated(false),
-nPoints(0),
+size(0),
 hasBounds(false) {
     
 }
@@ -30,8 +30,10 @@ ScanSet::~ScanSet() {
     deAllocate();
 }
 
-void ScanSet::allocate(int count) {
-    nPoints = count;
+void ScanSet::initialise(int width, int height, int size) {
+    this->size = size;
+	this->width = width;
+	this->height = height;
     
     allocate();
 }
@@ -40,9 +42,9 @@ void ScanSet::allocate() {
     if (isAllocated)
         deAllocate();
 
-    xyz = new ofVec3f[nPoints];
-    iX = new unsigned int[nPoints];
-    iY = new unsigned int[nPoints];
+    xyz = new ofVec3f[size];
+    iX = new unsigned int[size];
+    iY = new unsigned int[size];
 
     isAllocated = true;
 }
@@ -58,15 +60,17 @@ void ScanSet::deAllocate() {
     isAllocated = false;
 }
 
-void ScanSet::setup(ScanSet &other) {
-    width = other.width;
-    height = other.height;
-    
+void ScanSet::initialise(const ScanSet &other, int size) {
+    this->width = other.width;
+    this->height = other.height;
+    this->size = size;
+
 	lbf = other.lbf;
 	rtb = other.rtb;
+	allocate();
 }
 
-void ScanSet::loadBin(string filename) {
+void ScanSet::load(string filename) {
 	
 	TalkyBuffer buffer;
 	if (!buffer.loadFile(ofToDataPath(filename))) {
@@ -82,15 +86,15 @@ void ScanSet::loadBin(string filename) {
         return;
     }
 	
-	buffer >> nPoints;
+	buffer >> size;
 	buffer >> width;
 	buffer >> height;
 	buffer >> lbf;
 	buffer >> rtb;
 	
-    allocate(nPoints);    
+    this->allocate();    
     
-    for (int i=0; i<nPoints; i++) {
+    for (int i=0; i<size; i++) {
 		buffer >> iX[i];
 		buffer >> iX[i];
 		buffer >> xyz[i];
@@ -103,26 +107,37 @@ bool ScanSet::inside(ofVec3f& point, ofVec3f &lbf, ofVec3f& rtb) {
 	return !(point.x < lbf.x || point.y < lbf[1] || point.z < lbf[2] || point.x > rtb.x || point.y > rtb[1] || point.z > rtb[2]);
 }
 
-void ScanSet::saveBin(string filename, bool thresholdBounds) {
+void ScanSet::save(string filename, bool thresholdBounds) {
 	
+	filename = ofFile(filename).getBaseName() + "." + SCANSET_EXTENSION;
+
+	filename = SCANSET_LOCATION + 
+				#ifdef TARGET_WIN32
+					"\\"
+				#else
+					"/"
+				#endif
+					+ filename;
+
     //////////////////////////
     // Binary data
     //////////////////////////
     //
-    int nPointsSelected = 0, null;
+    int nPointsSelected = 0;
+	int blank = 0;
     
-    ofstream outFile(filename.c_str(), ios::out | ios::binary);
+    ofstream outFile(ofToDataPath(filename, true).c_str(), ios::out | ios::binary);
     
     //write overall data
     
     outFile << "3D";
-	outFile << null; //we come back write this later
+	outFile << blank; //we come back write this later
 	outFile << width;
 	outFile << height;
 	outFile << lbf;
 	outFile << rtb;
     
-    for (int i=0; i<nPoints; i++)
+    for (int i=0; i<size; i++)
     {
         
         //check if not within selected bounds
@@ -160,7 +175,7 @@ void ScanSet::saveImage(string filename, bool thresholdBounds) {
 	unsigned char col[3];
     ofVec3f* point;
 	
-	for (int iPoint=0; iPoint<nPoints; iPoint++)
+	for (int iPoint=0; iPoint<size; iPoint++)
 	{
         point = &xyz[iPoint];
         
@@ -186,16 +201,14 @@ void ScanSet::saveImage(string filename, bool thresholdBounds) {
 }
 
 void ScanSet::operator=(ScanSet& other) {
-    setup(other);
-    nPoints = other.nPoints;
+    initialise(other, other.size);
     loadFilename = other.loadFilename;
     
     allocate();
     
-    memcpy(xyz, other.xyz, nPoints * sizeof(ofVec3f));
-    
-    memcpy(iX, other.iX, nPoints * 4);
-    memcpy(iY, other.iY, nPoints * 4);
+    memcpy(xyz, other.xyz, size * sizeof(ofVec3f));
+    memcpy(iX, other.iX, size * 4);
+    memcpy(iY, other.iY, size * 4);
 }
 
 ofVec3f& ScanSet::operator[](const unsigned int i) {

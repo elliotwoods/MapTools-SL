@@ -2,9 +2,9 @@
 1323328032 source:c:\openframeworks\openframeworks\addons\ofxcvgui\src\histograms\histogram.cpp
 	"Histogram.h"
 
-1323425713 c:\openframeworks\openframeworks\addons\ofxcvgui\src\histograms\histogram.h
+1323437225 c:\openframeworks\openframeworks\addons\ofxcvgui\src\histograms\histogram.h
 	"ofMain.h"
-	"include/GUIAssets.h"
+	"GUIAssets.h"
 
 1322667498 c:\openframeworks\openframeworks\libs\openframeworks\ofmain.h
 	"ofConstants.h"
@@ -1162,7 +1162,7 @@
 	"wdgBase.h"
 	"ofEvents.h"
 
-1323435477 c:\openframeworks\openframeworks\addons\ofxcvgui\src\screens\scrpointcloud.h
+1323437329 c:\openframeworks\openframeworks\addons\ofxcvgui\src\screens\scrpointcloud.h
 	"ofMain.h"
 	"ofxGrabCam.h"
 	"scrBase.h"
@@ -1273,7 +1273,7 @@
 1323328032 source:c:\openframeworks\openframeworks\addons\ofxcvgui\src\screens\scrhistograms.cpp
 	"scrHistograms.h"
 
-1323328032 source:c:\openframeworks\openframeworks\addons\ofxcvgui\src\screens\scrpointcloud.cpp
+1323434609 source:c:\openframeworks\openframeworks\addons\ofxcvgui\src\screens\scrpointcloud.cpp
 	"scrPointCloud.h"
 
 1323328032 source:c:\openframeworks\openframeworks\addons\ofxcvgui\src\screens\scrvbo.cpp
@@ -1312,7 +1312,7 @@
 1323328032 source:c:\openframeworks\openframeworks\addons\ofxcvgui\src\widgets\wdgxyz.cpp
 	"wdgXYZ.h"
 
-1323422438 source:c:\openframeworks\openframeworks\addons\ofxcv\libs\ofxcv\src\calibration.cpp
+1323429407 source:c:\openframeworks\openframeworks\addons\ofxcv\libs\ofxcv\src\calibration.cpp
 	"ofxCv/Calibration.h"
 	"ofxCv/Helpers.h"
 	"ofFileUtils.h"
@@ -1854,7 +1854,7 @@
 1323410483 source:c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\analyse\scanset\scanset.cpp
 	"ScanSet.h"
 
-1323421152 source:c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\correlate\correlatemain.cpp
+1323433729 source:c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\correlate\correlatemain.cpp
 	"CorrelateMain.h"
 
 1323410487 c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\correlate\correlatemain.h
@@ -1875,10 +1875,10 @@
 1323425105 c:\openframeworks\openframeworks\apps\maptools-sl\commonincludes\ray.h
 	"ofMain.h"
 
-1323427752 source:c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\correlate\correlaterays.cpp
+1323433102 source:c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\correlate\correlaterays.cpp
 	"CorrelateRays.h"
 
-1323410487 source:c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\correlate\scrselectbounds.cpp
+1323430570 source:c:\openframeworks\openframeworks\apps\maptools-sl\maptoolssl\src\correlate\scrselectbounds.cpp
 	"scrSelectBounds.h"
 
 1322667494 source:c:\openframeworks\openframeworks\addons\ofxxmlsettings\libs\tinyxml.cpp
@@ -2120,4 +2120,7 @@
 
 1323430084 c:\openframeworks\openframeworks\addons\ofxgrabcam\src\ofxgrabcam.h
 	"ofMain.h"
+
+1323430084 source:c:\openframeworks\openframeworks\addons\ofxgrabcam\src\ofxgrabcam.cpp
+	"ofxGrabCam.h"
 
