@@ -2,9 +2,9 @@
 1323328032 source:c:\openframeworks\openframeworks\addons\ofxcvgui\src\histograms\histogram.cpp
 	"Histogram.h"
 
-1323425713 c:\openframeworks\openframeworks\addons\ofxcvgui\src\histograms\histogram.h
+1323437225 c:\openframeworks\openframeworks\addons\ofxcvgui\src\histograms\histogram.h
 	"ofMain.h"
-	"include/GUIAssets.h"
+	"GUIAssets.h"
 
 1322667498 c:\openframeworks\openframeworks\libs\openframeworks\ofmain.h
 	"ofConstants.h"
@@ -1162,7 +1162,7 @@
 	"wdgBase.h"
 	"ofEvents.h"
 
-1323435477 c:\openframeworks\openframeworks\addons\ofxcvgui\src\screens\scrpointcloud.h
+1323437329 c:\openframeworks\openframeworks\addons\ofxcvgui\src\screens\scrpointcloud.h
 	"ofMain.h"
 	"ofxGrabCam.h"
 	"scrBase.h"

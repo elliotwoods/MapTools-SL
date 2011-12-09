@@ -83,7 +83,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\..\addons\ofxGrabCam\src;..\..\..\addons\ofxCv\libs\ofxCv\include;..\..\..\addons\ofxOpenCv\libs\opencv\include;..\..\..\addons\ofxCv\libs\ofxCv\src;..\..\..\addons\ofxCv\src;..\..\..\addons\ofxXmlSettings\src\libs;..\..\..\addons\ofxXmlSettings\src;.\src\Analyse\ScanSet;.\src\Analyse;..\CommonIncludes;..\..\..\addons\ofxPolyfit\src;.\src\Correlate;.\src\Scanner\SubScans;.\src\Scanner\ScanSet;.\src\Scanner\Camera;.\src\Scanner\Payloads;.\src\Scanner;..\..\..\addons\ofxNetwork\src;..\..\..\addons\ofxTalky\libs\Talky\src;..\..\..\addons\ofxTalky\src;..\..\..\addons\ofxPolyfit\libs\polyNfit\src;..\..\..\addons\ofxPolyfit\libs\polyNfit\Data;..\..\..\addons\ofxCVgui\src\screens\Groups;..\..\..\addons\ofxCVgui\src\widgets;..\..\..\addons\ofxCVgui\src\screens;..\..\..\addons\ofxCVgui\src\include;..\..\..\addons\ofxCVgui\src\histograms;..\..\..\libs\cairo\include\cairo\;..\..\..\addons\ofxCVgui\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\libs\cairo\include\cairo;..\..\..\libs\openFrameworks;..\..\..\libs\openFrameworks\graphics;..\..\..\libs\openFrameworks\app;..\..\..\libs\openFrameworks\sound;..\..\..\libs\openFrameworks\utils;..\..\..\libs\openFrameworks\communication;..\..\..\libs\openFrameworks\video;..\..\..\libs\openFrameworks\math;..\..\..\libs\openFrameworks\types;..\..\..\libs\openFrameworks\events;..\..\..\libs\glut\include;..\..\..\libs\rtAudio\include;..\..\..\libs\quicktime\include;..\..\..\libs\freetype\include;..\..\..\libs\freetype\include\freetype2;..\..\..\libs\freeImage\include;..\..\..\libs\fmodex\include;..\..\..\libs\videoInput\include;..\..\..\libs\glew\include\;..\..\..\libs\glu\include;..\..\..\libs\poco\include;..\..\..\addons;..\..\..\libs\openFrameworks\gl;..\..\..\libs\openFrameworks\3d;..\..\..\libs\tess2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\addons\ofxPolyfit\libs\polyNfit\src\Data;..\..\..\addons\ofxLevMar\libs\levmar\src;..\..\..\addons\ofxLevMar\src;..\..\..\addons\ofxGrabCam\src;..\..\..\addons\ofxCv\libs\ofxCv\include;..\..\..\addons\ofxOpenCv\libs\opencv\include;..\..\..\addons\ofxCv\libs\ofxCv\src;..\..\..\addons\ofxCv\src;..\..\..\addons\ofxXmlSettings\src\libs;..\..\..\addons\ofxXmlSettings\src;.\src\Analyse\ScanSet;.\src\Analyse;..\CommonIncludes;..\..\..\addons\ofxPolyfit\src;.\src\Correlate;.\src\Scanner\SubScans;.\src\Scanner\ScanSet;.\src\Scanner\Camera;.\src\Scanner\Payloads;.\src\Scanner;..\..\..\addons\ofxNetwork\src;..\..\..\addons\ofxTalky\libs\Talky\src;..\..\..\addons\ofxTalky\src;..\..\..\addons\ofxPolyfit\libs\polyNfit\src;..\..\..\addons\ofxPolyfit\libs\polyNfit\Data;..\..\..\addons\ofxCVgui\src\screens\Groups;..\..\..\addons\ofxCVgui\src\widgets;..\..\..\addons\ofxCVgui\src\screens;..\..\..\addons\ofxCVgui\src\include;..\..\..\addons\ofxCVgui\src\histograms;..\..\..\libs\cairo\include\cairo\;..\..\..\addons\ofxCVgui\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\libs\cairo\include\cairo;..\..\..\libs\openFrameworks;..\..\..\libs\openFrameworks\graphics;..\..\..\libs\openFrameworks\app;..\..\..\libs\openFrameworks\sound;..\..\..\libs\openFrameworks\utils;..\..\..\libs\openFrameworks\communication;..\..\..\libs\openFrameworks\video;..\..\..\libs\openFrameworks\math;..\..\..\libs\openFrameworks\types;..\..\..\libs\openFrameworks\events;..\..\..\libs\glut\include;..\..\..\libs\rtAudio\include;..\..\..\libs\quicktime\include;..\..\..\libs\freetype\include;..\..\..\libs\freetype\include\freetype2;..\..\..\libs\freeImage\include;..\..\..\libs\fmodex\include;..\..\..\libs\videoInput\include;..\..\..\libs\glew\include\;..\..\..\libs\glu\include;..\..\..\libs\poco\include;..\..\..\addons;..\..\..\libs\openFrameworks\gl;..\..\..\libs\openFrameworks\3d;..\..\..\libs\tess2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;POCO_STATIC;CAIRO_WIN32_STATIC_BUILD;DISABLE_SOME_FLOATING_POINT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -258,6 +258,14 @@ if not exist "$(ProjectDir)\bin\data" mkdir  "$(ProjectDir)\bin\data"
     <ClCompile Include="..\..\..\addons\ofxCv\libs\ofxCv\src\Utilities.cpp" />
     <ClCompile Include="..\..\..\addons\ofxCv\libs\ofxCv\src\Wrappers.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGrabCam\src\ofxGrabCam.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxLevMar\libs\levmar\src\Axb.c" />
+    <ClCompile Include="..\..\..\addons\ofxLevMar\libs\levmar\src\lm.c" />
+    <ClCompile Include="..\..\..\addons\ofxLevMar\libs\levmar\src\lmbc.c" />
+    <ClCompile Include="..\..\..\addons\ofxLevMar\libs\levmar\src\lmblec.c" />
+    <ClCompile Include="..\..\..\addons\ofxLevMar\libs\levmar\src\lmbleic.c" />
+    <ClCompile Include="..\..\..\addons\ofxLevMar\libs\levmar\src\lmlec.c" />
+    <ClCompile Include="..\..\..\addons\ofxLevMar\libs\levmar\src\misc.c" />
+    <ClCompile Include="..\..\..\addons\ofxLevMar\src\ofxLevMar.cpp" />
     <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPClient.cpp" />
     <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPManager.cpp" />
     <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPServer.cpp" />
@@ -343,6 +351,10 @@ if not exist "$(ProjectDir)\bin\data" mkdir  "$(ProjectDir)\bin\data"
     <ClInclude Include="..\..\..\addons\ofxCv\libs\ofxCv\include\ofxCv\Utilities.h" />
     <ClInclude Include="..\..\..\addons\ofxCv\libs\ofxCv\include\ofxCv\Wrappers.h" />
     <ClInclude Include="..\..\..\addons\ofxGrabCam\src\ofxGrabCam.h" />
+    <ClInclude Include="..\..\..\addons\ofxLevMar\libs\levmar\src\compiler.h" />
+    <ClInclude Include="..\..\..\addons\ofxLevMar\libs\levmar\src\levmar.h" />
+    <ClInclude Include="..\..\..\addons\ofxLevMar\libs\levmar\src\misc.h" />
+    <ClInclude Include="..\..\..\addons\ofxLevMar\src\ofxLevMar.h" />
     <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxNetwork.h" />
     <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxNetworkUtils.h" />
     <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPClient.h" />
