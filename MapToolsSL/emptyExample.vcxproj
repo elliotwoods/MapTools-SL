@@ -83,7 +83,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>.\src\Scanner\ScanSet;.\src\Scanner\SubScans;..\..\..\addons\ofxPolyfit\src\polyNfit;..\..\..\addons\ofxPolyfit\src\Data;..\..\..\addons\ofxPolyfit\src;..\..\..\addons\ofxCVgui\src\screens\Groups;..\..\..\addons\ofxCVgui\src\widgets;..\..\..\addons\ofxCVgui\src\screens;..\..\..\addons\ofxCVgui\src\include;..\..\..\addons\ofxCVgui\src\histograms;..\..\..\libs\cairo\include\cairo\;..\..\..\addons\ofxCVgui\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\libs\cairo\include\cairo;..\..\..\addons\ofxXmlSettings\src;C:\openFrameworks\007\apps\MapTools-SL\MapTools-SL\src\SubScans;C:\openFrameworks\007\apps\MapTools-SL\MapTools-SL\src\Scanner\Payloads;C:\openFrameworks\007\apps\MapTools-SL\MapTools-SL\src\Scanner\Camera;C:\openFrameworks\007\apps\MapTools-SL\MapTools-SL\src\Scanner;C:\openFrameworks\007\apps\MapTools-SL\MapTools-SL\src\Correlate;C:\openFrameworks\007\apps\MapTools-SL\MapTools-SL\src\Analyse;..\..\..\libs\openFrameworks;..\..\..\libs\openFrameworks\graphics;..\..\..\libs\openFrameworks\app;..\..\..\libs\openFrameworks\sound;..\..\..\libs\openFrameworks\utils;..\..\..\libs\openFrameworks\communication;..\..\..\libs\openFrameworks\video;..\..\..\libs\openFrameworks\math;..\..\..\libs\openFrameworks\types;..\..\..\libs\openFrameworks\events;..\..\..\libs\glut\include;..\..\..\libs\rtAudio\include;..\..\..\libs\quicktime\include;..\..\..\libs\freetype\include;..\..\..\libs\freetype\include\freetype2;..\..\..\libs\freeImage\include;..\..\..\libs\fmodex\include;..\..\..\libs\videoInput\include;..\..\..\libs\glew\include\;..\..\..\libs\glu\include;..\..\..\libs\poco\include;..\..\..\addons;..\..\..\libs\openFrameworks\gl;..\..\..\libs\openFrameworks\3d;..\..\..\libs\tess2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\addons\ofxXmlSettings\src\libs;..\..\..\addons\ofxXmlSettings\src;.\src\Analyse\ScanSet;.\src\Analyse;..\CommonIncludes;..\..\..\addons\ofxPolyfit\src;.\src\Correlate;.\src\Scanner\SubScans;.\src\Scanner\ScanSet;.\src\Scanner\Camera;.\src\Scanner\Payloads;.\src\Scanner;..\..\..\addons\ofxNetwork\src;..\..\..\addons\ofxTalky\libs\Talky\src;..\..\..\addons\ofxTalky\src;..\..\..\addons\ofxPolyfit\libs\polyNfit\src;..\..\..\addons\ofxPolyfit\libs\polyNfit\Data;..\..\..\addons\ofxCVgui\src\screens\Groups;..\..\..\addons\ofxCVgui\src\widgets;..\..\..\addons\ofxCVgui\src\screens;..\..\..\addons\ofxCVgui\src\include;..\..\..\addons\ofxCVgui\src\histograms;..\..\..\libs\cairo\include\cairo\;..\..\..\addons\ofxCVgui\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\libs\cairo\include\cairo;..\..\..\libs\openFrameworks;..\..\..\libs\openFrameworks\graphics;..\..\..\libs\openFrameworks\app;..\..\..\libs\openFrameworks\sound;..\..\..\libs\openFrameworks\utils;..\..\..\libs\openFrameworks\communication;..\..\..\libs\openFrameworks\video;..\..\..\libs\openFrameworks\math;..\..\..\libs\openFrameworks\types;..\..\..\libs\openFrameworks\events;..\..\..\libs\glut\include;..\..\..\libs\rtAudio\include;..\..\..\libs\quicktime\include;..\..\..\libs\freetype\include;..\..\..\libs\freetype\include\freetype2;..\..\..\libs\freeImage\include;..\..\..\libs\fmodex\include;..\..\..\libs\videoInput\include;..\..\..\libs\glew\include\;..\..\..\libs\glu\include;..\..\..\libs\poco\include;..\..\..\addons;..\..\..\libs\openFrameworks\gl;..\..\..\libs\openFrameworks\3d;..\..\..\libs\tess2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;POCO_STATIC;CAIRO_WIN32_STATIC_BUILD;DISABLE_SOME_FLOATING_POINT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -226,19 +226,20 @@ if not exist "$(ProjectDir)\bin\data" mkdir  "$(ProjectDir)\bin\data"
     <ClCompile Include="..\..\..\addons\ofxCVgui\src\histograms\Histogram.cpp" />
     <ClCompile Include="..\..\..\addons\ofxCVgui\src\include\btnBase.cpp" />
     <ClCompile Include="..\..\..\addons\ofxCVgui\src\include\GUIAssets.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\include\GUIDesigner.cpp" />
     <ClCompile Include="..\..\..\addons\ofxCVgui\src\include\GUIGlobal.cpp" />
     <ClCompile Include="..\..\..\addons\ofxCVgui\src\ofxCVgui.cpp" />
     <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\Groups\scrGroupBase.cpp" />
     <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\Groups\scrGroupGrid.cpp" />
     <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\Groups\scrGroupTabbed.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\scr3D.cpp" />
     <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\scrBase.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\scrDrawEvent.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\scrDraw2D.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\scrDraw3D.cpp" />
     <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\scrFileSelect.cpp" />
     <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\scrHistograms.cpp" />
     <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\scrPointCloud.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\scrTexture.cpp" />
     <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\scrVbo.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\scrViewport.cpp" />
     <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\scrWidgets.cpp" />
     <ClCompile Include="..\..\..\addons\ofxCVgui\src\widgets\wdgBase.cpp" />
     <ClCompile Include="..\..\..\addons\ofxCVgui\src\widgets\wdgButton.cpp" />
@@ -249,22 +250,31 @@ if not exist "$(ProjectDir)\bin\data" mkdir  "$(ProjectDir)\bin\data"
     <ClCompile Include="..\..\..\addons\ofxCVgui\src\widgets\wdgSlider.cpp" />
     <ClCompile Include="..\..\..\addons\ofxCVgui\src\widgets\wdgTransform.cpp" />
     <ClCompile Include="..\..\..\addons\ofxCVgui\src\widgets\wdgXYZ.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxPolyfit\src\Data\pfitBasis.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxPolyfit\src\Data\pfitDataSet.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPClient.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPManager.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPServer.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxUDPManager.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPolyfit\libs\polyNfit\src\basisTransformIndices.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPolyfit\libs\polyNfit\src\Data\pfitBasis.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPolyfit\libs\polyNfit\src\Data\pfitDataSet.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPolyfit\libs\polyNfit\src\FitBase.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPolyfit\libs\polyNfit\src\matrix.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPolyfit\libs\polyNfit\src\polyNfit.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPolyfit\libs\polyNfit\src\powerBases.cpp" />
     <ClCompile Include="..\..\..\addons\ofxPolyfit\src\ofxPolyFit.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxPolyfit\src\polyNfit\basisTransformIndices.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxPolyfit\src\polyNfit\FitBase.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxPolyfit\src\polyNfit\matrix.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxPolyfit\src\polyNfit\polyNfit.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxPolyfit\src\polyNfit\powerBases.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTalky\libs\Talky\src\TalkyBuffer.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTalky\libs\Talky\src\TalkyMessage.cpp" />
     <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.cpp" />
     <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlerror.cpp" />
     <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlparser.cpp" />
     <ClCompile Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.cpp" />
+    <ClCompile Include="..\CommonIncludes\Ray.cpp" />
     <ClCompile Include="src\Analyse\AssembleScans.cpp" />
     <ClCompile Include="src\Analyse\LongImage.cpp" />
     <ClCompile Include="src\Analyse\RANSACFilter.cpp" />
+    <ClCompile Include="src\Analyse\ScanSet\ScanSet.cpp" />
     <ClCompile Include="src\Correlate\CorrelateMain.cpp" />
+    <ClCompile Include="src\Correlate\CorrelateRays.cpp" />
     <ClCompile Include="src\Correlate\scrSelectBounds.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\PCApp.cpp" />
@@ -280,8 +290,6 @@ if not exist "$(ProjectDir)\bin\data" mkdir  "$(ProjectDir)\bin\data"
     <ClCompile Include="src\Scanner\PCLogger.cpp" />
     <ClCompile Include="src\Scanner\PCManager.cpp" />
     <ClCompile Include="src\Scanner\PCPixel.cpp" />
-    <ClCompile Include="src\Scanner\ScanSet\ScanSet.cpp" />
-    <ClCompile Include="src\Scanner\ScanSet\scrScanSet.cpp" />
     <ClCompile Include="src\Scanner\SubScans\SubScanBase.cpp" />
     <ClCompile Include="src\Scanner\SubScans\SubScanBasic.cpp" />
     <ClCompile Include="src\Scanner\SubScans\SubScanInterleave.cpp" />
@@ -292,20 +300,22 @@ if not exist "$(ProjectDir)\bin\data" mkdir  "$(ProjectDir)\bin\data"
     <ClInclude Include="..\..\..\addons\ofxCVgui\src\include\btnBase.h" />
     <ClInclude Include="..\..\..\addons\ofxCVgui\src\include\GUIAssets.h" />
     <ClInclude Include="..\..\..\addons\ofxCVgui\src\include\GUIConstants.h" />
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\include\GUIDesigner.h" />
     <ClInclude Include="..\..\..\addons\ofxCVgui\src\include\GUIGlobal.h" />
     <ClInclude Include="..\..\..\addons\ofxCVgui\src\ofxCVgui.h" />
     <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\Groups\scrGroupBase.h" />
     <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\Groups\scrGroupGrid.h" />
     <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\Groups\scrGroupSwap.h" />
     <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\Groups\scrGroupTabbed.h" />
-    <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\scr3D.h" />
     <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\scrBase.h" />
-    <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\scrDrawEvent.h" />
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\scrDraw2D.h" />
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\scrDraw3D.h" />
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\screens.h" />
     <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\scrFileSelect.h" />
     <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\scrHistograms.h" />
     <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\scrPointCloud.h" />
-    <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\scrTexture.h" />
     <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\scrVbo.h" />
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\scrViewport.h" />
     <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\scrWidgets.h" />
     <ClInclude Include="..\..\..\addons\ofxCVgui\src\widgets\wdgBase.h" />
     <ClInclude Include="..\..\..\addons\ofxCVgui\src\widgets\wdgButton.h" />
@@ -316,20 +326,33 @@ if not exist "$(ProjectDir)\bin\data" mkdir  "$(ProjectDir)\bin\data"
     <ClInclude Include="..\..\..\addons\ofxCVgui\src\widgets\wdgSlider.h" />
     <ClInclude Include="..\..\..\addons\ofxCVgui\src\widgets\wdgTransform.h" />
     <ClInclude Include="..\..\..\addons\ofxCVgui\src\widgets\wdgXYZ.h" />
-    <ClInclude Include="..\..\..\addons\ofxPolyfit\src\Data\pfitBasis.h" />
-    <ClInclude Include="..\..\..\addons\ofxPolyfit\src\Data\pfitDataSet.h" />
+    <ClInclude Include="..\..\..\addons\ofxCVgui\src\widgets\widgets.h" />
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxNetwork.h" />
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxNetworkUtils.h" />
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPClient.h" />
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPManager.h" />
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPServer.h" />
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxUDPManager.h" />
+    <ClInclude Include="..\..\..\addons\ofxPolyfit\libs\polyNfit\src\basisTransformIndices.h" />
+    <ClInclude Include="..\..\..\addons\ofxPolyfit\libs\polyNfit\src\Data\pfitBasis.h" />
+    <ClInclude Include="..\..\..\addons\ofxPolyfit\libs\polyNfit\src\Data\pfitDataSet.h" />
+    <ClInclude Include="..\..\..\addons\ofxPolyfit\libs\polyNfit\src\FitBase.h" />
+    <ClInclude Include="..\..\..\addons\ofxPolyfit\libs\polyNfit\src\matrix.h" />
+    <ClInclude Include="..\..\..\addons\ofxPolyfit\libs\polyNfit\src\polyNfit.h" />
+    <ClInclude Include="..\..\..\addons\ofxPolyfit\libs\polyNfit\src\powerBases.h" />
     <ClInclude Include="..\..\..\addons\ofxPolyfit\src\ofxPolyFit.h" />
-    <ClInclude Include="..\..\..\addons\ofxPolyfit\src\polyNfit\basisTransformIndices.h" />
-    <ClInclude Include="..\..\..\addons\ofxPolyfit\src\polyNfit\FitBase.h" />
-    <ClInclude Include="..\..\..\addons\ofxPolyfit\src\polyNfit\matrix.h" />
-    <ClInclude Include="..\..\..\addons\ofxPolyfit\src\polyNfit\polyNfit.h" />
-    <ClInclude Include="..\..\..\addons\ofxPolyfit\src\polyNfit\powerBases.h" />
+    <ClInclude Include="..\..\..\addons\ofxTalky\libs\Talky\src\TalkyBuffer.h" />
+    <ClInclude Include="..\..\..\addons\ofxTalky\libs\Talky\src\TalkyException.h" />
+    <ClInclude Include="..\..\..\addons\ofxTalky\libs\Talky\src\TalkyMessage.h" />
     <ClInclude Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.h" />
     <ClInclude Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.h" />
+    <ClInclude Include="..\CommonIncludes\Ray.h" />
     <ClInclude Include="src\Analyse\AssembleScans.h" />
     <ClInclude Include="src\Analyse\LongImage.h" />
     <ClInclude Include="src\Analyse\RANSACFilter.h" />
+    <ClInclude Include="src\Analyse\ScanSet\ScanSet.h" />
     <ClInclude Include="src\Correlate\CorrelateMain.h" />
+    <ClInclude Include="src\Correlate\CorrelateRays.h" />
     <ClInclude Include="src\Correlate\scrSelectBounds.h" />
     <ClInclude Include="src\PCApp.h" />
     <ClInclude Include="src\Scanner\Camera\CameraBase.h" />
@@ -346,15 +369,12 @@ if not exist "$(ProjectDir)\bin\data" mkdir  "$(ProjectDir)\bin\data"
     <ClInclude Include="src\Scanner\PCLogger.h" />
     <ClInclude Include="src\Scanner\PCManager.h" />
     <ClInclude Include="src\Scanner\PCPixel.h" />
-    <ClInclude Include="src\Scanner\ScanSet\ScanSet.h" />
-    <ClInclude Include="src\Scanner\ScanSet\scrScanSet.h" />
     <ClInclude Include="src\Scanner\SubScans\SubScanBase.h" />
     <ClInclude Include="src\Scanner\SubScans\SubScanBasic.h" />
     <ClInclude Include="src\Scanner\SubScans\SubScanInterleave.h" />
     <ClInclude Include="src\Scanner\SubScans\SubScanSet.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\addons\ofxXmlSettings\install.xml" />
     <None Include="bin\data\settings.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
