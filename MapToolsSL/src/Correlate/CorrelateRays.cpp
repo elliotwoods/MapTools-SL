@@ -17,7 +17,7 @@ string getAttribName(int iCam, int i, int j) {
 }
 
 void CorrelateRays::load() {
-	FileStorage fs(ofToDataPath("transforms.xml"), FileStorage::READ);
+	FileStorage fs(ofToDataPath("transforms.xml", true), FileStorage::READ);
 	
 	for (int iCam=0; iCam<2; iCam++)
 	{

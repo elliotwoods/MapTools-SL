@@ -43,6 +43,7 @@
 					<Add directory="..\..\..\..\addons\ofxCVgui\src\screens\Groups" />
 					<Add directory="..\..\..\..\addons\ofxCVgui\src\widgets" />
 					<Add directory="..\..\..\..\addons\ofxCVgui\src\histograms" />
+					<Add directory="..\..\..\..\addons\ofxGrabCam\src" />
 					<Add directory="..\..\..\..\addons\ofxCv\src" />
 					<Add directory="..\..\..\..\addons\ofxCv\libs\ofxCv\include" />
 					<Add directory="..\..\..\..\addons\ofxOpenCV\libs\opencv\include" />
@@ -64,6 +65,15 @@
 					<Add directory="..\src\Scanner\SubScans" />
 					<Add directory="..\..\CommonIncludes" />
 				</Compiler>
+				<Linker>
+					<Add library="openFrameworksDebug" />
+					<Add library="libPocoFoundationmt" />
+					<Add library="libPocoNetmt" />
+					<Add library="libPocoUtilmt" />
+					<Add library="libPocoXMLmt" />
+					<Add directory="..\..\..\..\libs\openFrameworksCompiled\lib\win_cb" />
+					<Add directory="..\..\..\..\libs\poco\lib\win_cb" />
+				</Linker>
 			</Target>
 			<Target title="Release">
 				<Option output="bin\Release\MapToolsSL" prefix_auto="1" extension_auto="1" />
@@ -153,6 +163,8 @@
 		<Unit filename="..\..\..\..\addons\ofxCv\libs\ofxCv\src\Tracker.cpp" />
 		<Unit filename="..\..\..\..\addons\ofxCv\libs\ofxCv\src\Utilities.cpp" />
 		<Unit filename="..\..\..\..\addons\ofxCv\libs\ofxCv\src\Wrappers.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxGrabCam\src\ofxGrabCam.cpp" />
+		<Unit filename="..\..\..\..\addons\ofxGrabCam\src\ofxGrabCam.h" />
 		<Unit filename="..\..\..\..\addons\ofxNetwork\src\ofxNetwork.h" />
 		<Unit filename="..\..\..\..\addons\ofxNetwork\src\ofxNetworkUtils.h" />
 		<Unit filename="..\..\..\..\addons\ofxNetwork\src\ofxTCPClient.cpp" />

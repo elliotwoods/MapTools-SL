@@ -18,6 +18,8 @@ scrWorldSpace("World XYZ"),
 scrGridMain("Correlate"),
 scrGridData("Data pointclouds"),
 
+swapCameras(false),
+
 longImageCount(0)
 {
 	////////////////////////////

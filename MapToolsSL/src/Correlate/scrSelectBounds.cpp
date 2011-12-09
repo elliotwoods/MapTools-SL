@@ -64,20 +64,20 @@ void scrSelectBounds::drawContent()
     
     
 
-    //bind shader
-    shader.begin();
+    ////bind shader
+    //shader.begin();
 
-    //set properties
-    shader.setUniform1f("testFloat", (float)sin(ofGetElapsedTimef())/2.0f + 0.5f);
-    shader.setUniform3f("lbf", lbf.x, lbf.y, lbf.z);
-    shader.setUniform3f("rtb", rtb.x, rtb.y, rtb.z);
-    
+    ////set properties
+    //shader.setUniform1f("testFloat", (float)sin(ofGetElapsedTimef())/2.0f + 0.5f);
+    //shader.setUniform3f("lbf", lbf.x, lbf.y, lbf.z);
+    //shader.setUniform3f("rtb", rtb.x, rtb.y, rtb.z);
+    //
     
     //draw content
     drawPoints();
     
     //unbind shader
-    shader.end();
+//	shader.end();
     
     //restore view
     end();
