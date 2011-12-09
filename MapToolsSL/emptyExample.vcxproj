@@ -266,10 +266,6 @@ if not exist "$(ProjectDir)\bin\data" mkdir  "$(ProjectDir)\bin\data"
     <ClCompile Include="..\..\..\addons\ofxLevMar\libs\levmar\src\lmlec.c" />
     <ClCompile Include="..\..\..\addons\ofxLevMar\libs\levmar\src\misc.c" />
     <ClCompile Include="..\..\..\addons\ofxLevMar\src\ofxLevMar.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPClient.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPManager.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPServer.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxUDPManager.cpp" />
     <ClCompile Include="..\..\..\addons\ofxPolyfit\libs\polyNfit\src\basisTransformIndices.cpp" />
     <ClCompile Include="..\..\..\addons\ofxPolyfit\libs\polyNfit\src\Data\pfitBasis.cpp" />
     <ClCompile Include="..\..\..\addons\ofxPolyfit\libs\polyNfit\src\Data\pfitDataSet.cpp" />
@@ -355,12 +351,6 @@ if not exist "$(ProjectDir)\bin\data" mkdir  "$(ProjectDir)\bin\data"
     <ClInclude Include="..\..\..\addons\ofxLevMar\libs\levmar\src\levmar.h" />
     <ClInclude Include="..\..\..\addons\ofxLevMar\libs\levmar\src\misc.h" />
     <ClInclude Include="..\..\..\addons\ofxLevMar\src\ofxLevMar.h" />
-    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxNetwork.h" />
-    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxNetworkUtils.h" />
-    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPClient.h" />
-    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPManager.h" />
-    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPServer.h" />
-    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxUDPManager.h" />
     <ClInclude Include="..\..\..\addons\ofxPolyfit\libs\polyNfit\src\basisTransformIndices.h" />
     <ClInclude Include="..\..\..\addons\ofxPolyfit\libs\polyNfit\src\Data\pfitBasis.h" />
     <ClInclude Include="..\..\..\addons\ofxPolyfit\libs\polyNfit\src\Data\pfitDataSet.h" />

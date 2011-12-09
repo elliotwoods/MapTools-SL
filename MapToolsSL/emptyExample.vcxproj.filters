@@ -40,9 +40,6 @@
     <Filter Include="addons\ofxCVgui">
       <UniqueIdentifier>{c8a826b4-7ecf-42bf-bdee-67a86a54aba7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="addons\ofxNetwork">
-      <UniqueIdentifier>{433b43c9-e485-4b75-99f6-fb75498ad49e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="addons\ofxXmlSettings">
       <UniqueIdentifier>{a1a76c31-8303-4a05-bea3-fabc72c969f6}</UniqueIdentifier>
     </Filter>
@@ -137,18 +134,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxTalky\libs\Talky\src\TalkyMessage.cpp">
       <Filter>addons\ofxTalky</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPClient.cpp">
-      <Filter>addons\ofxNetwork</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPManager.cpp">
-      <Filter>addons\ofxNetwork</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPServer.cpp">
-      <Filter>addons\ofxNetwork</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxUDPManager.cpp">
-      <Filter>addons\ofxNetwork</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxPolyfit\src\ofxPolyFit.cpp">
       <Filter>addons\ofxPolyfit</Filter>
@@ -403,24 +388,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxTalky\libs\Talky\src\TalkyMessage.h">
       <Filter>addons\ofxTalky</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxNetwork.h">
-      <Filter>addons\ofxNetwork</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxNetworkUtils.h">
-      <Filter>addons\ofxNetwork</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPClient.h">
-      <Filter>addons\ofxNetwork</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPManager.h">
-      <Filter>addons\ofxNetwork</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPServer.h">
-      <Filter>addons\ofxNetwork</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxUDPManager.h">
-      <Filter>addons\ofxNetwork</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxTalky\libs\Talky\src\TalkyException.h">
       <Filter>addons\ofxTalky</Filter>

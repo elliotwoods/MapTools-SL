@@ -15,7 +15,7 @@ scrData("Data points"),
 scrInput("Input data", setInput),
 scrFiltered("Filtered data", setFiltered),
 scrLeftGroup("Controls"),
-scrSelectFile("Choose scan", "Logs", "scan"),
+scrSelectFile("Choose scan", SCANSET_LOCATION, SCANSET_EXTENSION),
 ransac_residual(0.05),
 ransac_selection(0.1),
 ransac_inclusion(0.2),
@@ -66,7 +66,7 @@ void RANSACFilter::update()
             ofLog(OF_LOG_WARNING, "RANSACfilter: No file selected");
             return;
         } else
-            setInput.loadBin(filename);
+            setInput.load(filename);
     }
     
     if (bangRANSAC->getBang())
@@ -74,7 +74,7 @@ void RANSACFilter::update()
  
     if (bangSaveFiltered->getBang())
     {
-        setFiltered.saveBin(setInput.loadFilename + "-filtered.scan");
+        setFiltered.save(setInput.loadFilename + "-filtered" + SCANSET_EXTENSION);
         setFiltered.saveImage(setInput.loadFilename + "-filtered.bmp");
     }
 }
@@ -86,11 +86,11 @@ void RANSACFilter::filterRANSAC()
 	
     double ProjectorX, ProjectorY;
     
-	dataSet.init(4, 2, setInput.nPoints);
+	dataSet.init(4, 2, setInput.size);
 	pfitDataPointd pt = dataSet.begin();
 
 	double *input, *output;
-    for (int i=0; i<setInput.nPoints; i++)
+    for (int i=0; i<setInput.size; i++)
     {
 		
         ProjectorX = 2 * (double(setInput.iX[i]) / double(setInput.width)) - 1;
@@ -115,8 +115,9 @@ void RANSACFilter::filterRANSAC()
 	
 	//setup output dataset and copy in filtered points
 	int nPointsOutput = dataSet.getActiveCount();
-    setFiltered.setup(setInput);
-    setFiltered.allocate(nPointsOutput);
+
+	setFiltered.size = nPointsOutput;
+    setFiltered.initialise(setInput, nPointsOutput);
     
 	pfitIndexSet::iterator it;
 	pfitIndexSet s = dataSet.getActiveIndices();
