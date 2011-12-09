@@ -1,6 +1,19 @@
 #OS junk files
 [Tt]humbs.db
-*.DS_Store
+
+#XCode files
+build/
+bin/
+obj/
+xcuserdata/
+*.depend
+*.layout
+*.mode*v3
+*.pbxuser
+*.app*
+*.DS_*
+*.perspectivev3
+*.xcworkspace
 
 #Visual Studio files
 *.[Oo]bj
