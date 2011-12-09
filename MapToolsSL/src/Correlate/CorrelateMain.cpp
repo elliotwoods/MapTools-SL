@@ -263,54 +263,9 @@ void CorrelateMain::evaluate()
 
 void CorrelateMain::saveScan()
 {   
+	scanSet.lbf = scrWorldSpace.lbf;
+	scanSet.rtb = scrWorldSpace.rtb;
 	scanSet.save(lastFilename);
-
-    //////////////////////////
-    // Binary data
-    //////////////////////////
-    //
-    int nPointsSelected = 0;
-	int blank = 0;
-
-    string filename = lastFilename + ".scan";
-    
-    ofstream outFile(ofToDataPath(filename, true).c_str(), ios::out | ios::binary);
-    
-    //write overall data
-	
-    outFile << "3D";
-    outFile.write((char*) &blank, 4);
-    outFile.write((char*) &projWidth, 2);
-    outFile.write((char*) &projHeight, 2);
-    outFile.write((char*) &scrWorldSpace.lbf.x, 4 * 3);
-    outFile.write((char*) &scrWorldSpace.rtb.x, 4 * 3);
-	
-    int iPoint = 0;
-	vector<ofVec3f>::iterator it;
-    ofPoint& lbf(scrWorldSpace.lbf);
-    ofPoint& rtb(scrWorldSpace.rtb);
-
-	for (it = dataWorldSpace.begin(); it != dataWorldSpace.end(); ++it)
-	{
-		const ofVec3f& xyz(*it);
-        
-        //check if not within selected bounds
-        if (xyz[0] < lbf.x || xyz[1] < lbf.y || xyz[2] < lbf.z || xyz[0] > rtb.x || xyz[1] > rtb.y || xyz[2] > rtb.z)
-            continue;
-        
-        outFile.write((char*) &dataset_iPX[iPoint], 4);
-        outFile.write((char*) &dataset_iPY[iPoint], 4);
-        outFile.write((char*) &xyz, 4 * 3);
-        
-        nPointsSelected++;
-		++iPoint;
-    }
-    
-    outFile.seekp(2);
-    outFile.write((char*) &nPointsSelected, 4);    
-    outFile.close();
-    //
-    //////////////////////////
 }
 
 void CorrelateMain::saveMap() {

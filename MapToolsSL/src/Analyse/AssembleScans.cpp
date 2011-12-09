@@ -171,7 +171,7 @@ void AssembleScans::assemble(ScanSet &base, ScanSet &addition)
     //perform fit
 	TraRot model;
 	vector<float> pTraRot(6);
-	levmar.correlate(dataSet, model, pTraRot, 1000);
+	levmar.correlate(dataSet, model, pTraRot, 100);
 	//
 	//////////////////////////
 	

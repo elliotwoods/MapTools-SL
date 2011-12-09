@@ -72,33 +72,38 @@ void ScanSet::initialise(const ScanSet &other, int size) {
 
 void ScanSet::load(string filename) {
 	
-	TalkyBuffer buffer;
-	if (!buffer.loadFile(ofToDataPath(filename))) {
+	fstream file;
+	file.open(filename, fstream::in | fstream::binary);
+
+	if (!file.is_open()) {
 		ofLogError() << "ScanSet::loadBin : loading file " << filename << " failed. Check that it's not locked or missing.";
 		return;
 	}
+	char head[2];
+
+	file.read(head, 2);
 	
-	buffer >> header;
-	
-    if (!(header == ScanSetHeader()))
+    if (!(head[0] == '3' && head[1] == 'D'))
     {
         ofLog(OF_LOG_ERROR, "ScanSet: Failed to load scan binary file, incorrect header");
         return;
     }
 	
-	buffer >> size;
-	buffer >> width;
-	buffer >> height;
-	buffer >> lbf;
-	buffer >> rtb;
+	file.read((char*)&size, 4);
+	file.read((char*)&width, 4);
+	file.read((char*)&height, 4);
+	file.read((char*)&lbf, 12);
+	file.read((char*)&rtb, 12);
 	
     this->allocate();    
     
     for (int i=0; i<size; i++) {
-		buffer >> iX[i];
-		buffer >> iX[i];
-		buffer >> xyz[i];
+		file.read((char*)&iX[i], 4);
+		file.read((char*)&iX[i], 4);
+		file.read((char*)&xyz[i], 12);
     }
+
+	file.close();
     
     loadFilename = filename;
 }
@@ -118,6 +123,9 @@ void ScanSet::save(string filename, bool thresholdBounds) {
 					"/"
 				#endif
 					+ filename;
+	filename = ofToDataPath(filename, true);
+
+	fstream file(filename, fstream::out | fstream::binary | fstream::trunc);
 
     //////////////////////////
     // Binary data
@@ -125,18 +133,16 @@ void ScanSet::save(string filename, bool thresholdBounds) {
     //
     int nPointsSelected = 0;
 	int blank = 0;
-    
-	TalkyBuffer buffer;
-	
+	char header[2] = {'3', 'D'};
     //write overall data
     
-    buffer << header;
-	
-	buffer << blank; //we come back write this later (number of points selected)
-	buffer << width;
-	buffer << height;
-	buffer << lbf;
-	buffer << rtb;
+	file.write(header, 2);
+    
+	file.write((char*)&blank, 4); //we come back write this later (number of points selected)
+	file.write((char*)&width, 4);
+	file.write((char*)&height, 4);
+	file.write((char*)&lbf, 12);
+	file.write((char*)&rtb, 12);
     
     for (int i=0; i<size; i++)
     {
@@ -144,12 +150,16 @@ void ScanSet::save(string filename, bool thresholdBounds) {
         if (hasBounds && thresholdBounds)
             if (!inside(xyz[i],lbf,rtb))
                 continue;
-        buffer << iX[i];
-		buffer << iY[i];
-		buffer << xyz[i];
+        file.write((char*)&iX[i], 4);
+		file.write((char*)&iY[i], 4);
+		file.write((char*)&xyz[i], 12);
+
+		nPointsSelected++;
     }
     
-	buffer.saveFile(filename);
+	file.seekp(2);
+	file.write((char*)&nPointsSelected, 4);
+	file.close();
     //
     //////////////////////////  
 }
