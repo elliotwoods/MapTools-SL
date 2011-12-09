@@ -27,27 +27,27 @@ longImageCount(0)
 	stereoIntersectThreshold = 0.1;
 	//
 	////////////////////////////
-
+	
 	
 	////////////////////////////
 	// BUILD INTERFACE
 	////////////////////////////
 	wdgSlider *wdgLBF = new wdgSlider("Bounds Left, Bottom, Front",
-                                scrWorldSpace.lbf,
-                                -10, 10,
-                                0.05,
-                                "m");
+									  scrWorldSpace.lbf,
+									  -10, 10,
+									  0.05,
+									  "m");
     
     wdgSlider *wdgRTB = new wdgSlider("Bounds Right, Top, Back",
-                                scrWorldSpace.rtb,
-                                -10, 10,
-                                0.05,
-                                "m");
+									  scrWorldSpace.rtb,
+									  -10, 10,
+									  0.05,
+									  "m");
     
 	bangLoad = new wdgButton("Load data");
 	bangLoadCalibration = new wdgButton("Load calibration");
 	bangEvaluate = new wdgButton("Reproject points");
-
+	
 	bangSave3DScan = new wdgButton("Save projection space XYZ");
 	bangAddToImage = new wdgButton("Add current projector to Image");
     wdgCounter *counterNProjectors = new wdgCounter("Projectors in Long Image", longImageCount);
@@ -69,7 +69,7 @@ longImageCount(0)
     scrControl.push(counterNProjectors);
     scrControl.push(bangSaveImage);
     scrControl.push(bangClearImage);
-        
+	
 	
 	scrGridData.push(&scrWorldSpace);
 	scrGridData.setGridWidth(1);
@@ -86,7 +86,7 @@ void CorrelateMain::update()
 {
 	if (bangLoad->getBang())
 		loadData();
-
+	
 	if (bangEvaluate->getBang())
 		evaluate();
 	
@@ -194,17 +194,17 @@ void CorrelateMain::loadData()
 					//read Indices
 					inFile.read((char*) &dataset_iPX[iPoint], 2);
 					inFile.read((char*) &dataset_iPY[iPoint], 2);
-
+					
 					//read normalised positions (0->1)
 					inFile.read((char*) &thisvalx, 4);
 					inFile.read((char*) &thisvaly, 4);
-				
+					
 					for (int iCam=0; iCam<2; iCam++)
 					{					
 						//read positions
 						inFile.read((char*) &thisvalx, 4);
 						inFile.read((char*) &thisvaly, 4);
-					
+						
 						if (!swapCameras)
 						{
 							dataCameraSpace[iPoint].xy[iCam].x = thisvalx;
@@ -213,9 +213,9 @@ void CorrelateMain::loadData()
 							dataCameraSpace[iPoint].xy[1-iCam].x = thisvalx;
 							dataCameraSpace[iPoint].xy[1-iCam].y = thisvaly;
 						}
-
+						
 					}
-				
+					
 					++nPoints;
 				}
 			} else {
@@ -274,17 +274,17 @@ void CorrelateMain::save3DScan()
         //check if not within selected bounds
         if (xyz[0] < lbf.x || xyz[1] < lbf.y || xyz[2] < lbf.z || xyz[0] > rtb.x || xyz[1] > rtb.y || xyz[2] > rtb.z)
             continue;
-
+		
 		//convert position to colour values
 		col[0] = ofMap(xyz[0],lbf.x,rtb.x,0,255,true);
 		col[1] = ofMap(xyz[1],lbf.y,rtb.y,0,255,true);
 		col[2] = ofMap(xyz[2],lbf.z,rtb.z,0,255,true);
-
+		
 		iPP = dataset_iPX[iPoint] + projWidth * dataset_iPY[iPoint];
         
 		if (iPP<int(projWidth*projHeight) && iPP>=0)
 			memcpy(imgSave.getPixels()+3*iPP, col, 3);
-
+		
 		++iPoint;
 	}
 	
@@ -314,12 +314,12 @@ void CorrelateMain::save3DScan()
 		col[0] = ofMap(xyz[0],lbf.x,rtb.x,0,255,true);
 		col[1] = ofMap(xyz[1],lbf.y,rtb.y,0,255,true);
 		col[2] = ofMap(xyz[2],lbf.z,rtb.z,0,255,true);
-
+		
 		iPP = dataset_iPX[iPoint] + projWidth * dataset_iPY[iPoint];
         
 		if (iPP<int(projWidth*projHeight) && iPP>=0)
 			memcpy(hdrSave.getPixels()+3*iPP, &xyz.x, 3 * sizeof(float));
-
+		
 		if (iPP<int(projWidth*projHeight) && iPP>=0)
 			memcpy(imgSave.getPixels()+3*iPP, col, 3);
 		
@@ -345,14 +345,14 @@ void CorrelateMain::save3DScan()
     ofstream outFile(filename.c_str(), ios::out | ios::binary);
     
     //write overall data
-
+	
     outFile << "3D";
     outFile.write((char*) &null, 4);
     outFile.write((char*) &projWidth, 2);
     outFile.write((char*) &projHeight, 2);
     outFile.write((char*) &scrWorldSpace.lbf.x, 4 * 3);
     outFile.write((char*) &scrWorldSpace.rtb.x, 4 * 3);
-
+	
     iPoint = 0;
 	for (it = dataWorldSpace.begin(); it != dataWorldSpace.end(); ++it)
 	{
@@ -421,7 +421,7 @@ void CorrelateMain::addToImage()
             
 			memcpy(newImage.getPixels() + 3*iLIP, &xyz.x, 3*sizeof(float));
         }
-
+		
 		++iPoint;
 	}
     //
@@ -435,9 +435,9 @@ void CorrelateMain::addToImage()
 void CorrelateMain::saveImage()
 {
 	/*
-	ofBuffer buf;
-	ofSaveImage(longImage, buf, OF_IMAGE_FORMAT_HDR, OF_IMAGE_QUALITY_BEST);
-	ofBufferToFile("long image.hdr", buf, true);
+	 ofBuffer buf;
+	 ofSaveImage(longImage, buf, OF_IMAGE_FORMAT_HDR, OF_IMAGE_QUALITY_BEST);
+	 ofBufferToFile("long image.hdr", buf, true);
 	 */
 	ofSaveImage(longImage, "longimage.hdr", OF_IMAGE_QUALITY_BEST);
 	
@@ -450,5 +450,5 @@ void CorrelateMain::clearImage()
         longImage.clear();
         longImageCount = 0;
     }
-        
+	
 }
