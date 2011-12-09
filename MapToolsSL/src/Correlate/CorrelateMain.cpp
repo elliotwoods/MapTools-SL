@@ -227,7 +227,37 @@ void CorrelateMain::loadData()
 	
 	
 	//clear test set window
+<<<<<<< HEAD
 	scrWorldSpace.setWith(&dataWorldSpace[0].x, 0);
+=======
+	scrTestCorrelate.setWith(dataSet.getOutput(), 0);
+	
+	bangCorrelate->enabled=true;
+	bangSaveFit->enabled=false;
+}
+
+float CorrelateMain::getDepthFromFilename(string filename)
+{
+	return ofToFloat(filename.substr(0,filename.length()-4));
+}
+
+void CorrelateMain::copyToInputScreen()
+{
+	
+	if (nPoints>MAXPOINTS)
+		ofLog(OF_LOG_WARNING, "CorrelateMain: nPoints > MAXPOINTS. only drawing first MAXPOINTS");
+
+	if (dataSet.size() > 0)
+		scrInputPoints.setWith(dataSet.begin().getOutput(), MIN(dataSet.size(), MAXPOINTS));	
+
+}
+
+void CorrelateMain::runPolyfit()
+{
+	fit.init(polyOrder, 2*nCameras, 3, BASIS_SHAPE_TRIANGLE);
+	fit.correlate(dataSet);
+	ofLogNotice() << "fit residual = " << fit.residualRMS(dataSet);
+>>>>>>> 2a83f9ac0f91a9132d03d9cd6c580684a8a9c575
 	
 	bangEvaluate->enabled=true;
 }
@@ -235,9 +265,22 @@ void CorrelateMain::loadData()
 
 void CorrelateMain::evaluate()
 {
+<<<<<<< HEAD
     calibration.evaluate(dataCameraSpace, dataWorldSpace, stereoIntersectThreshold);
 	scrWorldSpace.setWith(&dataWorldSpace[0].x, dataWorldSpace.size());
 	bangSave3DScan->enabled = true;
+=======
+    //HARDCODED FOR 2 CAMERAS
+    
+	evaluateSet.init(4, 3, dataSet.size());
+	memcpy(evaluateSet.getInput(), dataSet.getInput(), dataSet.size() * 4 * sizeof(DataType));
+	fit.evaluate(evaluateSet);
+	
+	scrTestCorrelate.setWith(evaluateSet.getOutput(), nPoints);
+	
+	//we'll enable the save xyz, if we're in new format
+	bangSave3DScan->enabled = newFormat;
+>>>>>>> 2a83f9ac0f91a9132d03d9cd6c580684a8a9c575
 }
 
 void CorrelateMain::save3DScan()
