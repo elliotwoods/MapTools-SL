@@ -79,5 +79,4 @@ protected:
 	
 	vector<Point2f>		imagePoints;
 	ofMutex				lockCorners;
-
 };

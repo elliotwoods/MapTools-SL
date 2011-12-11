@@ -35,8 +35,6 @@ viewScale(1.85f) // TODO : find where this comes from. this value is for a 640x3
 	ray.t = ofVec3f(0,0,1);
 	ray.color = ofColor(255,40, 150);
 	ray.infinite = true;
-	
-	calib.setSquareSize(width / 60);
 }
 
 CameraHead::~CameraHead() {
@@ -56,8 +54,8 @@ void CameraHead::init(int iDevice) {
 	greyBetweenBuffer.allocate(width, height, OF_IMAGE_GRAYSCALE);
 	greyThreadedInternal.allocate(width, height, OF_IMAGE_GRAYSCALE);
 	
-	calib.setPatternSize(7,6);
-	calib.setSquareSize(4);
+	calib.setPatternSize(5,4);
+	calib.setSquareSize(5.67);
 	
 	frustum.setMode(OF_PRIMITIVE_LINE_STRIP);
 	
@@ -131,6 +129,7 @@ void CameraHead::drawCorners(ofRectangle &viewport) {
 	}
 	ofPopStyle();
 
+	drawHighlightString("Reprojection error = " + ofToString(calib.getReprojectionError()), viewport.x+5, viewport.y + viewport.height-80, ofColor(200,100,100), ofColor(255,255,255));
 	drawHighlightString("isReady = " + string(calib.isReady() ? "true" : "false"), viewport.x+5, viewport.y + viewport.height-60, ofColor(200,100,100), ofColor(255,255,255));
 	drawHighlightString("Calibration sets = " + ofToString(calib.imagePoints.size()), viewport.x+5, viewport.y + viewport.height-40, ofColor(200,100,100), ofColor(255,255,255));
 	drawHighlightString("Found corners = " + ofToString(imagePoints.size()), viewport.x+5, viewport.y + viewport.height-20, ofColor(200,100,100), ofColor(255,255,255));

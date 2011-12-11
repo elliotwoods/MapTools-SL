@@ -124,7 +124,7 @@ void CorrelateRays::evaluate(const vector<CamPoint> &c, ScanSet &s, float thresh
 	w = s.xyz;
 	for (int i=0; i<usedPoints; i++, w++)
 		if (w->length() > 0)
-			deviation += (*w) * (*w);
+			deviation += (*w - mean) * (*w - mean);
 
 	deviation /= (float)usedPoints;
 	deviation.x = sqrt((double)deviation.x);
