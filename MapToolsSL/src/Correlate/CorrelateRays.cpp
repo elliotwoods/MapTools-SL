@@ -89,28 +89,6 @@ void CorrelateRays::calcMatrices() {
 	}
 }
 
-void CorrelateRays::evaluate(const vector<CamPoint> &c, vector<ofVec3f> &w, float threshold) {
-	
-	Ray r1, r2, intersect;
-	ofVec3f midpoint;
-	
-	int nPoints = c.size();
-	w.resize(nPoints);
-	for (int i=0; i<nPoints; ++i) {
-		getRay(c[i], 0, r1);
-		getRay(c[i], 1, r2);
-		intersect = r1.intersect(r2);
-
-		if (intersect.getLength() > threshold * CV_SCALE_FACTOR)
-		{
-			w[i].x = w[i].y = w[i].z = 0.0f;
-			continue;
-		}
-		
-		w[i] = intersect.getMidpoint() / CV_SCALE_FACTOR;
-	}
-}
-
 void CorrelateRays::evaluate(const vector<CamPoint> &c, ScanSet &s, float threshold) {
 	int nPoints = c.size();
 	
@@ -118,16 +96,45 @@ void CorrelateRays::evaluate(const vector<CamPoint> &c, ScanSet &s, float thresh
 	ofVec3f midpoint;
 	ofVec3f *w = s.xyz;
 
-	for (int i=0; i<nPoints; ++i) {
+	ofVec3f mean;
+	int usedPoints = 0;
+
+	for (int i=0; i<nPoints; ++i, w++) {
 		getRay(c[i], 0, r1);
 		getRay(c[i], 1, r2);
 		intersect = r1.intersect(r2);
 
 		if (intersect.getLength() > threshold * CV_SCALE_FACTOR)
-			w[i].x = w[i].y = w[i].z = 0.0f;
-		else
-			w[i] = intersect.getMidpoint() / CV_SCALE_FACTOR;
+			*w = ofVec3f(0);
+		else {
+			*w = intersect.getMidpoint() / CV_SCALE_FACTOR;
+			mean += *w;
+			usedPoints++;
+		}
 	}
+
+	mean /= float(usedPoints);
+
+	////
+	//sdev
+	////
+	//
+	ofVec3f deviation = ofVec3f(0);
+	s.active = usedPoints;
+	w = s.xyz;
+	for (int i=0; i<usedPoints; i++, w++)
+		if (w->length() > 0)
+			deviation += (*w) * (*w);
+
+	deviation /= (float)usedPoints;
+	deviation.x = sqrt((double)deviation.x);
+	deviation.y = sqrt((double)deviation.y);
+	deviation.z = sqrt((double)deviation.z);
+	//
+	////
+
+	s.lbf = mean - deviation;
+	s.rtb = mean + deviation;
 }
 
 void CorrelateRays::getRay(const CamPoint &c, int iCamera, Ray &r) {

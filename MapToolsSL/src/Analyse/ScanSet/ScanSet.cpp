@@ -22,6 +22,7 @@ bool ScanSetHeader::operator==(const ScanSetHeader &other) {
 ScanSet::ScanSet() :
 isAllocated(false),
 size(0),
+active(0),
 hasBounds(false) {
     
 }
@@ -47,6 +48,8 @@ void ScanSet::allocate() {
     iY = new unsigned int[size];
 
     isAllocated = true;
+
+	update();
 }
 
 void ScanSet::deAllocate() {
@@ -57,7 +60,15 @@ void ScanSet::deAllocate() {
     delete[] iX;
     delete[] iY;
     
+	size = 0;
+
     isAllocated = false;
+
+	update();
+}
+
+void ScanSet::update() {
+	ofNotifyEvent(onUpdate, size, this);
 }
 
 void ScanSet::initialise(const ScanSet &other, int size) {
@@ -106,6 +117,7 @@ void ScanSet::load(string filename) {
 	file.close();
     
     loadFilename = filename;
+	update();
 }
 
 bool ScanSet::inside(ofVec3f& point, ofVec3f &lbf, ofVec3f& rtb) {

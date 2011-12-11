@@ -136,15 +136,15 @@ void PCApp::keyPressed(int key){
 			_scanner->calibrate();
 			break;
 
-		case 's': // s = save current activity
-			//_scanner->save(getDateString());
-			_scanner->save(ofToString(_scanner->screenDistance, 2));
+		case 's': // s = save current scan data
+		{
+			string name = ofToString(PCConfig().projWidth) + "," + ofToString(_scanner->interleaveWidth) + "x" +
+				ofToString(PCConfig().projHeight) + "," + ofToString(_scanner->interleaveHeight);
+			ofFileDialogResult ask = ofSystemSaveDialog(name, "Save file as");
+			name = ask.filePath;
+			_scanner->save(name);
 			break;
-		
-		case 'd': // d = save as 'data'
-			_scanner->save(ofToString(PCConfig().projWidth) + "," + ofToString(_scanner->interleaveWidth) + "x" +
-				ofToString(PCConfig().projHeight) + "," + ofToString(_scanner->interleaveHeight));
-			break;
+		}
 		
 
 		case 'v': // v = video settings

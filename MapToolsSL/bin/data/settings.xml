@@ -6,7 +6,7 @@
 				<projector width="1440" height="900" />
 				<projector width="32" height="16" />
 			-->
-			<projector width="8" height="8" />
+			<projector width="1024" height="768" />
 			<interleave width="1" height="1" />
 			<errorcheck nFrames="0" />
 	</encoding>
@@ -18,9 +18,10 @@
 			gain="40" exposure="128" delay="200"-->
 		 <!--550D 8MP cameras width="3456" height="2304"
 		 gain="40" exposure="128" delay="200"-->
-		<cameras width="640" height="480"
+		<cameras width="1920" height="1080"
 		 gain="40" exposure="128" delay="400">
-		<camera id="0" />
+			<camera id="0" />
+			<camera id="1" />
 			<!--camera id="1" /-->
 		</cameras>
 

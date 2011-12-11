@@ -27,7 +27,6 @@ public:
 	
 	void	load();
 	
-	void	evaluate(const vector<CamPoint> &c, vector<ofVec3f> &w, float threshold=0.05); 
 	void	evaluate(const vector<CamPoint> &c, ScanSet &s, float threshold=0.05);
 	void	getRay(const CamPoint &c, int iCamera, Ray& r);
 	

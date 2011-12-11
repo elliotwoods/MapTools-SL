@@ -38,6 +38,8 @@ public:
 	void    allocate();
 	void    deAllocate();
 
+	///call this is you update the contents of the set
+	void	update();
 
 	void    load(string filename);
 	void    save(string filename, bool thresholdBounds=true);
@@ -57,6 +59,7 @@ public:
 	ofVec3f			*xyz;
 	unsigned int	*iX, *iY;
 	unsigned int	size;
+	unsigned int	active;
 
 	unsigned short  width, height;
 
@@ -68,6 +71,8 @@ public:
 	////
 	
 	string          loadFilename;
+
+	ofEvent<unsigned int>	onUpdate;
 
 private:
 	bool			inside(ofVec3f& point, ofVec3f &lbf, ofVec3f& rtb);

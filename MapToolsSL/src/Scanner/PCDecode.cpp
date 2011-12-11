@@ -40,6 +40,7 @@ _scrCamera("Camera image", camera) {
 	_texCameraSpaceNFinds.allocate(camWidth, camHeight, GL_LUMINANCE);
 	_texProjectorSpaceNFinds.allocate(projWidth, projHeight, GL_LUMINANCE);
 	_texProjectorSpaceNFinds.setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
+	_texProjectorSpacePreview.setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
 	//
 	///////////////////////////////////////
 

@@ -114,9 +114,6 @@
     <ClCompile Include="src\Scanner\Camera\CameraDefault.cpp">
       <Filter>src\Scanner\Camera</Filter>
     </ClCompile>
-    <ClCompile Include="src\Correlate\scrSelectBounds.cpp">
-      <Filter>src\Correlate</Filter>
-    </ClCompile>
     <ClCompile Include="src\Correlate\CorrelateMain.cpp">
       <Filter>src\Correlate</Filter>
     </ClCompile>
@@ -309,6 +306,9 @@
     <ClCompile Include="..\..\..\addons\ofxLevMar\libs\levmar\src\misc.c">
       <Filter>addons\ofxLevMar\libs</Filter>
     </ClCompile>
+    <ClCompile Include="src\Correlate\scrScanSet.cpp">
+      <Filter>src\Correlate</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\PCApp.h">
@@ -367,9 +367,6 @@
     </ClInclude>
     <ClInclude Include="src\Scanner\Camera\CameraBase.h">
       <Filter>src\Scanner\Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Correlate\scrSelectBounds.h">
-      <Filter>src\Correlate</Filter>
     </ClInclude>
     <ClInclude Include="src\Correlate\CorrelateMain.h">
       <Filter>src\Correlate</Filter>
@@ -559,6 +556,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxLevMar\libs\levmar\src\misc.h">
       <Filter>addons\ofxLevMar\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Correlate\scrScanSet.h">
+      <Filter>src\Correlate</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

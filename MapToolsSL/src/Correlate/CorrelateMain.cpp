@@ -13,8 +13,6 @@ CorrelateMain::CorrelateMain() :
 scrControl("Correlate control"),
 scrFileSelection("Select data", ".", "bin"),
 
-scrWorldSpace("World XYZ"),
-
 scrGridMain("Correlate"),
 scrGridData("Data pointclouds"),
 
@@ -35,13 +33,13 @@ longImageCount(0)
 	// BUILD INTERFACE
 	////////////////////////////
 	wdgSlider *wdgLBF = new wdgSlider("Bounds Left, Bottom, Front",
-									  scrWorldSpace.lbf,
+									  scanSet.lbf,
 									  -10, 10,
 									  0.05,
 									  "m");
     
     wdgSlider *wdgRTB = new wdgSlider("Bounds Right, Top, Back",
-									  scrWorldSpace.rtb,
+									  scanSet.rtb,
 									  -10, 10,
 									  0.05,
 									  "m");
@@ -60,6 +58,7 @@ longImageCount(0)
 	bangEvaluate->enabled=false;
 	bangSave3DScan->enabled=false;
 	
+	scrWorldSpace = new scrScanSet(scanSet);
 	scrControl.push(bangLoad);
 	scrControl.push(bangLoadCalibration);
 	scrControl.push(new wdgSlider("Stereo intersect threshold", stereoIntersectThreshold, 0, 0.4, 0.005, "m"));
@@ -75,7 +74,7 @@ longImageCount(0)
     scrControl.push(bangClearImage);
 	
 	
-	scrGridData.push(&scrWorldSpace);
+	scrGridData.push(scrWorldSpace);
 	scrGridData.setGridWidth(1);
 	
 	scrGridMain.push(&scrControl);
@@ -115,8 +114,8 @@ void CorrelateMain::update()
     if (bangClearImage->getBang())
         clearImage();
 	
-	ofPoint& lbf(scrWorldSpace.lbf);
-    ofPoint& rtb(scrWorldSpace.rtb);
+	ofVec3f& lbf(scanSet.lbf);
+    ofVec3f& rtb(scanSet.rtb);
 	
 	if (rtb.x < lbf.x)
 		rtb.x = lbf.x;
@@ -255,16 +254,12 @@ void CorrelateMain::loadData()
 
 void CorrelateMain::evaluate()
 {
-    calibration.evaluate(dataCameraSpace, dataWorldSpace, stereoIntersectThreshold);
 	calibration.evaluate(dataCameraSpace, scanSet, stereoIntersectThreshold);
-	scrWorldSpace.setWith(&dataWorldSpace[0].x, dataWorldSpace.size());
 	bangSave3DScan->enabled = true;
 }
 
 void CorrelateMain::saveScan()
-{   
-	scanSet.lbf = scrWorldSpace.lbf;
-	scanSet.rtb = scrWorldSpace.rtb;
+{
 	scanSet.save(lastFilename);
 }
 
@@ -280,15 +275,15 @@ void CorrelateMain::saveMap() {
 	//clear all values out to black
 	memset(imgSave.getPixels(), 0, projWidth*projHeight*3);
 	
-    ofPoint& lbf(scrWorldSpace.lbf);
-    ofPoint& rtb(scrWorldSpace.rtb);
+    ofVec3f& lbf(scanSet.lbf);
+    ofVec3f& rtb(scanSet.rtb);
     
 	int iPP, iPoint;
 	iPoint = 0;
 	unsigned char col[3];
-	vector<ofVec3f>::iterator it;
-	for (it = dataWorldSpace.begin(); it != dataWorldSpace.end(); ++it)
-	{
+
+	ofVec3f *it = scanSet.xyz;
+	for (int i=0; i<scanSet.size; i++, it++) {
 		const ofVec3f& xyz(*it);
 		
         //check if not within selected bounds
@@ -325,9 +320,7 @@ void CorrelateMain::saveMap() {
 	memset(hdrSave.getPixels(), 0, projWidth*projHeight*3 * sizeof(float));
 	memset(imgSave.getPixels(), 0, projWidth*projHeight*3 * sizeof(unsigned char));
 	
-    iPoint = 0;
-	for (it = dataWorldSpace.begin(); it != dataWorldSpace.end(); ++it)
-	{
+	for (int i=0; i<scanSet.size; i++, it++) {
 		const ofVec3f& xyz(*it);
 		
 		//convert position to colour values
@@ -335,15 +328,13 @@ void CorrelateMain::saveMap() {
 		col[1] = ofMap(xyz[1],lbf.y,rtb.y,0,255,true);
 		col[2] = ofMap(xyz[2],lbf.z,rtb.z,0,255,true);
 		
-		iPP = dataset_iPX[iPoint] + projWidth * dataset_iPY[iPoint];
+		iPP = dataset_iPX[i] + projWidth * dataset_iPY[i];
         
 		if (iPP<int(projWidth*projHeight) && iPP>=0)
 			memcpy(hdrSave.getPixels()+3*iPP, &xyz.x, 3 * sizeof(float));
 		
 		if (iPP<int(projWidth*projHeight) && iPP>=0)
 			memcpy(imgSave.getPixels()+3*iPP, col, 3);
-		
-		++iPoint;
 	}
 	
 	ofSaveImage(hdrSave, lastFilename + ".hdr");
@@ -376,30 +367,25 @@ void CorrelateMain::addToImage()
     // copy new contents in
     //////////////////////////
     //	
-    ofPoint& lbf(scrWorldSpace.lbf);
-    ofPoint& rtb(scrWorldSpace.rtb);
+    ofPoint& lbf(scanSet.lbf);
+    ofPoint& rtb(scanSet.rtb);
     
 	int iPP, iLIP;
     float* point;
 	
-	vector<ofVec3f>::iterator it;
-	int iPoint = 0;
-	for (it = dataWorldSpace.begin(); it != dataWorldSpace.end(); ++it)
-	{
+	ofVec3f *it = scanSet.xyz;
+	for (int i=0; i<scanSet.size; i++, it++) {
 		const ofVec3f& xyz(*it);
-        
 		
-		iPP = dataset_iPX[iPoint] + projWidth * dataset_iPY[iPoint];
+		iPP = dataset_iPX[i] + projWidth * dataset_iPY[i];
         
 		if (iPP < int(projWidth*projHeight) && iPP>=0)
         {
             //put pixels at right of image
-            iLIP =  dataset_iPX[iPoint] + newWidth * dataset_iPY[iPoint] + oldWidth;
+            iLIP =  dataset_iPX[i] + newWidth * dataset_iPY[i] + oldWidth;
             
 			memcpy(newImage.getPixels() + 3*iLIP, &xyz.x, 3*sizeof(float));
         }
-		
-		++iPoint;
 	}
     //
     //////////////////////////

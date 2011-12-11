@@ -14,7 +14,7 @@
 #include "CameraBase.h"
 #include "videoInput.h"
 
-class CameraTheosVideoInput : public CameraBase
+class CameraTheosVideoInput : public CameraBase, ofThread
 {
 	public:
 		void	videoSettings();
@@ -23,12 +23,14 @@ class CameraTheosVideoInput : public CameraBase
 	protected:
 		bool	init(int ID, int width, int height);
 		void	grab();
-		void	grabPreview();
+		void	grabPreview();	
+		void	threadedFunction();
 
 		videoInput		_grabber;
 		ofTexture		_preview;
 
-		unsigned char * rgbPixels;
+		ofPixels	rgbPixels;
+		bool		fresh;
 };
 
 #endif

@@ -287,7 +287,7 @@ if not exist "$(ProjectDir)\bin\data" mkdir  "$(ProjectDir)\bin\data"
     <ClCompile Include="src\Analyse\ScanSet\ScanSet.cpp" />
     <ClCompile Include="src\Correlate\CorrelateMain.cpp" />
     <ClCompile Include="src\Correlate\CorrelateRays.cpp" />
-    <ClCompile Include="src\Correlate\scrSelectBounds.cpp" />
+    <ClCompile Include="src\Correlate\scrScanSet.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\PCApp.cpp" />
     <ClCompile Include="src\Scanner\Camera\CameraBase.cpp" />
@@ -371,7 +371,7 @@ if not exist "$(ProjectDir)\bin\data" mkdir  "$(ProjectDir)\bin\data"
     <ClInclude Include="src\Analyse\ScanSet\ScanSet.h" />
     <ClInclude Include="src\Correlate\CorrelateMain.h" />
     <ClInclude Include="src\Correlate\CorrelateRays.h" />
-    <ClInclude Include="src\Correlate\scrSelectBounds.h" />
+    <ClInclude Include="src\Correlate\scrScanSet.h" />
     <ClInclude Include="src\PCApp.h" />
     <ClInclude Include="src\Scanner\Camera\CameraBase.h" />
     <ClInclude Include="src\Scanner\Camera\CameraDefault.h" />

@@ -11,7 +11,7 @@
 
 #include "ofxCVgui.h"
 
-#include "scrSelectBounds.h"
+#include "scrScanSet.h"
 
 #include "CorrelateRays.h"
 #include "ScanSet.h"
@@ -32,7 +32,7 @@ public:
 	scrGroupGrid	scrGridMain, scrGridData;
 	scrWidgets		scrControl;
 	scrFileSelect	scrFileSelection;
-    scrSelectBounds scrWorldSpace;
+    scrScanSet		*scrWorldSpace;
 	
 protected:
 	void			loadData();
@@ -58,7 +58,6 @@ protected:
 	//Calibration
 	CorrelateRays	calibration;
 	vector<CamPoint>	dataCameraSpace;
-	vector<ofVec3f>		dataWorldSpace;
 	float			stereoIntersectThreshold;
 	
 

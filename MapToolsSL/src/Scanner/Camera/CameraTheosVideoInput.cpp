@@ -17,7 +17,8 @@ bool CameraTheosVideoInput::init(int ID, int width, int height)
 	_preview.allocate(width, height, GL_RGB);
 	preview = &_preview;
 
-	rgbPixels = new unsigned char[width*height*3];
+	rgbPixels.allocate(width, height, OF_IMAGE_COLOR);
+	this->startThread(true, false);
 
 	return success;
 }
@@ -28,24 +29,43 @@ void CameraTheosVideoInput::videoSettings()
 }
 
 void CameraTheosVideoInput::grab() {
-	_grabber.getPixels(ID, rgbPixels, true, true);
+	lock();
+	fresh = false;
+	unlock();
+	
+	while(!fresh)
+		ofSleepMillis(1);
 
+	lock();
 	for (int iPixel=0; iPixel<getWidth()*getHeight(); iPixel++)
 	{
 		greyPixels[iPixel] = 0;
 		for (int iColour=0; iColour<3; iColour++)
 			greyPixels[iPixel] += rgbPixels[iPixel*3+iColour]/3;
 	}
-	//cout << ofGetElapsedTimef() << " - endgrab\n";
+	unlock();
 }
 
 void CameraTheosVideoInput::grabPreview() {
-	_grabber.getPixels(ID, rgbPixels, true, true);
-	_preview.loadData(rgbPixels, getWidth(), getHeight(), GL_RGB);
+	//doesn't matter if we get tearing in the preview
+	//so we don't double buffer here
+	_preview.loadData(rgbPixels.getPixels(), getWidth(), getHeight(), GL_RGB);
+}
+
+void CameraTheosVideoInput::threadedFunction() {
+	while (threadRunning)
+	{
+		lock();
+		_grabber.getPixels(ID, rgbPixels.getPixels(), true, true);
+		fresh = true;
+		unlock();
+		ofSleepMillis(1);
+	}
 }
 
 void CameraTheosVideoInput::close()
 {
+	stopThread();
 	_grabber.stopDevice(ID);
 }
 
