@@ -36,7 +36,7 @@ viewScale(1.85f) // TODO : find where this comes from. this value is for a 640x3
 	ray.color = ofColor(255,40, 150);
 	ray.infinite = true;
 	
-	calib.setSquarePixelSize(width / 60);
+	calib.setSquareSize(width / 60);
 }
 
 CameraHead::~CameraHead() {
@@ -56,7 +56,7 @@ void CameraHead::init(int iDevice) {
 	greyBetweenBuffer.allocate(width, height, OF_IMAGE_GRAYSCALE);
 	greyThreadedInternal.allocate(width, height, OF_IMAGE_GRAYSCALE);
 	
-	calib.setBoardSize(7,6);
+	calib.setPatternSize(7,6);
 	calib.setSquareSize(4);
 	
 	frustum.setMode(OF_PRIMITIVE_LINE_STRIP);
@@ -104,7 +104,7 @@ void CameraHead::update () {
 		++out;
 	}
 	//undistort
-	if (calib.isReady && cameraScreen.iSelection==1)
+	if (calib.isReady() && cameraScreen.iSelection==1)
 	{
 		calib.undistort(toCv(video), toCv(videoUndistorted));
 		videoUndistorted.update();
@@ -131,13 +131,13 @@ void CameraHead::drawCorners(ofRectangle &viewport) {
 	}
 	ofPopStyle();
 
-	drawHighlightString("isReady = " + string(calib.isReady ? "true" : "false"), viewport.x+5, viewport.y + viewport.height-60, ofColor(200,100,100), ofColor(255,255,255));
+	drawHighlightString("isReady = " + string(calib.isReady() ? "true" : "false"), viewport.x+5, viewport.y + viewport.height-60, ofColor(200,100,100), ofColor(255,255,255));
 	drawHighlightString("Calibration sets = " + ofToString(calib.imagePoints.size()), viewport.x+5, viewport.y + viewport.height-40, ofColor(200,100,100), ofColor(255,255,255));
 	drawHighlightString("Found corners = " + ofToString(imagePoints.size()), viewport.x+5, viewport.y + viewport.height-20, ofColor(200,100,100), ofColor(255,255,255));
 }
 
 void CameraHead::drawFrustum(ofNode& n) {
-	if (!calib.isReady)
+	if (!calib.isReady())
 		return;
 	
 	ofPushMatrix();
@@ -150,7 +150,7 @@ void CameraHead::drawFrustum(ofNode& n) {
 
 void CameraHead::drawOnUndistorted(ofRectangle &r) {
 	
-	if (!calib.isReady)
+	if (!calib.isReady())
 		return;
 	
 	ofPushView();
@@ -227,7 +227,7 @@ void CameraHead::threadedAdd() {
 		if (calibCount() >= MIN_CALIBS)
 			calib.calibrate();
 		
-		if (calib.isReady) {
+		if (calib.isReady()) {
 			Mat matCv = calib.getUndistortedIntrinsics().getCameraMatrix();
 			ofMatrix4x4 matC;
 
@@ -288,7 +288,7 @@ void CameraHead::shrink(unsigned int s) {
 void CameraHead::updateCursor(ofVec2f& p) {
 	if (lockCorners.tryLock())
 	{
-		if (calib.isReady)
+		if (calib.isReady())
 		{
 			ofVec3f c;
 			ofRectangle scr = cameraUndistortedScreen.getLiveBounds();

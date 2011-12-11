@@ -14,7 +14,8 @@
 #define MIN_CALIBS 3
 
 #include "ofMain.h"
-#include "ofxCv.h"
+#include "ofxCv/Calibration.h"
+#include "ofxCv/Helpers.h"
 #include "ofxCVgui.h"
 
 #include "Ray.h"

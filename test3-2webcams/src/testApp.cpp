@@ -9,7 +9,7 @@ void testApp::setup(){
 	//glEnable(GL_DEPTH_TEST);
 	
 	for (int i=0; i<2; ++i)
-		camera[i].init(8+i);
+		camera[i].init(i);
 	
 	intersecter.color = ofColor(255,255,0);
 	
@@ -25,7 +25,7 @@ void testApp::setup(){
 	ofAddListener(camera[0].evtMoveRay, this, &testApp::updateIntersects);
 	ofAddListener(camera[1].evtMoveRay, this, &testApp::updateIntersects);
 	
-	ofQuickTimeGrabber g;
+	ofVideoGrabber g;
 	g.listDevices();
 	
 	timerOn = false;
@@ -113,7 +113,7 @@ void testApp::capture() {
 }
 
 void testApp::calcTransforms() {
-	if (camera[0].calib.isReady && camera[1].calib.isReady)
+	if (camera[0].calib.isReady() && camera[1].calib.isReady())
 	{
 		Mat tra, rot;
 		

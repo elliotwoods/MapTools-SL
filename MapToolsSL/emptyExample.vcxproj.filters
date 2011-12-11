@@ -25,9 +25,6 @@
     <Filter Include="src\Analyse">
       <UniqueIdentifier>{1762d8dd-88bb-4176-9cb1-20c893dad120}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\ScanSet">
-      <UniqueIdentifier>{df7c24a5-ccff-4bf7-8de3-9042d41cab3e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="addons">
       <UniqueIdentifier>{c53cf904-916e-4575-9a1b-7250b1313f00}</UniqueIdentifier>
     </Filter>
@@ -43,9 +40,6 @@
     <Filter Include="addons\ofxXmlSettings">
       <UniqueIdentifier>{a1a76c31-8303-4a05-bea3-fabc72c969f6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Common">
-      <UniqueIdentifier>{72a5d6b4-4b30-43a5-a0b7-ec3149c4d1d1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="addons\ofxCV">
       <UniqueIdentifier>{fe862468-95a1-409f-8386-ea7c20b0cd66}</UniqueIdentifier>
     </Filter>
@@ -57,6 +51,12 @@
     </Filter>
     <Filter Include="addons\ofxLevMar\libs">
       <UniqueIdentifier>{c4523964-c1e3-4049-a27b-e8e9c2ffc5a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\CommonIncludes">
+      <UniqueIdentifier>{72a5d6b4-4b30-43a5-a0b7-ec3149c4d1d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\common">
+      <UniqueIdentifier>{3890139e-be08-424f-98a4-c9f57d12a126}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -156,13 +156,7 @@
     <ClCompile Include="..\..\..\addons\ofxPolyfit\libs\polyNfit\src\powerBases.cpp">
       <Filter>addons\ofxPolyfit</Filter>
     </ClCompile>
-    <ClCompile Include="src\Analyse\ScanSet\ScanSet.cpp">
-      <Filter>src\ScanSet</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxCVgui\src\histograms\Histogram.cpp">
-      <Filter>addons\ofxCVgui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxCVgui\src\include\btnBase.cpp">
       <Filter>addons\ofxCVgui</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxCVgui\src\include\GUIAssets.cpp">
@@ -199,9 +193,6 @@
       <Filter>addons\ofxCVgui</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\scrHistograms.cpp">
-      <Filter>addons\ofxCVgui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\scrPointCloud.cpp">
       <Filter>addons\ofxCVgui</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxCVgui\src\screens\scrVbo.cpp">
@@ -256,7 +247,7 @@
       <Filter>src\Correlate</Filter>
     </ClCompile>
     <ClCompile Include="..\CommonIncludes\Ray.cpp">
-      <Filter>src\Common</Filter>
+      <Filter>src\CommonIncludes</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxCv\libs\ofxCv\src\Calibration.cpp">
       <Filter>addons\ofxCV</Filter>
@@ -306,8 +297,14 @@
     <ClCompile Include="..\..\..\addons\ofxLevMar\libs\levmar\src\misc.c">
       <Filter>addons\ofxLevMar\libs</Filter>
     </ClCompile>
-    <ClCompile Include="src\Correlate\scrScanSet.cpp">
-      <Filter>src\Correlate</Filter>
+    <ClCompile Include="src\common\scrPointCloud.cpp">
+      <Filter>src\common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\ScanSet.cpp">
+      <Filter>src\common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\scrScanSet.cpp">
+      <Filter>src\common</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -413,13 +410,7 @@
     <ClInclude Include="..\..\..\addons\ofxPolyfit\libs\polyNfit\src\powerBases.h">
       <Filter>addons\ofxPolyfit</Filter>
     </ClInclude>
-    <ClInclude Include="src\Analyse\ScanSet\ScanSet.h">
-      <Filter>src\ScanSet</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxCVgui\src\histograms\Histogram.h">
-      <Filter>addons\ofxCVgui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxCVgui\src\include\btnBase.h">
       <Filter>addons\ofxCVgui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxCVgui\src\include\GUIAssets.h">
@@ -465,9 +456,6 @@
       <Filter>addons\ofxCVgui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\scrHistograms.h">
-      <Filter>addons\ofxCVgui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\scrPointCloud.h">
       <Filter>addons\ofxCVgui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxCVgui\src\screens\scrVbo.h">
@@ -519,7 +507,7 @@
       <Filter>src\Correlate</Filter>
     </ClInclude>
     <ClInclude Include="..\CommonIncludes\Ray.h">
-      <Filter>src\Common</Filter>
+      <Filter>src\CommonIncludes</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxCv\libs\ofxCv\include\ofxCv\Calibration.h">
       <Filter>addons\ofxCV</Filter>
@@ -557,8 +545,14 @@
     <ClInclude Include="..\..\..\addons\ofxLevMar\libs\levmar\src\misc.h">
       <Filter>addons\ofxLevMar\libs</Filter>
     </ClInclude>
-    <ClInclude Include="src\Correlate\scrScanSet.h">
-      <Filter>src\Correlate</Filter>
+    <ClInclude Include="src\common\scrPointCloud.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\ScanSet.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\scrScanSet.h">
+      <Filter>src\common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
